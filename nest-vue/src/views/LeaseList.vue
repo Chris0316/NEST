@@ -3,23 +3,24 @@
     <button @click="openHType">户型</button>
     <button @click="openLocation">地点</button>
     <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalBtnClick="locationConfirm">
-      <div class="btn-group">
-        <div class="btn-column">
-          <div class="opt-btn">马卡提(Makati)</div>
-          <div class="opt-btn">帕赛（Pasay）</div>
-        </div>
-        <div class="btn-column">
-          <div class="opt-btn on">马尼拉市（City of Manila)</div>
-          <div class="opt-btn">曼达卢永(Mandaluyong)</div>
-        </div>
-        <div class="btn-column">
-          <div class="opt-btn on">奎松(Quezon)</div>
-          <div class="opt-btn">BGC(BGC, Taguig)</div>
-        </div>
-        <div class="btn-column last">
-          <div class="opt-btn">帕西市（Pasig）</div>
-        </div>
-      </div>
+      <nest-check arrayType="2" size="big" :options="locationOptions"></nest-check>
+      <!--<div class="btn-group">-->
+        <!--<div class="btn-column">-->
+          <!--<div class="opt-btn">马卡提(Makati)</div>-->
+          <!--<div class="opt-btn">帕赛(Pasay)</div>-->
+        <!--</div>-->
+        <!--<div class="btn-column">-->
+          <!--<div class="opt-btn on">马尼拉市(City of Manila)</div>-->
+          <!--<div class="opt-btn">曼达卢永(Mandaluyong)</div>-->
+        <!--</div>-->
+        <!--<div class="btn-column">-->
+          <!--<div class="opt-btn on">奎松(Quezon)</div>-->
+          <!--<div class="opt-btn">BGC(BGC, Taguig)</div>-->
+        <!--</div>-->
+        <!--<div class="btn-column last">-->
+          <!--<div class="opt-btn">帕西市(Pasig)</div>-->
+        <!--</div>-->
+      <!--</div>-->
     </nest-modal>
     <nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">
       <div class="btn-group">
@@ -41,7 +42,8 @@
     data() {
       return {
         locationShow: false,
-        hTypeShow: false
+        hTypeShow: false,
+        locationOptions: ['马卡提(Makati)', '帕赛(Pasay)', '马尼拉市(City of Manila)', '曼达卢永(Mandaluyong)', '奎松(Quezon)', 'BGC(BGC, Taguig)', '帕西市(Pasig)']
       }
     },
     methods: {

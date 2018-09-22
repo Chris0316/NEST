@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="nest-modal">
     <div class="modal-dialog">
       <div class="modal-header">{{ title }}</div>
       <a href="javascript:;" class="modal-clear">清空</a>
@@ -16,6 +16,7 @@
 
 <script>
   export default {
+    name: "nest-modal",
     props: {
       title: {
         type: String,
@@ -34,7 +35,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .modal {
+  .nest-modal {
     position: fixed;
     padding: 0 .28rem;
     top: 0;
