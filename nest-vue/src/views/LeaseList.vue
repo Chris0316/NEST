@@ -1,9 +1,10 @@
 <template>
   <div class="lease-list">
-    <button @click="openHType">户型</button>
-    <button @click="openLocation">地点</button>
+    <button class="button" @click="openHType">户型</button>
+    <button class="button" @click="openLocation">地点</button>
+    <nest-check :countInLine="countInLine" size="big" :options="locationOptions"></nest-check>
     <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalBtnClick="locationConfirm">
-      <nest-check arrayType="2" size="big" :options="locationOptions"></nest-check>
+      <!--<nest-check countInLine="2" size="big" :options="locationOptions"></nest-check>-->
       <!--<div class="btn-group">-->
         <!--<div class="btn-column">-->
           <!--<div class="opt-btn">马卡提(Makati)</div>-->
@@ -43,6 +44,7 @@
       return {
         locationShow: false,
         hTypeShow: false,
+        countInLine: 3,
         locationOptions: ['马卡提(Makati)', '帕赛(Pasay)', '马尼拉市(City of Manila)', '曼达卢永(Mandaluyong)', '奎松(Quezon)', 'BGC(BGC, Taguig)', '帕西市(Pasig)']
       }
     },
@@ -65,6 +67,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .lease-list {
+
   }
   .btn-group {
     display: flex;
