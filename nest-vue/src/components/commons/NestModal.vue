@@ -63,6 +63,7 @@
     border-radius: .2rem;
     box-shadow: 0 .04rem .2rem rgba(182, 185, 186, .8);
     z-index: 2;
+    background-color: #fff;
   }
 
   .modal-header {
