@@ -1,10 +1,12 @@
 <template>
   <div class="nest-check">
-    <div class="check-row" v-for="(num, index) in Math.ceil(options.length / countInRow)">
-      <label class="nest-checkbox" v-for="item in optionsInLine(index)">
-        <input type="checkbox" class="nest-checkbox-input"/>
-        <span class="nest-checkbox-core">{{ item }}</span>
-      </label>
+    <div class="check-row" v-for="rowNum in Math.ceil(options.length / countInRow)">
+      <div class="check-cell" v-for="cellNum in countInRow">
+        <label class="nest-checkbox" v-if="optionsInCell(rowNum, cellNum)">
+          <input type="checkbox" class="nest-checkbox-input"/>
+          <span class="nest-checkbox-core">{{ optionsInCell(rowNum, cellNum) }}</span>
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -27,10 +29,10 @@
       }
     },
     methods: {
-      optionsInLine (rowIndex) {
-        return this.options.filter((item, index) => {
-          return index >= rowIndex * this.countInRow && index < (rowIndex + 1) * this.countInRow
-        });
+      optionsInCell (rowNum, cellNum) {
+        let optionsIndex = ((rowNum - 1) * this.countInRow + cellNum) - 1;
+        let value = this.options[optionsIndex];
+        return value;
       }
     }
   }
@@ -44,7 +46,7 @@
     width: 100%;
   }
 
-  .nest-checkbox {
+  .check-cell {
     flex: 1;
     overflow: hidden;
     margin-right: .3rem;
@@ -55,6 +57,11 @@
       margin-right: 0;
     }
   }
+
+  .nest-checkbox {
+    display: block;
+  }
+
   .nest-checkbox-input {
     display: none;
     &:checked {
@@ -64,6 +71,7 @@
       }
     }
   }
+
   .nest-checkbox-core {
     padding: 0 .28rem;
     display: block;
