@@ -2,12 +2,12 @@
   <div class="nest-modal">
     <div class="modal-dialog">
       <div class="modal-header">{{ title }}</div>
-      <a href="javascript:;" class="modal-clear">清空</a>
+      <a href="javascript:;" class="modal-clear" @click="$emit('modalClear')">清空</a>
       <div class="modal-body">
         <slot></slot>
       </div>
       <div class="modal-footer">
-        <button class="modal-btn" @click="$emit('modalBtnClick')">{{ modalBtnTxt }}</button>
+        <button class="modal-btn" @click="$emit('modalConfirm')">{{ modalBtnTxt }}</button>
       </div>
     </div>
     <div class="modal-mask"></div>
