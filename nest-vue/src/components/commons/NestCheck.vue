@@ -3,8 +3,9 @@
     <div class="check-row" v-for="rowNum in Math.ceil(options.length / countInRow)">
       <div class="check-cell" v-for="cellNum in countInRow">
         <label class="nest-checkbox" v-if="optionsInCell(rowNum, cellNum)">
-          <input type="checkbox" class="nest-checkbox-input"/>
-          <span class="nest-checkbox-core">{{ optionsInCell(rowNum, cellNum) }}</span>
+          <input type="checkbox" class="nest-checkbox-input" v-if="!optionsInCell(rowNum, cellNum).checked" />
+          <input type="checkbox" class="nest-checkbox-input" checked v-else />
+          <span class="nest-checkbox-core">{{ optionsInCell(rowNum, cellNum).label }}</span>
         </label>
       </div>
     </div>

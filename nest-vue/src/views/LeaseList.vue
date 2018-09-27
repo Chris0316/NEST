@@ -3,11 +3,11 @@
     <button class="button" @click="openLocation">地点</button>
     <button class="button" @click="openHType">户型</button>
     <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalBtnClick="locationConfirm">
-      <nest-check :countInRow="countInRow" size="big" :options="locationOptions"></nest-check>
+      <nest-check size="big" :options="locationOptions"></nest-check>
     </nest-modal>
-    <nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">
-      <nest-check size="big" :options="typeOptions"></nest-check>
-    </nest-modal>
+    <!--<nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">-->
+      <!--<nest-check size="big" :options="typeOptions"></nest-check>-->
+    <!--</nest-modal>-->
   </div>
 </template>
 
@@ -17,9 +17,52 @@
       return {
         locationShow: false,
         hTypeShow: false,
-        countInRow: 3,
-        locationOptions: ['马卡提(Makati)', '帕赛(Pasay)', '马尼拉市(City of Manila)', '曼达卢永(Mandaluyong)', '奎松(Quezon)', 'BGC(BGC, Taguig)', '帕西市(Pasig)'],
-        typeOptions: ['一居室', '二居室', '三居室', '其他']
+        locationOptions: [{
+          label: '马卡提(Makati)',
+          value: '马卡提(Makati)',
+          checked: true
+        }, {
+          label: '帕赛(Pasay)',
+          value: '帕赛(Pasay)',
+          checked: false
+        }, {
+          label: '马尼拉市(City of Manila)',
+          value: '马尼拉市(City of Manila)',
+          checked: false
+        }, {
+          label: '曼达卢永(Mandaluyong)',
+          value: '曼达卢永(Mandaluyong)',
+          checked: false
+        }, {
+          label: '奎松(Quezon)',
+          value: '奎松(Quezon)',
+          checked: false
+        }, {
+          label: 'BGC(BGC, Taguig)',
+          value: 'BGC(BGC, Taguig)',
+          checked: true
+        }, {
+          label: '帕西市(Pasig)',
+          value: '帕西市(Pasig)',
+          checked: false
+        }],
+        typeOptions: [{
+          label: '一居室',
+          value: '一居室',
+          checked: false
+        }, {
+          label: '二居室',
+          value: '二居室',
+          checked: false
+        }, {
+          label: '三居室',
+          value: '三居室',
+          checked: false
+        }, {
+          label: '其他',
+          value: '其他',
+          checked: false
+        }]
       }
     },
     methods: {
