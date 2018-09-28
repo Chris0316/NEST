@@ -1,13 +1,13 @@
 <template>
   <div class="lease-list">
     <button class="button" @click="openLocation">地点</button>
-    <button class="button" @click="openHType">户型</button>
-    <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalBtnClick="locationConfirm">
-      <nest-check size="big" :options="locationOptions"></nest-check>
+    <button class="button" @click="openType">户型</button>
+    <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalConfirm="locationConfirm" @modalClear="locationClear">
+      <nest-check v-model="locationChecked" :options="locationOptions"></nest-check>
     </nest-modal>
-    <!--<nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">-->
-      <!--<nest-check size="big" :options="typeOptions"></nest-check>-->
-    <!--</nest-modal>-->
+    <nest-modal title="户型" v-show="typeShow" modalBtnTxt="立即发现惊喜房源" @modalConfirm="typeConfirm" @modalClear="typeClear">
+      <nest-check v-model="typeChecked" :options="typeOptions"></nest-check>
+    </nest-modal>
   </div>
 </template>
 
@@ -16,67 +16,70 @@
     data() {
       return {
         locationShow: false,
-        hTypeShow: false,
+        typeShow: false,
+        locationChecked: [true, false, false, false, false, false, true],
         locationOptions: [{
           label: '马卡提(Makati)',
-          value: '马卡提(Makati)',
-          checked: true
+          value: '马卡提(Makati)'
         }, {
           label: '帕赛(Pasay)',
-          value: '帕赛(Pasay)',
-          checked: false
+          value: '帕赛(Pasay)'
         }, {
           label: '马尼拉市(City of Manila)',
-          value: '马尼拉市(City of Manila)',
-          checked: false
+          value: '马尼拉市(City of Manila)'
         }, {
           label: '曼达卢永(Mandaluyong)',
-          value: '曼达卢永(Mandaluyong)',
-          checked: false
+          value: '曼达卢永(Mandaluyong)'
         }, {
           label: '奎松(Quezon)',
-          value: '奎松(Quezon)',
-          checked: false
+          value: '奎松(Quezon)'
         }, {
           label: 'BGC(BGC, Taguig)',
-          value: 'BGC(BGC, Taguig)',
-          checked: true
+          value: 'BGC(BGC, Taguig)'
         }, {
           label: '帕西市(Pasig)',
-          value: '帕西市(Pasig)',
-          checked: false
+          value: '帕西市(Pasig)'
         }],
+        typeChecked: [false, false, false, false],
         typeOptions: [{
           label: '一居室',
-          value: '一居室',
-          checked: false
+          value: '一居室'
         }, {
           label: '二居室',
-          value: '二居室',
-          checked: false
+          value: '二居室'
         }, {
           label: '三居室',
-          value: '三居室',
-          checked: false
+          value: '三居室'
         }, {
           label: '其他',
-          value: '其他',
-          checked: false
+          value: '其他'
         }]
       }
     },
     methods: {
-      openHType() {
-        this.hTypeShow = true;
+      openType() {
+        this.typeShow = true;
       },
       openLocation() {
         this.locationShow = true;
       },
       locationConfirm() {
+        console.log(this.locationChecked);
         this.locationShow = false;
       },
-      hTypeConfirm() {
-        this.hTypeShow = false;
+      typeConfirm() {
+        console.log(this.typeChecked);
+        this.typeShow = false;
+      },
+      locationClear () {
+        this.locationChecked = this.locationChecked.map(() => {
+          return false;
+        })
+      },
+      typeClear() {
+        this.typeChecked = this.typeChecked.map(() => {
+          return false;
+        })
       }
     }
   }

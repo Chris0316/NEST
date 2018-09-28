@@ -1,11 +1,11 @@
 <template>
   <div class="nest-check">
-    <div class="check-row" v-for="rowNum in Math.ceil(options.length / countInRow)">
-      <div class="check-cell" v-for="cellNum in countInRow">
-        <label class="nest-checkbox" v-if="optionsInCell(rowNum, cellNum)">
-          <input type="checkbox" class="nest-checkbox-input" v-if="!optionsInCell(rowNum, cellNum).checked" />
-          <input type="checkbox" class="nest-checkbox-input" checked v-else />
-          <span class="nest-checkbox-core">{{ optionsInCell(rowNum, cellNum).label }}</span>
+    <div class="check-row" v-for="(rowNum, rowIndex) in Math.ceil(options.length / countInRow)">
+      <div class="check-cell" v-for="(cellNum, cellIndex) in countInRow">
+        <label class="nest-checkbox" v-if="optionsInCell(rowIndex, cellIndex)">
+          <input type="checkbox" class="nest-checkbox-input" :checked="checked[rowIndex*countInRow+cellIndex]"
+                 @change="valuesChange($event, rowIndex*countInRow+cellIndex)"/>
+          <span class="nest-checkbox-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
     </div>
@@ -15,7 +15,12 @@
 <script>
   export default {
     name: "nest-check",
+    model: {
+      prop: 'checked',
+      event: 'change'
+    },
     props: {
+      checked: Array,
       countInRow: {
         type: Number,
         default: 2
@@ -24,16 +29,16 @@
         type: String,
         default: 'large'
       },
-      options: {
-        type: Array,
-        default: []
-      }
+      options: Array
     },
     methods: {
-      optionsInCell (rowNum, cellNum) {
-        let optionsIndex = ((rowNum - 1) * this.countInRow + cellNum) - 1;
-        let value = this.options[optionsIndex];
-        return value;
+      optionsInCell(rowIndex, cellIndex) {
+        let optionsIndex = rowIndex * this.countInRow + cellIndex;
+        return this.options[optionsIndex];
+      },
+      valuesChange (event, index) {
+        this.checked[index] = event.target.checked;
+        this.$emit('change', this.checked);
       }
     }
   }
