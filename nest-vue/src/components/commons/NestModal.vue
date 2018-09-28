@@ -7,7 +7,7 @@
         <slot></slot>
       </div>
       <div class="modal-footer">
-        <button class="modal-btn cancel" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
+        <button class="modal-btn cancel" v-if="isFull" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
         <button class="modal-btn confirm" @click="$emit('modalConfirm')">{{ modalConfirmTxt }}</button>
       </div>
     </div>

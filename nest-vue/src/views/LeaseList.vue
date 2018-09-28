@@ -11,9 +11,9 @@
 
 
 
-    <nest-modal :isFull="isModalFull">
-      xxx
-    </nest-modal>
+    <!--<nest-modal :isFull="isModalFull">-->
+      <!--xxx-->
+    <!--</nest-modal>-->
   </div>
 </template>
 
