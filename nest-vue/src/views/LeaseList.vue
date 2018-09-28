@@ -2,12 +2,18 @@
   <div class="lease-list">
     <button class="button" @click="openLocation">地点</button>
     <button class="button" @click="openHType">户型</button>
-    <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalBtnClick="locationConfirm">
+    <nest-modal title="地点" v-show="locationShow" modalConfirmTxt="确定" @modalConfirm="locationConfirm">
       <nest-check size="big" :options="locationOptions"></nest-check>
     </nest-modal>
     <!--<nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">-->
       <!--<nest-check size="big" :options="typeOptions"></nest-check>-->
     <!--</nest-modal>-->
+
+
+
+    <nest-modal :isFull="isModalFull">
+      xxx
+    </nest-modal>
   </div>
 </template>
 
@@ -15,6 +21,7 @@
   export default {
     data() {
       return {
+        isModalFull: true,
         locationShow: false,
         hTypeShow: false,
         locationOptions: [{

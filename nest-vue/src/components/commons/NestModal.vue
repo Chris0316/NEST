@@ -1,16 +1,17 @@
 <template>
-  <div class="nest-modal">
+  <div class="nest-modal" :class="{ full: isFull }">
     <div class="modal-dialog">
-      <div class="modal-header">{{ title }}</div>
-      <a href="javascript:;" class="modal-clear" @click="$emit('modalClear')">清空</a>
+      <div class="modal-header" v-if="!isFull">{{ title }}</div>
+      <a href="javascript:;" class="modal-close" v-if="!isFull" @click="$emit('modalClear')">清空</a>
       <div class="modal-body">
         <slot></slot>
       </div>
       <div class="modal-footer">
-        <button class="modal-btn" @click="$emit('modalConfirm')">{{ modalBtnTxt }}</button>
+        <button class="modal-btn cancel" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
+        <button class="modal-btn confirm" @click="$emit('modalConfirm')">{{ modalConfirmTxt }}</button>
       </div>
     </div>
-    <div class="modal-mask"></div>
+    <div class="modal-backdrop"></div>
   </div>
 </template>
 
@@ -22,7 +23,15 @@
         type: String,
         default: '标题'
       },
-      modalBtnTxt: {
+      isFull: {
+        type: Boolean,
+        default: false
+      },
+      modalCancelTxt: {
+        type: String,
+        default: '取消'
+      },
+      modalConfirmTxt: {
         type: String,
         default: '确定'
       }
@@ -37,7 +46,6 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nest-modal {
     position: fixed;
-    padding: 0 .28rem;
     top: 0;
     left: 0;
     right: 0;
@@ -46,7 +54,7 @@
     z-index: 1001;
   }
 
-  .modal-mask {
+  .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -59,6 +67,7 @@
   .modal-dialog {
     position: absolute;
     top: 1.45rem;
+    right: .28rem;
     width: 6.94rem;
     border-radius: .2rem;
     box-shadow: 0 .04rem .2rem rgba(182, 185, 186, .8);
@@ -74,7 +83,7 @@
     text-align: center;
   }
 
-  .modal-clear {
+  .modal-close {
     position: absolute;
     top: .4rem;
     right: .4rem;
@@ -102,5 +111,37 @@
     font-size: .3rem;
     color: #fff;
     background-color: #0f9183;
+  }
+
+  .full {
+    .modal-dialog {
+      display: flex;
+      flex-direction: column;
+      top: 0;
+      right: 0;
+      border-radius: 0;
+      width: 6rem;
+      height: 100%;
+    }
+    .modal-body {
+      flex: 1;
+    }
+    .modal-footer {
+      display: flex;
+      padding: 0;
+    }
+    .modal-btn {
+      border-radius: 0;
+      height: 1rem;
+      line-height: 1rem;
+      &.confirm {
+        flex: 1;
+      }
+      &.cancel {
+        width: 2.4rem;
+        color: #999;
+        background-color: #f2f2f2;
+      }
+    }
   }
 </style>
