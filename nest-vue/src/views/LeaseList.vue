@@ -45,7 +45,7 @@
           label: '帕西市(Pasig)',
           value: '帕西市(Pasig)'
         }],
-        typeChecked: '二居室',
+        typeChecked: '其他',
         typeOptions: [{
           label: '一居室',
           value: '一居室'
@@ -77,12 +77,10 @@
         this.typeShow = false;
       },
       locationClear () {
-        this.locationChecked = this.locationChecked.map(() => {
-          return false;
-        })
+        this.locationChecked = null
       },
       typeClear() {
-        this.typeChecked = ""
+        this.typeChecked = null
       }
     }
   }

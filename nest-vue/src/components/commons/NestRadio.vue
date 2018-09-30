@@ -35,7 +35,11 @@
         currentValue: this.value
       }
     },
-
+    watch: {
+      value(val) {
+        this.currentValue = val;
+      }
+    },
     methods: {
       optionsInCell(rowIndex, cellIndex) {
         let optionsIndex = rowIndex * this.countInRow + cellIndex;
