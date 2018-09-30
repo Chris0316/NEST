@@ -6,17 +6,12 @@
       <nest-check v-model="locationChecked" :options="locationOptions"></nest-check>
     </nest-modal>
     <nest-modal title="户型" v-show="typeShow" modalBtnTxt="立即发现惊喜房源" @modalConfirm="typeConfirm" @modalClear="typeClear">
-      <nest-check v-model="typeChecked" :options="typeOptions"></nest-check>
+      <nest-radio v-model="typeChecked" :options="typeOptions"></nest-radio>
     </nest-modal>
-    <!--<nest-modal title="户型" v-show="hTypeShow" modalBtnTxt="立即发现惊喜房源" @modalBtnClick="hTypeConfirm">-->
-      <!--<nest-check size="big" :options="typeOptions"></nest-check>-->
-    <!--</nest-modal>-->
 
-
-
-    <!--<nest-modal :isFull="isModalFull">-->
-      <!--xxx-->
-    <!--</nest-modal>-->
+    <nest-modal :isFull="isModalFull" v-show="false">
+    xxx
+    </nest-modal>
   </div>
 </template>
 
@@ -25,67 +20,69 @@
     data() {
       return {
         locationShow: false,
-        hTypeShow: false,
+        typeShow: false,
+        isModalFull: true,
+        locationChecked: ['马卡提(Makati)', 'BGC(BGC, Taguig)'],
         locationOptions: [{
           label: '马卡提(Makati)',
-          value: '马卡提(Makati)',
-          checked: true
+          value: '马卡提(Makati)'
         }, {
           label: '帕赛(Pasay)',
-          value: '帕赛(Pasay)',
-          checked: false
+          value: '帕赛(Pasay)'
         }, {
           label: '马尼拉市(City of Manila)',
-          value: '马尼拉市(City of Manila)',
-          checked: false
+          value: '马尼拉市(City of Manila)'
         }, {
           label: '曼达卢永(Mandaluyong)',
-          value: '曼达卢永(Mandaluyong)',
-          checked: false
+          value: '曼达卢永(Mandaluyong)'
         }, {
           label: '奎松(Quezon)',
-          value: '奎松(Quezon)',
-          checked: false
+          value: '奎松(Quezon)'
         }, {
           label: 'BGC(BGC, Taguig)',
-          value: 'BGC(BGC, Taguig)',
-          checked: true
+          value: 'BGC(BGC, Taguig)'
         }, {
           label: '帕西市(Pasig)',
-          value: '帕西市(Pasig)',
-          checked: false
+          value: '帕西市(Pasig)'
         }],
+        typeChecked: '二居室',
         typeOptions: [{
           label: '一居室',
-          value: '一居室',
-          checked: false
+          value: '一居室'
         }, {
           label: '二居室',
-          value: '二居室',
-          checked: false
+          value: '二居室'
         }, {
           label: '三居室',
-          value: '三居室',
-          checked: false
+          value: '三居室'
         }, {
           label: '其他',
-          value: '其他',
-          checked: false
+          value: '其他'
         }]
       }
     },
     methods: {
-      openHType() {
-        this.hTypeShow = true;
+      openType() {
+        this.typeShow = true;
       },
       openLocation() {
         this.locationShow = true;
       },
       locationConfirm() {
+        console.log(this.locationChecked);
         this.locationShow = false;
       },
-      hTypeConfirm() {
-        this.hTypeShow = false;
+      typeConfirm() {
+        console.log(this.typeChecked);
+        this.typeShow = false;
+      },
+      locationClear () {
+        this.locationChecked = this.locationChecked.map(() => {
+          return false;
+        })
+      },
+      typeClear() {
+        this.typeChecked = ""
       }
     }
   }

@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import NestModal from './commons/NestModal.vue'
 import NestCheck from './commons/NestCheck.vue'
+import NestRadio from './commons/NestRadio.vue'
 
 let components = {
   NestModal,
-  NestCheck
+  NestCheck,
+  NestRadio
 };
 
 let install = function () {

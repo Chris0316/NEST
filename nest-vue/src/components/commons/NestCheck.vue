@@ -3,8 +3,10 @@
     <div class="check-row" v-for="(rowNum, rowIndex) in Math.ceil(options.length / countInRow)">
       <div class="check-cell" v-for="(cellNum, cellIndex) in countInRow">
         <label class="nest-checkbox" v-if="optionsInCell(rowIndex, cellIndex)">
-          <input type="checkbox" class="nest-checkbox-input" :checked="checked[rowIndex*countInRow+cellIndex]"
-                 @change="valuesChange($event, rowIndex*countInRow+cellIndex)"/>
+          <input type="checkbox" class="nest-checkbox-input"
+                 v-model="currentValue"
+                 :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
+                 @change="optionCheck"/>
           <span class="nest-checkbox-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
@@ -15,12 +17,8 @@
 <script>
   export default {
     name: "nest-check",
-    model: {
-      prop: 'checked',
-      event: 'change'
-    },
     props: {
-      checked: Array,
+      value: Array,
       countInRow: {
         type: Number,
         default: 2
@@ -31,14 +29,18 @@
       },
       options: Array
     },
+    data() {
+      return {
+        currentValue: this.value
+      }
+    },
     methods: {
       optionsInCell(rowIndex, cellIndex) {
         let optionsIndex = rowIndex * this.countInRow + cellIndex;
         return this.options[optionsIndex];
       },
-      valuesChange (event, index) {
-        this.checked[index] = event.target.checked;
-        this.$emit('change', this.checked);
+      optionCheck() {
+        this.$emit('input', this.currentValue);
       }
     }
   }
