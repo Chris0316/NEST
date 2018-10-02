@@ -3,10 +3,10 @@
     <button class="button" @click="openLocation">地点</button>
     <button class="button" @click="openType">户型</button>
     <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalConfirm="locationConfirm" @modalClear="locationClear">
-      <nest-check v-model="locationChecked" :options="locationOptions"></nest-check>
+      <nest-check v-model="locationChecked" size="small" :options="locationOptions"></nest-check>
     </nest-modal>
     <nest-modal title="户型" v-show="typeShow" modalBtnTxt="立即发现惊喜房源" @modalConfirm="typeConfirm" @modalClear="typeClear">
-      <nest-radio v-model="typeChecked" :options="typeOptions"></nest-radio>
+      <nest-radio v-model="typeChecked" size="small" :options="typeOptions"></nest-radio>
     </nest-modal>
 
     <nest-modal :isFull="isModalFull" v-show="false">

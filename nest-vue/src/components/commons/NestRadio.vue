@@ -8,7 +8,7 @@
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="$emit('input', $event.target.value)"
           />
-          <span class="nest-radio-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+          <span class="nest-radio-core" :class="size">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
     </div>
@@ -61,9 +61,6 @@
     flex: 1;
     overflow: hidden;
     margin-right: .3rem;
-    &.large {
-      height: .6rem;
-    }
     &:last-child {
       margin-right: 0;
     }
@@ -96,5 +93,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    &.small {
+      height: .48rem;
+      line-height: .48rem;
+      font-size: .24rem;
+    }
   }
 </style>

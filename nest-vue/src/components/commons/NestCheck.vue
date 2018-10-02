@@ -7,7 +7,7 @@
                  v-model="currentValue"
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="optionCheck"/>
-          <span class="nest-checkbox-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+          <span class="nest-checkbox-core" :class="size">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
     </div>
@@ -25,7 +25,7 @@
       },
       size: {
         type: String,
-        default: 'large'
+        default: ''
       },
       options: Array
     },
@@ -63,9 +63,6 @@
     flex: 1;
     overflow: hidden;
     margin-right: .3rem;
-    &.large {
-      height: .6rem;
-    }
     &:last-child {
       margin-right: 0;
     }
@@ -98,5 +95,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    &.small {
+      height: .48rem;
+      line-height: .48rem;
+      font-size: .24rem;
+    }
   }
 </style>
