@@ -1,0 +1,244 @@
+<template>
+  <div class="rent-list">
+    <div class="search-wrap">
+      <img src="../assets/images/return-icon.png" alt="" class="return">
+      <div class="search-box">
+        <input type="text" class="search-msg">
+        <div class="search-img"></div>
+      </div>
+      <div class="search-place">
+        <div class="place-icon"></div>
+        <div class="place-name">马尼拉</div>
+      </div>
+    </div>
+    <div class="condition">
+      <div class="option-wrap">
+        <div class="option">地点</div>
+        <div class="option">户型</div>
+        <div class="option">筛选</div>
+      </div>
+      <img src="../assets/images/sort.png" alt="" class="fresh" />
+    </div>
+    <div class="search-list list-top">
+      <div class="search-item">
+        <img class="item-img" src="../assets/images/item-img.png" alt="">
+        <div class="msg-wrap">
+          <div class="title">Jazzreerfererererererrereerererereresdsdfsdfsfdsfdsfdfdsfrererererereeres</div>
+          <div class="type-wrap">
+            <div class="type">1室1厅</div>
+            <div class="type">10F</div>
+            <div class="type">100.55 ㎡</div>
+          </div>
+          <div class="rent">
+            <div class="price">30000</div>
+            <div class="price-msg">P/月</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "search-rent-list"
+  }
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  input {
+    background: none;
+    outline: none;
+    border: 0px;
+    caret-color: #0f9183;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  @mixin rowcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rent-list {
+    box-sizing: border-box;
+    width: 100%;
+    /*overflow: hidden;*/
+    /*padding: 0.2rem .28rem 0rem;*/
+    padding-top: 0.2rem;
+    .search-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .return{
+        margin-left: 0.28rem;
+        width: 0.42rem;
+        height: 0.32rem;
+      }
+      .search-box {
+        position: relative;
+        width: 4.14rem;
+        height: 0.8rem;
+      }
+      .search-msg {
+        box-sizing: border-box;
+        padding-left: 0.64rem;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #e8e8ea;
+        border-radius: 0.1rem;
+        box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
+      }
+      .search-img {
+        position: absolute;
+        top: 0.25rem;
+        left: 0.2rem;
+        width: 0.32rem;
+        height: 0.32rem;
+        background: url("../assets/images/search-img.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .types {
+        padding-left: 0.2rem;
+        padding-top: 0.01rem;
+        padding-bottom: 0.01rem;
+        font-size: 0.24rem;
+        color: #333333;
+        border-left: 1px solid #cccccc;
+      }
+      .point {
+        margin-left: 0.14rem;
+        margin-right: 0.25rem;
+        width: 0.14rem;
+        height: 0.09rem;
+        background: url("../assets/images/triangle.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .typelist {
+        position: absolute;
+        right: 0rem;
+        top: 0.8rem;
+        width: 1.4rem;
+        border: 1px solid #e8e8ea;
+        border-radius: 0.1rem;
+        box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
+        background: #ffffff;
+        .typeli {
+          box-sizing: border-box;
+          height: 0.7rem;
+          line-height: 0.7rem;
+          padding-left: 0.18rem;
+          color: #0f9183;
+          font-size: 0.24rem;
+          &:hover {
+            background: #e7f4f2;
+            color: #333333;
+          }
+        }
+      }
+      .search-place {
+        margin-right: 0.28rem;
+        display: flex;
+      }
+      .place-icon {
+        width: 0.26rem;
+        height: 0.35rem;
+        background: url("../assets/images/position.png") no-repeat;
+        background-size: 100% 100%;
+      }
+      .place-name {
+        margin-left: 0.15rem;
+        font-size: 0.28rem;
+        color: #333333;
+      }
+    }
+    .condition{
+      margin-top: 0.28rem;
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      .option-wrap{
+        display: flex;
+        margin-left: 1.3rem;
+        .option{
+          margin-right: 0.28rem;
+          box-sizing: border-box;
+          width: 1.2rem;
+          height: 0.6rem;
+          text-align: center;
+          line-height: 0.6rem;
+          font-size: 0.28rem;
+          color: #333333;
+          border: 1px solid #cccccc;
+          border-radius: 0.1rem;
+        }
+      }
+      .fresh{
+        margin-right: 0.84rem;
+        width: 0.36rem;
+        height: 0.32rem;
+      }
+    }
+    .search-list{
+      margin-left: 0.28rem;
+      margin-right: 0.28rem;
+      display: flex;
+      flex-direction: column;
+      .search-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.4rem;
+        .item-img{
+          width: 2.7rem;
+          height: 1.74rem;
+        }
+        .msg-wrap{
+          width: 100%;
+          margin-left: 0.28rem;
+        }
+        .title{
+          word-break:break-all;
+          margin-bottom: 0.1rem;
+          font-size: 0.28rem;
+          color: #333333;
+          font-weight: bold;
+          overflow : hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .type-wrap{
+          display: flex;
+          margin-bottom: 0.1rem;
+        }
+        .type{
+          margin-right: 0.1rem;
+          padding: 0.08rem;
+          background: #fbf8f3;
+          color: #d5be88;
+          font-size: 0.24rem;
+          border-radius: 0.1rem;
+        }
+        .rent{
+          display: flex;
+          align-items: flex-end;
+          font-size: 0.28rem;
+          color: #0f9183;
+        }
+        .price{
+          font-weight: bold;
+        }
+        .price-msg{
+          margin-left: 0.1rem;
+          font-size: 0.24rem;
+        }
+      }
+    }
+    .list-top{
+      margin-top: 0.7rem;
+    }
+  }
+
+</style>
