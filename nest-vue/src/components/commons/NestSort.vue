@@ -29,7 +29,7 @@
     align-items: center;
     .option-wrap {
       display: flex;
-      margin-left: 1.3rem;
+      margin-left: 0.28rem;
       .option {
         margin-right: 0.28rem;
         box-sizing: border-box;

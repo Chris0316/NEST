@@ -2,7 +2,7 @@
   <div class="room-msg">
     <div class="room" v-for="(recommend,index) in recommends">
       <div class="room-img"></div>
-      <div class="room-place">Jazz residence户型Jazz residence户型residence户型residence户型<</div>
+      <div class="room-place">Jazz residence户型Jazz residence户型residence户型residence户型</div>
       <div class="room-size">
         <div class="left">10F</div>
         <div class="left">100.55 ㎡</div>
@@ -56,6 +56,7 @@
     word-break:break-all;
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
+    height: 0.76rem;
     font-size: 0.28rem;
     color: #333333;
     font-weight: bold;

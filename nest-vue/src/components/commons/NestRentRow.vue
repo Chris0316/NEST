@@ -11,6 +11,10 @@
           <div class="price">{{price}}</div>
           <div class="price-msg">P/月</div>
         </div>
+
+      </div>
+      <div class="collect">
+
       </div>
     </div>
   </div>
@@ -44,15 +48,22 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .search-list{
-    margin-left: 0.28rem;
-    margin-right: 0.28rem;
     display: flex;
     flex-direction: column;
     .search-item{
       display: flex;
       align-items: center;
       margin-bottom: 0.4rem;
+      overflow-x: auto;
+      .collect{
+        flex-shrink:0;
+        width: 1.2rem;
+        height: 1.74rem;
+        background-color: #e7f4f2;
+      }
       .item-img{
+        margin-left: 0.28rem;
+        flex-shrink:0;
         width: 2.7rem;
         height: 1.74rem;
         border-radius: 0.1rem;
@@ -61,13 +72,15 @@
         background-size: 100% 100%;
       }
       .msg-wrap{
-        width: 100%;
-        flex: 1;
+        flex-shrink:0;
+        width: 3.96rem;
         margin-left: 0.28rem;
+        margin-right: 0.28rem;
       }
       .title{
         word-break:break-all;
         margin-bottom: 0.1rem;
+        height: 0.76rem;
         font-size: 0.28rem;
         color: #333333;
         font-weight: bold;

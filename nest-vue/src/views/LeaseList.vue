@@ -123,8 +123,6 @@
   .lease-list {
     box-sizing: border-box;
     width: 100%;
-    /*overflow: hidden;*/
-    /*padding: 0.2rem .28rem 0rem;*/
     padding-top: 0.2rem;
     .search-wrap {
       display: flex;
@@ -211,89 +209,6 @@
         margin-left: 0.15rem;
         font-size: 0.28rem;
         color: #333333;
-      }
-    }
-    .condition{
-      margin-top: 0.28rem;
-      display: flex;
-      justify-content:space-between;
-      align-items: center;
-      .option-wrap{
-        display: flex;
-        margin-left: 1.3rem;
-        .option{
-          margin-right: 0.28rem;
-          box-sizing: border-box;
-          width: 1.2rem;
-          height: 0.6rem;
-          text-align: center;
-          line-height: 0.6rem;
-          font-size: 0.28rem;
-          color: #333333;
-          border: 1px solid #cccccc;
-          border-radius: 0.1rem;
-        }
-      }
-      .fresh{
-        margin-right: 0.84rem;
-        width: 0.36rem;
-        height: 0.32rem;
-      }
-    }
-    .search-list{
-      margin-left: 0.28rem;
-      margin-right: 0.28rem;
-      display: flex;
-      flex-direction: column;
-      .search-item{
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.4rem;
-        .item-img{
-          width: 2.7rem;
-          height: 1.74rem;
-        }
-        .msg-wrap{
-          width: 100%;
-          margin-left: 0.28rem;
-        }
-        .title{
-          word-break:break-all;
-          margin-bottom: 0.1rem;
-          font-size: 0.28rem;
-          color: #333333;
-          font-weight: bold;
-          overflow : hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
-        .type-wrap{
-          display: flex;
-          margin-bottom: 0.1rem;
-        }
-        .type{
-          margin-right: 0.1rem;
-          padding: 0.08rem;
-          background: #fbf8f3;
-          color: #d5be88;
-          font-size: 0.24rem;
-          border-radius: 0.1rem;
-        }
-        .rent{
-          display: flex;
-          align-items: flex-end;
-          font-size: 0.28rem;
-          color: #0f9183;
-        }
-        .price{
-          font-weight: bold;
-        }
-        .price-msg{
-          margin-left: 0.1rem;
-          font-size: 0.24rem;
-        }
       }
     }
     .list-top{
