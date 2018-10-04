@@ -28,23 +28,23 @@
     </div>
     <div class="todotype">
       <div class="todo">
-        <img class="todo-img" src="../assets/images/todo-img.png" alt="">
+        <div class="todo-img"></div>
         <div class="name">发布房源</div>
       </div>
       <div class="todo">
-        <img class="todo-img" src="../assets/images/todo-img.png" alt="">
+        <div class="todo-img"></div>
         <div class="name">租房</div>
       </div>
       <div class="todo">
-        <img class="todo-img" src="../assets/images/todo-img.png" alt="">
+        <div class="todo-img"></div>
         <div class="name">二手房</div>
       </div>
       <div class="todo">
-        <img class="todo-img" src="../assets/images/todo-img.png" alt="">
+        <div class="todo-img"></div>
         <div class="name">新房</div>
       </div>
       <div class="todo">
-        <img class="todo-img" src="../assets/images/todo-img.png" alt="">
+        <div class="todo-img"></div>
         <div class="name">车位</div>
       </div>
     </div>
@@ -83,49 +83,22 @@
         <div class="lease">销售</div>
       </div>
     </div>
-    <div class="room-msg">
-      <div class="room">
-        <img src="../assets/images/room-img.png" class="room-img" alt="">
-        <div class="room-place">Jazz residence户型Jazz residence户型residence户型residence户型<</div>
-        <div class="room-size">
-          <div class="left">10F</div>
-          <div class="left">100.55 ㎡</div>
-        </div>
-        <div class="price-m">
-          <div class="num">23000</div>
-          <div class="month">P/月</div>
-        </div>
-      </div>
-      <div class="room">
-        <img src="../assets/images/room-img.png" class="room-img" alt="">
-        <div class="room-place">Jazz residence户型Jazz residence户型<</div>
-        <div class="room-size">
-          <div class="left">10F</div>
-          <div class="left">100.55 ㎡</div>
-        </div>
-        <div class="price-m">
-          <div class="num">23000</div>
-          <div class="month">P/月</div>
-        </div>
-      </div>
-      <div class="room">
-        <img src="../assets/images/room-img.png" class="room-img" alt="">
-        <div class="room-place">Jazz residence户型Jazz residence户型<</div>
-        <div class="room-size">
-          <div class="left">10F</div>
-          <div class="left">100.55 ㎡</div>
-        </div>
-        <div class="price-m">
-          <div class="num">23000</div>
-          <div class="month">P/月</div>
-        </div>
-      </div>
-    </div>
+    <NestRentCol/>
   </div>
 </template>
 
 <script>
-  export default {}
+  import NestRentCol from '../components/commons/NestRentCol'
+  export default {
+    data(){
+      return{
+
+      }
+    },
+    components: {
+      NestRentCol
+    }
+  }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -266,6 +239,10 @@
           margin-bottom: 0.25rem;
           width: 1.1rem;
           height: 1.1rem;
+          border-radius: 50%;
+          background-color: red;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
         }
         .name {
           font-size: 0.28rem;
@@ -352,6 +329,9 @@
         width: 3.3rem;
         height: 2.36rem;
         border-radius: 0.1rem;
+        background-color: red;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
       }
       .room-place{
         word-break:break-all;
