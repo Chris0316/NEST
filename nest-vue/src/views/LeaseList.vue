@@ -3,10 +3,10 @@
     <button class="button" @click="openLocation">地点</button>
     <button class="button" @click="openType">户型</button>
     <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalConfirm="locationConfirm" @modalClear="locationClear">
-      <nest-check v-model="locationChecked" size="small" :options="locationOptions"></nest-check>
+      <nest-check v-model="locationChecked" :options="locationOptions"></nest-check>
     </nest-modal>
     <nest-modal title="户型" v-show="typeShow" modalBtnTxt="立即发现惊喜房源" @modalConfirm="typeConfirm" @modalClear="typeClear">
-      <nest-radio v-model="typeChecked" size="small" :options="typeOptions"></nest-radio>
+      <nest-check v-model="typeChecked" :options="typeOptions"></nest-check>
     </nest-modal>
 
     <nest-modal :isFull="isModalFull" v-show="false">
@@ -45,7 +45,7 @@
           label: '帕西市(Pasig)',
           value: '帕西市(Pasig)'
         }],
-        typeChecked: '其他',
+        typeChecked: ['其他'],
         typeOptions: [{
           label: '一居室',
           value: '一居室'
