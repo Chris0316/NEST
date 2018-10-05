@@ -10,11 +10,11 @@
 <script>
   export default {
     name: "nest-sort",
-    props:{
-      sorts:{
-        type:Array,
-        default:function(){
-          return ['地点','户型','筛选'];
+    props: {
+      sorts: {
+        type: Array,
+        default: function () {
+          return ['地点', '户型', '筛选'];
         }
       }
     }
