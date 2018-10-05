@@ -2,7 +2,8 @@
   <div class="lease-list">
     <!--<button class="button" @click="openLocation">地点</button>-->
     <!--<button class="button" @click="openType">户型</button>-->
-    <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalConfirm="locationConfirm" @modalClear="locationClear">
+    <nest-modal title="地点" v-show="locationShow" modalBtnTxt="确定" @modalConfirm="locationConfirm"
+                @modalClear="locationClear">
       <nest-check v-model="locationChecked" :options="locationOptions"></nest-check>
     </nest-modal>
     <nest-modal title="户型" v-show="typeShow" modalBtnTxt="立即发现惊喜房源" @modalConfirm="typeConfirm" @modalClear="typeClear">
@@ -10,7 +11,7 @@
     </nest-modal>
 
     <nest-modal :isFull="isModalFull" v-show="false">
-    xxx
+      xxx
     </nest-modal>
     <div class="search-wrap">
       <img src="../assets/images/return-icon.png" alt="" class="return">
@@ -24,13 +25,11 @@
       </div>
     </div>
     <NestSort/>
-    <NestRentRow class="list-top"></NestRentRow>
+    <NestListView class="list-top"></NestListView>
   </div>
 </template>
 
 <script>
-  import NestRentRow from '../components/commons/NestRentRow'
-  import NestSort from '../components/commons/NestSort'
   export default {
     data() {
       return {
@@ -91,17 +90,13 @@
         console.log(this.typeChecked);
         this.typeShow = false;
       },
-      locationClear () {
+      locationClear() {
         this.locationChecked = null
       },
       typeClear() {
         this.typeChecked = null
       }
     },
-    components: {
-      NestRentRow,
-      NestSort
-    }
   }
 </script>
 
@@ -114,6 +109,7 @@
     -webkit-appearance: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
+
   @mixin rowcenter {
     display: flex;
     justify-content: center;
@@ -128,7 +124,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .return{
+      .return {
         margin-left: 0.28rem;
         width: 0.42rem;
         height: 0.32rem;
@@ -211,7 +207,7 @@
         color: #333333;
       }
     }
-    .list-top{
+    .list-top {
       margin-top: 0.7rem;
     }
   }

@@ -49,31 +49,35 @@
       </div>
     </div>
     <div class="bedrooms">
-      <div class="bedroom">
-        <div class="title">温馨一居室</div>
-        <div class="msg">属于你的独享空间</div>
-      </div>
-      <div class="bedroom">
-        <div class="title">温馨一居室</div>
-        <div class="msg">属于你的独享空间</div>
-      </div>
-      <div class="bedroom">
-        <div class="title">温馨一居室</div>
-        <div class="msg">属于你的独享空间</div>
+      <div class="bedrooms-wrap">
+        <div class="bedroom">
+          <div class="title">温馨一居室</div>
+          <div class="msg">属于你的独享空间</div>
+        </div>
+        <div class="bedroom">
+          <div class="title">温馨一居室</div>
+          <div class="msg">属于你的独享空间</div>
+        </div>
+        <div class="bedroom">
+          <div class="title">温馨一居室</div>
+          <div class="msg">属于你的独享空间</div>
+        </div>
       </div>
     </div>
     <div class="bedrooms budget">
-      <div class="bedroom">
-        <div class="title">500万预算</div>
-        <div class="msg">小资一族上车</div>
-      </div>
-      <div class="bedroom">
-        <div class="title">500万预算</div>
-        <div class="msg">小资一族上车</div>
-      </div>
-      <div class="bedroom">
-        <div class="title">500万预算</div>
-        <div class="msg">小资一族上车</div>
+      <div class="bedrooms-wrap">
+        <div class="bedroom">
+          <div class="title">500万预算</div>
+          <div class="msg">小资一族上车</div>
+        </div>
+        <div class="bedroom">
+          <div class="title">500万预算</div>
+          <div class="msg">小资一族上车</div>
+        </div>
+        <div class="bedroom">
+          <div class="title">500万预算</div>
+          <div class="msg">小资一族上车</div>
+        </div>
       </div>
     </div>
     <div class="recommend">
@@ -83,20 +87,14 @@
         <div class="lease">销售</div>
       </div>
     </div>
-    <NestRentCol/>
+    <NestListView type/>
   </div>
 </template>
 
 <script>
-  import NestRentCol from '../components/commons/NestRentCol'
   export default {
-    data(){
-      return{
-
-      }
-    },
-    components: {
-      NestRentCol
+    data() {
+      return {}
     }
   }
 </script>
@@ -254,6 +252,9 @@
       margin-top: 1rem;
       display: flex;
       overflow-x: auto;
+      .bedrooms-wrap{
+        display: flex;
+      }
       .bedroom {
         flex-shrink: 0;
         margin-right: 0.1rem;
@@ -263,8 +264,11 @@
         height: 2rem;
         background: #f5f5f7;
         border-radius: 0.1rem;
-        &:first-child{
+        &:first-child {
           margin-left: 0.28rem;
+        }
+        &:last-child {
+          margin-right: 0.28rem;
         }
         .title {
           margin-top: 0.2rem;
@@ -281,94 +285,33 @@
         }
       }
     }
-    .budget{
+    .budget {
       margin-top: 0.7rem;
     }
-    .recommend{
+    .recommend {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      .left{
+      .left {
         margin-left: 0.28rem;
         font-size: 0.46rem;
         color: #333333;
         font-weight: bold;
       }
-      .right{
+      .right {
         display: flex;
         font-size: 0.28rem;
         color: #999999;
-        .lease{
+        .lease {
           margin-right: 0.45rem;
           padding-bottom: 0.2rem;
           border-bottom: 0.04rem solid #ffff;
         }
-        .on{
+        .on {
           color: #0f9183;
           border-bottom: 0.04rem solid #0f9183;
-        }
-      }
-    }
-    .room-msg{
-      margin-left: 0.28rem;
-      display: flex;
-      flex-wrap: wrap;
-      .room{
-        margin-right: 0.34rem;
-        margin-bottom: 0.45rem;
-        display: flex;
-        flex-direction:column ;
-        width: 3.3rem;
-        &:nth-of-type(even){
-          margin-right: 0rem;
-        }
-      }
-      .room-img{
-        width: 3.3rem;
-        height: 2.36rem;
-        border-radius: 0.1rem;
-        background-color: red;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-      }
-      .room-place{
-        word-break:break-all;
-        margin-top: 0.2rem;
-        margin-bottom: 0.2rem;
-        font-size: 0.28rem;
-        color: #333333;
-        font-weight: bold;
-        overflow : hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-      .room-size{
-        display: flex;
-        margin-bottom: 0.2rem;
-        .left{
-          margin-right: 0.1rem;
-          padding: 0.15rem;
-          background: #fbf8f3;
-          color: #d5be88;
-          font-size: 0.24rem;
-          border-radius: 0.1rem;
-        }
-      }
-      .price-m{
-        display: flex;
-        align-items: flex-end;
-        font-size: 0.28rem;
-        color: #0f9183;
-        .num{
-          font-weight: bold;
-        }
-        .month{
-          margin-left: 0.1rem;
-          font-size: 0.24rem;
         }
       }
     }
