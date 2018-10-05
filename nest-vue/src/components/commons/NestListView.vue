@@ -153,12 +153,8 @@
       -webkit-box-orient: vertical;
     }
     .room-size {
-      word-break: break-all;
       display: flex;
       margin-bottom: 0.2rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       .left {
         margin-right: 0.1rem;
         padding: 0.15rem;
@@ -170,6 +166,10 @@
       .left-str {
         color: #808080;
         font-size: 0.24rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
       }
     }
     .price-m {
@@ -256,11 +256,7 @@
       }
       .type-wrap {
         display: flex;
-        word-break: break-all;
         margin-bottom: 0.1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
       .type {
         margin-right: 0.1rem;
@@ -271,8 +267,12 @@
         border-radius: 0.1rem;
       }
       .type-str {
+        word-break: break-all;
         color: #808080;
         font-size: 0.24rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .rent {
         display: flex;
