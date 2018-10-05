@@ -5,15 +5,12 @@
         <input class="search-msg" type="text">
         <div class="search-img"></div>
         <div class="search-sle">
-          <div class="types">二手房</div>
+          <div class="types">{{selectedVal}}</div>
           <div class="point"></div>
         </div>
         <div class="typelist">
-          <div class="typeli">
-            二手房
-          </div>
-          <div class="typeli">
-            租房
+          <div class="typeli" v-for="(option,i) in options" :key="i">
+            {{option.val}}
           </div>
         </div>
       </div>
@@ -87,14 +84,30 @@
         <div class="lease">销售</div>
       </div>
     </div>
-    <NestListView type/>
+    <NestListView double/>
   </div>
 </template>
 
 <script>
   export default {
     data() {
-      return {}
+      return {
+        options: [
+          {
+            val: '二手房',
+            id: 'second'
+          },
+          {
+            val: '租房',
+            id: 'rent'
+          }
+        ]
+      }
+    },
+    computed: {
+      selectedVal() {
+        return this.options[0].val
+      }
     }
   }
 </script>
@@ -148,10 +161,13 @@
         background-size: 100% 100%;
       }
       .search-sle {
-        @include rowcenter;
+        display: flex;
+        align-items: center;
         position: absolute;
         top: 0.24rem;
         right: 0rem;
+        width: 1.47rem;
+        border-left: 1px solid #cccccc;
       }
       .types {
         padding-left: 0.2rem;
@@ -159,9 +175,12 @@
         padding-bottom: 0.01rem;
         font-size: 0.24rem;
         color: #333333;
-        border-left: 1px solid #cccccc;
+        /*border-left: 1px solid #cccccc;*/
       }
       .point {
+        position: absolute;
+        right: 0.04rem;
+        top: 0.15rem;
         margin-left: 0.14rem;
         margin-right: 0.25rem;
         width: 0.14rem;
@@ -252,7 +271,7 @@
       margin-top: 1rem;
       display: flex;
       overflow-x: auto;
-      .bedrooms-wrap{
+      .bedrooms-wrap {
         display: flex;
       }
       .bedroom {

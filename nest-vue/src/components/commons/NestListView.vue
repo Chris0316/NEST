@@ -1,15 +1,18 @@
 <template>
   <div class="list-view">
     <!--  false是一行  -->
-    <div v-if="type">
+    <div v-if="double">
       <div class="room-msg">
         <div class="room" v-for="(recommend,index) in recommends">
           <div class="room-img"></div>
           <div class="room-place">{{recommend.roomplace}}</div>
-          <div class="room-size">
+          <div class="room-size" v-if="recommend.roomsizes.constructor === Array">
             <div class="left" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
-            <!--<div class="left">100.55 ㎡</div>-->
           </div>
+          <div class="room-size" v-else="!recommend.roomsizes.constructor === Array">
+            <div class="left-str">{{recommend.roomsizes}}</div>
+          </div>
+
           <div class="price-m">
             <div class="num">{{recommend.pricem}}</div>
             <div class="month">P/月</div>
@@ -24,35 +27,20 @@
             <div class="item-img"></div>
             <div class="msg-wrap">
               <div class="title">{{recommend.roomplace}}</div>
-              <div class="type-wrap">
+              <div class="type-wrap" v-if="recommend.roomsizes.constructor === Array">
                 <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
               </div>
-              <div class="rent">
+              <div class="type-wrap" v-else="!recommend.roomsizes.constructor === Array">
+                <div class="type-str">{{recommend.roomsizes}}</div>
+              </div>
+              <div class="rent" v-if="!recommend.rentsize">
                 <div class="price">{{recommend.pricem}}</div>
                 <div class="price-msg">P/月</div>
               </div>
-            </div>
-          </div>
-          <div class="collect">
-            <div class="heart"></div>
-            <div class="share"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="newHouse">
-      <div class="search-list">
-        <div class="search-item" v-for="(recommend,index) in recommends">
-          <div class="move-wrap">
-            <div class="item-img"></div>
-            <div class="msg-wrap">
-              <div class="title">{{recommend.roomplace}}</div>
-              <div class="type-wrap">
-                <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
-              </div>
-              <div class="rent">
+              <div class="rent" v-if="recommend.rentsize">
                 <div class="price">{{recommend.pricem}}</div>
-                <div class="price-msg">P/月</div>
+                <div class="price-msg">P/㎡</div>
+                <div class="room-size">{{recommend.rentsize}}</div>
               </div>
             </div>
           </div>
@@ -70,11 +58,11 @@
   export default {
     name: "nest-list-view",
     props: {
-      type: {
+      double: {
         type: Boolean,
         default: false
       },
-      newHouse:{
+      newHouse: {
         type: String,
         default: "newHouse"
       },
@@ -85,8 +73,16 @@
             {
               roomimg: '',
               roomplace: 'Jazz residence户型Jazz residence户型residence户型residence户型',
-              roomsizes: ['10F', '100.55 ㎡'],
-              pricem: 23000
+              roomsizes: "Makati, 1207 Metro Manila",
+              pricem: 23000,
+              rentsize: '28.00-100.55 ㎡'
+            },
+            {
+              roomimg: '',
+              roomplace: 'Jazz residence户型',
+              roomsizes: "Makati, 1207 Metro Manila",
+              pricem: 23000,
+              rentsize: '28.00-100.55 ㎡'
             },
             {
               roomimg: '',
@@ -111,7 +107,7 @@
               roomplace: 'Jazz residence户型Jazz residence户型residence户型residence户型',
               roomsizes: ['10F', '100.55 ㎡'],
               pricem: 23000
-            },
+            }
           ];
         }
       },
@@ -157,8 +153,12 @@
       -webkit-box-orient: vertical;
     }
     .room-size {
+      word-break: break-all;
       display: flex;
       margin-bottom: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       .left {
         margin-right: 0.1rem;
         padding: 0.15rem;
@@ -166,6 +166,10 @@
         color: #d5be88;
         font-size: 0.24rem;
         border-radius: 0.1rem;
+      }
+      .left-str {
+        color: #808080;
+        font-size: 0.24rem;
       }
     }
     .price-m {
@@ -191,7 +195,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 0.4rem;
-      .move-wrap{
+      .move-wrap {
         z-index: 1;
         display: flex;
         background: #fff;
@@ -202,20 +206,20 @@
         right: 0px;
         display: flex;
         flex-direction: column;
-        justify-content:space-around;
-        align-items:center;
+        justify-content: space-around;
+        align-items: center;
         flex-shrink: 0;
         width: 1.2rem;
         height: 1.74rem;
         background-color: #e7f4f2;
       }
-      .heart{
+      .heart {
         width: 0.36rem;
         height: 0.32rem;
         background: url("../../assets/images/heart.png") no-repeat;
         background-size: 100% 100%;
       }
-      .share{
+      .share {
         width: 0.3rem;
         height: 0.3rem;
         background: url("../../assets/images/share.png") no-repeat;
@@ -252,7 +256,11 @@
       }
       .type-wrap {
         display: flex;
+        word-break: break-all;
         margin-bottom: 0.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .type {
         margin-right: 0.1rem;
@@ -261,6 +269,10 @@
         color: #d5be88;
         font-size: 0.24rem;
         border-radius: 0.1rem;
+      }
+      .type-str {
+        color: #808080;
+        font-size: 0.24rem;
       }
       .rent {
         display: flex;
@@ -274,6 +286,11 @@
       .price-msg {
         margin-left: 0.1rem;
         font-size: 0.24rem;
+      }
+      .room-size {
+        margin-left: 0.25rem;
+        font-size: 0.22rem;
+        color: #cccccc;
       }
     }
   }
