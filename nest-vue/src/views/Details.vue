@@ -142,7 +142,7 @@
 <script>
   export default {
     data () {
-
+      return {}
     }
   }
 </script>
@@ -348,6 +348,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    font-size: 0;
     .item {
       display: inline-block;
       vertical-align: top;
