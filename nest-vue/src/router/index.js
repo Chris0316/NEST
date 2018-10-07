@@ -27,10 +27,6 @@ export default new Router({
       path: '/details',
       name: 'Details',
       component: Details
-    }, {
-      path: '/slider',
-      name: 'Slider',
-      component: Slider
     }]
 })
 

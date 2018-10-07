@@ -1,5 +1,5 @@
 <template>
-  <div class="nest-check">
+  <div class="nest-check" :class="size">
     <div class="check-row" v-for="(rowNum, rowIndex) in Math.ceil(options.length / countInRow)">
       <div class="check-cell" v-for="(cellNum, cellIndex) in countInRow">
         <label class="nest-checkbox" v-if="optionsInCell(rowIndex, cellIndex)">
@@ -7,7 +7,7 @@
                  v-model="currentValue"
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="optionCheck"/>
-          <span class="nest-checkbox-core" :class="size">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+          <span class="nest-checkbox-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
     </div>
@@ -95,7 +95,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    &.small {
+  }
+
+  .small {
+    .check-row {
+      margin-bottom: .2rem;
+    }
+    .check-cell {
+      margin-right: .2rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .nest-checkbox-core {
       height: .48rem;
       line-height: .48rem;
       font-size: .24rem;

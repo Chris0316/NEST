@@ -132,6 +132,7 @@
       height: 100%;
     }
     .modal-body {
+      padding: 0;
       flex: 1;
     }
     .modal-footer {

@@ -1,5 +1,5 @@
 <template>
-  <div class="nest-radio">
+  <div class="nest-radio" :class="size">
     <div class="radio-row" v-for="(rowNum, rowIndex) in Math.ceil(options.length / countInRow)">
       <div class="radio-cell" v-for="(cellNum, cellIndex) in countInRow">
         <label class="nest-radio" v-if="optionsInCell(rowIndex, cellIndex)">
@@ -8,7 +8,7 @@
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="$emit('input', $event.target.value)"
           />
-          <span class="nest-radio-core" :class="size">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+          <span class="nest-radio-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>
     </div>
@@ -30,7 +30,7 @@
       },
       options: Array
     },
-    data () {
+    data() {
       return {
         currentValue: this.value
       }
@@ -93,7 +93,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    &.small {
+  }
+
+  .small {
+    .radio-row {
+      margin-bottom: .2rem;
+    }
+    .radio-cell {
+      margin-right: .2rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .nest-radio-core {
       height: .48rem;
       line-height: .48rem;
       font-size: .24rem;
