@@ -1,20 +1,6 @@
 <template>
   <div class="home">
-    <div class="search-wrap">
-      <div class="search-box">
-        <input class="search-msg" type="text">
-        <div class="search-img"></div>
-        <NestSelect/>
-      </div>
-      <div class="search-place">
-        <div class="place-icon"></div>
-        <div class="place-name">马尼拉</div>
-      </div>
-    </div>
-    <div class="opt-type">
-      <div class="where">地点</div>
-      <div class="where">户型</div>
-    </div>
+    <nest-header header-type="home"></nest-header>
     <div class="todotype">
       <div class="todo">
         <div class="todo-img"></div>
@@ -93,35 +79,12 @@
             val: '租房',
             id: 'rent'
           }
-        ],
-        listShow: false,
-        selectedIndex: 0,
-        select: true
-      }
-    },
-    methods: {
-      dropDown() {
-        this.listShow = !this.listShow;
-      },
-      chooseVal(i, ev) {
-        // 向后台发送的值
-        var keyValue = ev.target.innerHTML.trim();
-        console.log(keyValue);
-        this.selectedIndex = i;
-        this.listShow = false;
+        ]
       }
     },
     computed: {
-      selectedVal: {
-        get: function () {
-          return this.options[this.selectedIndex].val;
-        },
-        set: function (newValue) {
-          return this.options[this.selectedIndex].val;
-        }
-      },
-      currentIndex() {
-        return this.selectedIndex;
+      selectedVal() {
+        return this.options[0].val
       }
     }
   }
@@ -146,71 +109,6 @@
     width: 100%;
     /*overflow: hidden;*/
     padding-top: 0.2rem;
-    .search-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .search-box {
-        margin-left: 0.28rem;
-        position: relative;
-        width: 5.06rem;
-        height: 0.8rem;
-      }
-      .search-msg {
-        box-sizing: border-box;
-        padding-left: 0.64rem;
-        display: block;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #e8e8ea;
-        border-radius: 0.1rem;
-        box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
-      }
-      .search-img {
-        position: absolute;
-        top: 0.25rem;
-        left: 0.2rem;
-        width: 0.32rem;
-        height: 0.32rem;
-        background: url("../assets/images/search-img.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      .fix-right {
-
-      }
-      .search-place {
-        margin-right: 0.28rem;
-        display: flex;
-      }
-      .place-icon {
-        width: 0.26rem;
-        height: 0.35rem;
-        background: url("../assets/images/position.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      .place-name {
-        margin-left: 0.15rem;
-        font-size: 0.28rem;
-        color: #333333;
-      }
-    }
-    .opt-type {
-      margin-left: 0.28rem;
-      margin-top: 0.28rem;
-      display: flex;
-      .where {
-        margin-right: 0.28rem;
-        box-sizing: border-box;
-        border: 1px solid #b2b2b2;
-        border-radius: 0.1rem;
-        width: 1.2rem;
-        height: 0.6rem;
-        text-align: center;
-        line-height: 0.6rem;
-        font-size: 0.28rem;
-        color: #333333;
-      }
-    }
     .todotype {
       margin-left: 0.28rem;
       padding-right: 0.28rem;
