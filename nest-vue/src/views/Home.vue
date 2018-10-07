@@ -2,26 +2,26 @@
   <div class="home">
     <nest-header header-type="home"></nest-header>
     <div class="todotype">
-      <div class="todo">
+      <router-link to="" class="todo">
         <div class="todo-img"></div>
         <div class="name">发布房源</div>
-      </div>
-      <div class="todo">
+      </router-link>
+      <router-link to="/list/rent" class="todo">
         <div class="todo-img"></div>
         <div class="name">租房</div>
-      </div>
-      <div class="todo">
+      </router-link>
+      <router-link to="/list/second" class="todo">
         <div class="todo-img"></div>
         <div class="name">二手房</div>
-      </div>
-      <div class="todo">
+      </router-link>
+      <router-link to="/list/new" class="todo">
         <div class="todo-img"></div>
         <div class="name">新房</div>
-      </div>
-      <div class="todo">
+      </router-link>
+      <router-link to="/list/parking" class="todo">
         <div class="todo-img"></div>
         <div class="name">车位</div>
-      </div>
+      </router-link>
     </div>
     <div class="bedrooms">
       <div class="bedrooms-wrap">

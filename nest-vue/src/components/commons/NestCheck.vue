@@ -57,6 +57,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .check-cell {
@@ -100,6 +103,9 @@
   .small {
     .check-row {
       margin-bottom: .2rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .check-cell {
       margin-right: .2rem;

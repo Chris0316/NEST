@@ -55,6 +55,9 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .radio-cell {
@@ -98,6 +101,9 @@
   .small {
     .radio-row {
       margin-bottom: .2rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .radio-cell {
       margin-right: .2rem;

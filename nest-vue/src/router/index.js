@@ -5,8 +5,6 @@ import LeaseList from '@/views/LeaseList'
 import Search from '@/views/Search'
 import Details from '@/views/Details'
 
-import Slider from '@/components/commons/NestSlider'
-
 Vue.use(Router)
 
 export default new Router({
@@ -16,7 +14,7 @@ export default new Router({
       name: 'Home',
       component: Home
     }, {
-      path: '/list',
+      path: '/list/:type',
       name: 'LeaseList',
       component: LeaseList
     }, {
@@ -24,7 +22,7 @@ export default new Router({
       name: 'Search',
       component: Search
     }, {
-      path: '/details',
+      path: '/details/:type/:id',
       name: 'Details',
       component: Details
     }]
