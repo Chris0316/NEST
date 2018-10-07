@@ -58,8 +58,7 @@
     <div class="recommend">
       <div class="left">为你推荐</div>
       <div class="right">
-        <div class="lease on">出租</div>
-        <div class="lease">销售</div>
+        <div class="lease" :class="{on: curindex == i }" v-for="(lease ,i) in leaseArr" :key="i" @click="leaseChange(i)">出租</div>
       </div>
     </div>
     <NestListView double/>
@@ -68,6 +67,14 @@
 
 <script>
   export default {
+    props:{
+      leaseArr:{
+        type:Array,
+        default: function () {
+          return ['出租','销售'];
+        }
+      }
+    },
     data() {
       return {
         options: [
@@ -79,7 +86,13 @@
             val: '租房',
             id: 'rent'
           }
-        ]
+        ],
+        curindex:0
+      }
+    },
+    methods:{
+      leaseChange(i){
+        this.curindex = i;
       }
     },
     computed: {
