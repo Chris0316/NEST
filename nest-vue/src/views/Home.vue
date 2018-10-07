@@ -4,15 +4,7 @@
       <div class="search-box">
         <input class="search-msg" type="text">
         <div class="search-img"></div>
-        <div class="search-sle">
-          <div class="types">{{selectedVal}}</div>
-          <div class="point"></div>
-        </div>
-        <div class="typelist">
-          <div class="typeli" v-for="(option,i) in options" :key="i">
-            {{option.val}}
-          </div>
-        </div>
+        <NestSelect/>
       </div>
       <div class="search-place">
         <div class="place-icon"></div>
@@ -101,12 +93,35 @@
             val: '租房',
             id: 'rent'
           }
-        ]
+        ],
+        listShow: false,
+        selectedIndex: 0,
+        select: true
+      }
+    },
+    methods: {
+      dropDown() {
+        this.listShow = !this.listShow;
+      },
+      chooseVal(i, ev) {
+        // 向后台发送的值
+        var keyValue = ev.target.innerHTML.trim();
+        console.log(keyValue);
+        this.selectedIndex = i;
+        this.listShow = false;
       }
     },
     computed: {
-      selectedVal() {
-        return this.options[0].val
+      selectedVal: {
+        get: function () {
+          return this.options[this.selectedIndex].val;
+        },
+        set: function (newValue) {
+          return this.options[this.selectedIndex].val;
+        }
+      },
+      currentIndex() {
+        return this.selectedIndex;
       }
     }
   }
@@ -160,55 +175,8 @@
         background: url("../assets/images/search-img.png") no-repeat;
         background-size: 100% 100%;
       }
-      .search-sle {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 0.24rem;
-        right: 0rem;
-        width: 1.47rem;
-        border-left: 1px solid #cccccc;
-      }
-      .types {
-        padding-left: 0.2rem;
-        padding-top: 0.01rem;
-        padding-bottom: 0.01rem;
-        font-size: 0.24rem;
-        color: #333333;
-        /*border-left: 1px solid #cccccc;*/
-      }
-      .point {
-        position: absolute;
-        right: 0.04rem;
-        top: 0.15rem;
-        margin-left: 0.14rem;
-        margin-right: 0.25rem;
-        width: 0.14rem;
-        height: 0.09rem;
-        background: url("../assets/images/triangle.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      .typelist {
-        position: absolute;
-        right: 0rem;
-        top: 0.8rem;
-        width: 1.4rem;
-        border: 1px solid #e8e8ea;
-        border-radius: 0.1rem;
-        box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
-        background: #ffffff;
-        .typeli {
-          box-sizing: border-box;
-          height: 0.7rem;
-          line-height: 0.7rem;
-          padding-left: 0.18rem;
-          color: #0f9183;
-          font-size: 0.24rem;
-          &:hover {
-            background: #e7f4f2;
-            color: #333333;
-          }
-        }
+      .fix-right {
+
       }
       .search-place {
         margin-right: 0.28rem;

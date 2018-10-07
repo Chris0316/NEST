@@ -4,6 +4,7 @@ import NestCheck from './commons/NestCheck.vue'
 import NestRadio from './commons/NestRadio.vue'
 import NestListView from './commons/NestListView.vue'
 import NestSort from './commons/NestSort.vue'
+import NestSelect from './commons/NestSelect.vue'
 
 
 let components = {
@@ -11,7 +12,8 @@ let components = {
   NestCheck,
   NestRadio,
   NestListView,
-  NestSort
+  NestSort,
+  NestSelect
 };
 
 let install = function () {
@@ -20,4 +22,4 @@ let install = function () {
   });
 }
 
-export default Object.assign(components, { install });
+export default Object.assign(components, {install});
