@@ -2,7 +2,9 @@
   <div class="nest-header">
     <div class="search-wrap">
       <div class="back" v-if="headerType !== 'home'"></div>
-      <div class="search-box"></div>
+      <div class="search-box">
+        <nest-select/>
+      </div>
       <div class="location">马尼拉</div>
     </div>
     <div class="control-wrap">

@@ -1,11 +1,11 @@
 <template>
   <div class="nest-select">
-    <div class="search-sle" v-if="select" @click="dropDown">
+    <div class="search-sle" v-if="select" @click.stop="dropDown">
       <div class="types">{{selectedVal}}</div>
       <div class="point" :class="{trans: pointtran===true }"></div>
     </div>
     <div class="typelist" v-if="listShow">
-      <div class="typeli" :class="{on: currentIndex===i}" @click="chooseVal(i,$event)" v-for="(option,i) in options"
+      <div class="typeli" :class="{on: currentIndex===i}" @click.stop="chooseVal(i,$event)" v-for="(option,i) in options"
            :value="option.val" :key="i">
         {{option.val}}
       </div>
@@ -74,6 +74,8 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nest-select {
     position: relative;
+    top: 0.78rem;
+    z-index: 1;
     .search-sle {
       box-sizing: border-box;
       display: flex;
