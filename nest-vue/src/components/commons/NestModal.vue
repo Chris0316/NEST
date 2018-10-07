@@ -134,6 +134,7 @@
     .modal-body {
       padding: 0;
       flex: 1;
+      overflow-y: scroll;
     }
     .modal-footer {
       display: flex;

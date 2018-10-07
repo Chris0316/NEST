@@ -9,7 +9,7 @@
     </div>
     <div class="control-wrap">
       <div class="control-btn" @click="locationShow = !locationShow">地点</div>
-      <div class="control-btn" @click="typeShow = !typeShow">户型</div>
+      <div class="control-btn" @click="roomTypeShow = !roomTypeShow">户型</div>
       <div class="control-btn" @click="conditionShow = !conditionShow" v-if="headerType !== 'home'">筛选</div>
       <div class="sort-btn" @click="sortShow = !sortShow" v-if="headerType !== 'home'"></div>
     </div>
@@ -18,15 +18,15 @@
       <nest-check v-model="locationVal" :options="locationOpts"></nest-check>
     </nest-modal>
     <!--@modalConfirm="typeConfirm" @modalClear="typeClear"-->
-    <nest-modal title="户型" modal-confirm-txt="立即发现惊喜房源" @modalClose="typeShow = false" v-show="typeShow">
-      <nest-check v-model="typeVal" :options="typeOpts"></nest-check>
+    <nest-modal title="户型" modal-confirm-txt="立即发现惊喜房源" @modalClose="roomTypeShow = false" v-show="roomTypeShow">
+      <nest-check v-model="roomTypeVal" :options="roomTypeOpts"></nest-check>
     </nest-modal>
     <nest-modal :is-full="true" :has-cancel="true" modal-cancel-txt="清空条件" @modalClose="conditionShow = false"
                 v-show="conditionShow" v-if="headerType !== 'home'">
       <div class="conditions">
         <div class="condition">
           <div class="condition-title">租金</div>
-          <nest-radio v-model="rental" :options="rentalOpts" size="small"></nest-radio>
+          <nest-radio v-model="rentalVal" :options="rentalOpts" size="small"></nest-radio>
           <div class="slider-val">0 - 不限</div>
           <div class="slider-container">
             <nest-slider></nest-slider>
@@ -34,11 +34,27 @@
         </div>
         <div class="condition">
           <div class="condition-title">房型</div>
-          <nest-radio v-model="rental" :options="rentalOpts" size="small"></nest-radio>
-          <div class="slider-val">0 - 不限</div>
-          <div class="slider-container">
-            <nest-slider></nest-slider>
-          </div>
+          <nest-radio v-model="houseTypeVal" :options="houseTypeOpts" size="small" :count-in-row="4"></nest-radio>
+        </div>
+        <div class="condition">
+          <div class="condition-title">用途</div>
+          <nest-radio v-model="purposeVal" :options="purposeOpts" size="small" :count-in-row="3"></nest-radio>
+        </div>
+        <div class="condition">
+          <div class="condition-title">方式</div>
+          <nest-radio v-model="rentWayVal" :options="rentWayOpts" size="small"></nest-radio>
+        </div>
+        <div class="condition">
+          <div class="condition-title">付款</div>
+          <nest-radio v-model="payWayVal" :options="payWayOpts" size="small" :count-in-row="3"></nest-radio>
+        </div>
+        <div class="condition">
+          <div class="condition-title">设施</div>
+          <nest-radio v-model="deviceVal" :options="deviceOpts" size="small" :count-in-row="3"></nest-radio>
+        </div>
+        <div class="condition">
+          <div class="condition-title">车位</div>
+          <nest-radio v-model="parkingVal" :options="parkingOpts" size="small"></nest-radio>
         </div>
       </div>
     </nest-modal>
@@ -58,77 +74,29 @@
     data() {
       return {
         locationShow: false,
-        typeShow: false,
+        roomTypeShow: false,
         conditionShow: false,
         sortShow: false,
         locationVal: [],
-        locationOpts: [{
-          label: '马卡提(Makati)',
-          value: '马卡提(Makati)'
-        }, {
-          label: '帕赛(Pasay)',
-          value: '帕赛(Pasay)'
-        }, {
-          label: '马尼拉市(City of Manila)',
-          value: '马尼拉市(City of Manila)'
-        }, {
-          label: '曼达卢永(Mandaluyong)',
-          value: '曼达卢永(Mandaluyong)'
-        }, {
-          label: '奎松(Quezon)',
-          value: '奎松(Quezon)'
-        }, {
-          label: 'BGC(BGC, Taguig)',
-          value: 'BGC(BGC, Taguig)'
-        }, {
-          label: '帕西市(Pasig)',
-          value: '帕西市(Pasig)'
-        }],
-        typeVal: [],
-        typeOpts: [{
-          label: '一居室',
-          value: '一居室'
-        }, {
-          label: '二居室',
-          value: '二居室'
-        }, {
-          label: '三居室',
-          value: '三居室'
-        }, {
-          label: '其他',
-          value: '其他'
-        }],
+        locationOpts: ['马卡提(Makati)', '帕赛(Pasay)', '马尼拉市(City of Manila)', '曼达卢永(Mandaluyong)', '奎松(Quezon)', 'BGC(BGC, Taguig)', '帕西市(Pasig)'],
+        roomTypeVal: [],
+        roomTypeOpts: ['一居室', '二居室', '三居室', '其他'],
         sortVal: '默认排序',
-        sortOpts: [{
-          label: '默认排序',
-          value: '默认排序'
-        }, {
-          label: '均价由低到高',
-          value: '均价由低到高'
-        }, {
-          label: '均价由高到低',
-          value: '均价由高到低'
-        }, {
-          label: '开盘时间顺序',
-          value: '开盘时间顺序'
-        }, {
-          label: '开盘时间倒序',
-          value: '开盘时间倒序'
-        }],
-        rental: '',
-        rentalOpts: [{
-          label: '15000-30000',
-          value: '15000-30000'
-        }, {
-          label: '30000-40000',
-          value: '30000-40000'
-        }, {
-          label: '40000-50000',
-          value: '40000-50000'
-        }, {
-          label: '50000以上',
-          value: '50000以上'
-        }]
+        sortOpts: ['默认排序', '均价由低到高', '均价由高到低', '开盘时间顺序', '开盘时间倒序'],
+        rentalVal: '',
+        rentalOpts: ['15000-30000', '30000-40000', '40000-50000', '50000以上'],
+        houseTypeVal: '',
+        houseTypeOpts: ['公寓', '别墅', '居民', '车位'],
+        purposeVal: '',
+        purposeOpts: ['住房', '商业办公', '商住两用'],
+        rentWayVal: '',
+        rentWayOpts: ['整租', '合租'],
+        payWayVal: '',
+        payWayOpts: ['押二付一', '押一付二', '其他'],
+        deviceVal: '',
+        deviceOpts: ['阳台', '花园', '静音空调', '冰箱', '洗衣机', '热水器'],
+        parkingVal: '',
+        parkingOpts: ['带车位', '不带车位']
       }
     },
     methods: {}
@@ -262,6 +230,7 @@
     color: #333;
     line-height: 1;
   }
+
   .slider-val {
     margin-top: .4rem;
     font-size: .24rem;
@@ -269,6 +238,7 @@
     line-height: 1;
     text-align: center;
   }
+
   .slider-container {
     margin-top: .14rem;
     padding: 0 .3rem;
