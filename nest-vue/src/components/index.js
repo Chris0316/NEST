@@ -5,13 +5,15 @@ import NestRadio from './commons/NestRadio.vue'
 import NestListView from './commons/NestListView.vue'
 import NestSort from './commons/NestSort.vue'
 
+import NestHeader from './public/NestHeader'
 
 let components = {
   NestModal,
   NestCheck,
   NestRadio,
   NestListView,
-  NestSort
+  NestSort,
+  NestHeader
 };
 
 let install = function () {

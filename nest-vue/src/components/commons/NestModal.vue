@@ -2,16 +2,16 @@
   <div class="nest-modal" :class="{ full: isFull }">
     <div class="modal-dialog">
       <div class="modal-header" v-if="!isFull">{{ title }}</div>
-      <a href="javascript:;" class="modal-close" v-if="!isFull" @click="$emit('modalClear')">清空</a>
+      <a href="javascript:;" class="modal-close" v-if="hasClear && !isFull" @click="$emit('modalClear')">清空</a>
       <div class="modal-body">
         <slot></slot>
       </div>
-      <div class="modal-footer">
-        <button class="modal-btn cancel" v-if="isFull" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
+      <div class="modal-footer" v-if="hasFooter">
+        <button class="modal-btn cancel" v-if="hasCancel" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
         <button class="modal-btn confirm" @click="$emit('modalConfirm')">{{ modalConfirmTxt }}</button>
       </div>
     </div>
-    <div class="modal-backdrop"></div>
+    <div class="modal-backdrop" @click="$emit('modalClose')"></div>
   </div>
 </template>
 
@@ -34,11 +34,18 @@
       modalConfirmTxt: {
         type: String,
         default: '确定'
-      }
-    },
-    data() {
-      return {
-
+      },
+      hasClear: {
+        type: Boolean,
+        default: true
+      },
+      hasCancel: {
+        type: Boolean,
+        default: false
+      },
+      hasFooter: {
+        type: Boolean,
+        default: true
       }
     }
   }
