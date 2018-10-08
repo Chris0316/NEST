@@ -1,9 +1,9 @@
 <template>
   <div class="nest-header">
     <div class="search-wrap">
-      <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1)"></div>
+      <div class="back" v-if="headerType !== 'home'"></div>
       <div class="search-box">
-        <nest-select/>
+        <nest-select @keyValue="changekey"/>
       </div>
       <div class="location">马尼拉</div>
     </div>
@@ -96,16 +96,22 @@
         deviceVal: '',
         deviceOpts: ['阳台', '花园', '静音空调', '冰箱', '洗衣机', '热水器'],
         parkingVal: '',
-        parkingOpts: ['带车位', '不带车位']
+        parkingOpts: ['带车位', '不带车位'],
+        keyValue:''
       }
     },
-    methods: {}
+    methods: {
+      changekey(keymsg){
+        this.keyValue = keymsg;
+        console.log(this.keyValue);
+      },
+    },
   }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nest-header {
-    padding: 0 .28rem;
+    padding: .2rem .28rem 0;
   }
 
   .search-wrap {

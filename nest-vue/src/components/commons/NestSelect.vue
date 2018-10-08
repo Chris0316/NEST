@@ -49,7 +49,8 @@
       chooseVal(i, ev) {
         // 向后台发送的值
         var keyValue = ev.target.innerHTML.trim();
-        console.log(keyValue);
+        // console.log(keyValue);
+        this.$emit('keyValue',keyValue);
         this.selectedIndex = i;
         this.listShow = false;
         this.pointtran = !this.pointtran;
@@ -122,11 +123,13 @@
         height: 0.7rem;
         line-height: 0.7rem;
         padding-left: 0.18rem;
-        background: #e7f4f2;
+        background: #fff;
         color: #333333;
         font-size: 0.24rem;
+        &:active {
+          background: #e7f4f2;
+        }
         &.on {
-          background: #fff;
           color: #0f9183;
         }
       }
