@@ -1,7 +1,7 @@
 <template>
   <div class="nest-header">
     <div class="search-wrap">
-      <div class="back" v-if="headerType !== 'home'" @click="$route.go(-1);"></div>
+      <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1);"></div>
       <div class="search-box">
         <nest-select @keyValue="changekey"/>
       </div>

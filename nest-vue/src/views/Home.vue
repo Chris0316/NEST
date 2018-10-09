@@ -136,7 +136,7 @@
           width: 1.1rem;
           height: 1.1rem;
           border-radius: 50%;
-          background-color: red;
+          background-color: #e8e8ea;
           background-repeat: no-repeat;
           background-size: 100% 100%;
         }

@@ -134,7 +134,7 @@
       width: 3.3rem;
       height: 2.36rem;
       border-radius: 0.1rem;
-      background-color: red;
+      background-color: #e8e8ea;
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
@@ -157,11 +157,12 @@
       margin-bottom: 0.2rem;
       .left {
         margin-right: 0.1rem;
-        padding: 0.15rem;
+        padding: 0.06rem 0.12rem;
         background: #fbf8f3;
         color: #d5be88;
         font-size: 0.24rem;
         border-radius: 0.1rem;
+        line-height: 1;
       }
       .left-str {
         color: #808080;
@@ -231,7 +232,7 @@
         width: 2.7rem;
         height: 1.74rem;
         border-radius: 0.1rem;
-        background-color: red;
+        background-color: #e8e8ea;
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
