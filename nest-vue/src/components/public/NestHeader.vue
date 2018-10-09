@@ -1,7 +1,7 @@
 <template>
   <div class="nest-header">
     <div class="search-wrap">
-      <div class="back" v-if="headerType !== 'home'"></div>
+      <div class="back" v-if="headerType !== 'home'" @click="$route.go(-1);"></div>
       <div class="search-box">
         <nest-select @keyValue="changekey"/>
       </div>
@@ -111,7 +111,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .nest-header {
-    padding: .2rem .28rem 0;
+    padding: 0 .28rem;
   }
 
   .search-wrap {

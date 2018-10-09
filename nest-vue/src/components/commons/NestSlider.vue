@@ -1,5 +1,5 @@
 <template>
-  <div class="nest-slider">
+  <div class="nest-slider" ref="nestSlider">
     <div class="slide start"
          :style="{left: slideStartPos + '%'}"
          @touchstart="slideTouchStart"
@@ -30,7 +30,7 @@
     },
     computed: {
       slideWidth() {
-        return document.querySelector('.nest-slider').offsetWidth;
+        return this.$refs.nestSlider.offsetWidth;
       },
       barStyle () {
         const style = {
