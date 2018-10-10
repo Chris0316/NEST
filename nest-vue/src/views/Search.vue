@@ -68,6 +68,7 @@
     width: 100%;
     /*overflow: hidden;*/
     padding: 0.2rem .28rem 0rem;
+    background-color: #fff;
     .search-wrap {
       margin-bottom: 0.6rem;
       display: flex;

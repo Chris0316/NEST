@@ -6,8 +6,7 @@
           <input type="radio" class="nest-radio-input"
                  v-model="currentValue"
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
-                 @change="$emit('input', $event.target.value)"
-          />
+                 @change="$emit('input', $event.target.value)" />
           <span class="nest-radio-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
         </label>
       </div>

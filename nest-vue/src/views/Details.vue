@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="details">
     <div class="head-bar"></div>
     <div class="top-banner"></div>
     <div class="banner-desc">房源编号：ZF180915111</div>
@@ -148,6 +148,9 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .details {
+    background-color: #fff;
+  }
   .head-bar {
     position: fixed;
     top: 0;

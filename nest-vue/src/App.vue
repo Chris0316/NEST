@@ -27,32 +27,53 @@
 <style rel="stylesheet/scss" lang="scss">
   @import "./assets/scss/commons.scss";
 
-  .slide-right-enter-active,
-  .slide-right-leave-active,
-  .slide-left-enter-active,
-  .slide-left-leave-active {
+  .slide-left-enter {
+    position: absolute;
+    transform: translate3d(100%, 0, 0);
+    z-index: 2;
+  }
+
+  .slide-left-enter-active {
+    position: absolute;
     will-change: transform;
     transition: all 500ms;
+    z-index: 2;
+  }
+
+  .slide-left-leave {
     position: absolute;
+    z-index: 1;
+  }
+
+  .slide-left-leave-active {
+    position: absolute;
+    will-change: transform;
+    transition: all 500ms;
+    transform: translate3d(0, 0, 0);
+    z-index: 1;
   }
 
   .slide-right-enter {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    position: absolute;
+    z-index: 1;
+  }
+
+  .slide-right-enter-active {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .slide-right-leave {
+    position: absolute;
+    z-index: 2;
   }
 
   .slide-right-leave-active {
-    opacity: 0;
+    position: absolute;
+    will-change: transform;
+    transition: all 500ms;
     transform: translate3d(100%, 0, 0);
+    z-index: 2;
   }
 
-  .slide-left-enter {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-  }
-
-  .slide-left-leave-active {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
 </style>
