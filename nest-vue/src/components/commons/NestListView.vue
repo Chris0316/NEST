@@ -24,8 +24,8 @@
       <div class="search-list">
         <div class="search-item" v-for="(recommend,index) in recommends">
           <div class="move-wrap"
-               :style="{left: distanceX + 'rem'}"
-               @touchstart="fingerStart"
+               :style="{left: currentIndex==index?distanceX+'rem':'0rem'}"
+               @touchstart="fingerStart(index,$event)"
                @touchmove="fingerMove"
                @touchend="fingerEnd"
           >
@@ -121,20 +121,23 @@
       return {
         startX:0,
         distanceX:0,
-        endX:0
+        endX:0,
+        currentIndex:-1
       }
     },
     methods:{
-      fingerStart(ev){
-        console.log(ev);
+      fingerStart(i,ev){
+        console.log(i,ev);
+        this.currentIndex = i;
         this.startX = ev.changedTouches[0].clientX;
       },
       fingerMove(ev){
+
         var mediumX = (ev.changedTouches[0].clientX-this.startX)*2/100;
+        console.log(mediumX);
         if (this.mediumX>=0){
           return;
         }
-        // console.log('move',ev.changedTouches[0].clientX);
         if (mediumX<-0.6){
           this.distanceX = -1.2;
         }else if(mediumX>-0.6){

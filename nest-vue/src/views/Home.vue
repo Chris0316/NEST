@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="recommend">
-      <div class="left">为你推荐推荐</div>
+      <div class="left">为你推荐</div>
       <div class="right">
         <div class="lease" :class="{on: curindex == i }" v-for="(lease ,i) in leaseArr" :key="i" @click="leaseChange(i)">{{lease}}</div>
       </div>
