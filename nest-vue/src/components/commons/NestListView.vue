@@ -23,7 +23,12 @@
     <div v-else>
       <div class="search-list">
         <div class="search-item" v-for="(recommend,index) in recommends">
-          <div class="move-wrap">
+          <div class="move-wrap"
+               :style="{left: distanceX + 'rem'}"
+               @touchstart="fingerStart"
+               @touchmove="fingerMove"
+               @touchend="fingerEnd"
+          >
             <div class="item-img"></div>
             <div class="msg-wrap">
               <div class="title">{{recommend.roomplace}}</div>
@@ -111,11 +116,43 @@
           ];
         }
       },
+    },
+    data (){
+      return {
+        startX:0,
+        distanceX:0,
+        endX:0
+      }
+    },
+    methods:{
+      fingerStart(ev){
+        console.log(ev);
+        this.startX = ev.changedTouches[0].clientX;
+      },
+      fingerMove(ev){
+        var mediumX = (ev.changedTouches[0].clientX-this.startX)*2/100;
+        if (this.mediumX>=0){
+          return;
+        }
+        // console.log('move',ev.changedTouches[0].clientX);
+        if (mediumX<-0.6){
+          this.distanceX = -1.2;
+        }else if(mediumX>-0.6){
+          this.distanceX = 0;
+        }
+      },
+      fingerEnd(ev){
+        // this.distanceX = ev.changedTouches[0].clientX-this.startX;
+        // console.log('end',this.distanceX);
+      },
     }
   }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .list-view{
+    overflow: hidden;
+  }
   .room-msg {
     margin-left: 0.28rem;
     display: flex;
@@ -193,12 +230,20 @@
     .search-item {
       position: relative;
       display: flex;
+      width: 100%;
+      height: 1.74rem;
+      /*width: 3.75rem;*/
+      /*height: 0.87rem;*/
       align-items: center;
       margin-bottom: 0.4rem;
       .move-wrap {
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
         z-index: 1;
         display: flex;
         background: #fff;
+        transition: left 0.5s;
       }
       .collect {
         position: absolute;
