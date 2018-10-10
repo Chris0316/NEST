@@ -117,34 +117,32 @@
         }
       },
     },
-    data (){
+    data() {
       return {
-        startX:0,
-        distanceX:0,
-        endX:0,
-        currentIndex:-1
+        startX: 0,
+        distanceX: 0,
+        endX: 0,
+        currentIndex: -1
       }
     },
-    methods:{
-      fingerStart(i,ev){
-        console.log(i,ev);
+    methods: {
+      fingerStart(i, ev) {
         this.currentIndex = i;
         this.startX = ev.changedTouches[0].clientX;
       },
-      fingerMove(ev){
+      fingerMove(ev) {
 
-        var mediumX = (ev.changedTouches[0].clientX-this.startX)*2/100;
-        console.log(mediumX);
-        if (this.mediumX>=0){
+        var mediumX = (ev.changedTouches[0].clientX - this.startX) * 2 / 100;
+        if (this.mediumX >= 0) {
           return;
         }
-        if (mediumX<-0.6){
+        if (mediumX < -0.6) {
           this.distanceX = -1.2;
-        }else if(mediumX>-0.6){
+        } else if (mediumX > -0.6) {
           this.distanceX = 0;
         }
       },
-      fingerEnd(ev){
+      fingerEnd(ev) {
         // this.distanceX = ev.changedTouches[0].clientX-this.startX;
         // console.log('end',this.distanceX);
       },
@@ -153,9 +151,10 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .list-view{
+  .list-view {
     overflow: hidden;
   }
+
   .room-msg {
     margin-left: 0.28rem;
     display: flex;
