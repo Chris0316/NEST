@@ -20,6 +20,7 @@
     box-sizing: border-box;
     width: 100%;
     padding-top: 0.2rem;
+    background-color: #fff;
     .list-top {
       margin-top: 0.7rem;
     }

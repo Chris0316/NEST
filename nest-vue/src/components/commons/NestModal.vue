@@ -1,5 +1,5 @@
 <template>
-  <div class="nest-modal" :class="{ full: isFull }">
+  <div class="nest-modal" :class="{ full: isFull }" v-show="status">
     <div class="modal-dialog">
       <div class="modal-header" v-if="!isFull">{{ title }}</div>
       <a href="javascript:;" class="modal-close" v-if="hasClear && !isFull" @click="$emit('modalClear')">清空</a>
@@ -19,6 +19,10 @@
   export default {
     name: "nest-modal",
     props: {
+      status: {
+        type: Boolean,
+        default: false
+      },
       title: {
         type: String,
         default: '标题'

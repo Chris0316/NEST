@@ -120,6 +120,7 @@
   .home {
     box-sizing: border-box;
     width: 100%;
+    background-color: #fff;
     /*overflow: hidden;*/
     padding-top: 0.2rem;
     .todotype {
@@ -136,7 +137,7 @@
           width: 1.1rem;
           height: 1.1rem;
           border-radius: 50%;
-          background-color: red;
+          background-color: #e8e8ea;
           background-repeat: no-repeat;
           background-size: 100% 100%;
         }

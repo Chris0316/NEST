@@ -1,7 +1,7 @@
 <template>
   <div class="nest-header">
     <div class="search-wrap">
-      <div class="back" v-if="headerType !== 'home'" @click="$route.go(-1);"></div>
+      <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1);"></div>
       <div class="search-box">
         <nest-select @keyValue="changekey"/>
       </div>
@@ -14,22 +14,22 @@
       <div class="sort-btn" @click="sortShow = !sortShow" v-if="headerType !== 'home'"></div>
     </div>
     <!--@modalConfirm="locationConfirm" @modalClear="locationClear"-->
-    <nest-modal title="地点" modal-confirm-txt="确定" @modalClose="locationShow = false" v-show="locationShow">
+    <nest-modal title="地点" modal-confirm-txt="确定" @modalClose="locationShow = false" :status="locationShow">
       <nest-check v-model="locationVal" :options="locationOpts"></nest-check>
     </nest-modal>
     <!--@modalConfirm="typeConfirm" @modalClear="typeClear"-->
-    <nest-modal title="户型" modal-confirm-txt="立即发现惊喜房源" @modalClose="roomTypeShow = false" v-show="roomTypeShow">
+    <nest-modal title="户型" modal-confirm-txt="立即发现惊喜房源" @modalClose="roomTypeShow = false" :status="roomTypeShow">
       <nest-check v-model="roomTypeVal" :options="roomTypeOpts"></nest-check>
     </nest-modal>
     <nest-modal :is-full="true" :has-cancel="true" modal-cancel-txt="清空条件" @modalClose="conditionShow = false"
-                v-show="conditionShow" v-if="headerType !== 'home'">
+                :status="conditionShow" v-if="headerType !== 'home'">
       <div class="conditions">
         <div class="condition">
           <div class="condition-title">租金</div>
           <nest-radio v-model="rentalVal" :options="rentalOpts" size="small"></nest-radio>
           <div class="slider-val">0 - 不限</div>
           <div class="slider-container">
-            <nest-slider></nest-slider>
+            <nest-range></nest-range>
           </div>
         </div>
         <div class="condition">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </nest-modal>
-    <nest-modal title="排序" :has-clear="false" :has-footer="false" @modalClose="sortShow = false" v-show="sortShow"
+    <nest-modal title="排序" :has-clear="false" :has-footer="false" @modalClose="sortShow = false" :status="sortShow"
                 v-if="headerType !== 'home'">
       <nest-radio v-model="sortVal" :count-in-row="1" :options="sortOpts"></nest-radio>
     </nest-modal>
