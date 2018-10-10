@@ -3,7 +3,7 @@ import NestModal from './commons/NestModal.vue'
 import NestCheck from './commons/NestCheck.vue'
 import NestRadio from './commons/NestRadio.vue'
 import NestListView from './commons/NestListView.vue'
-import NestSlider from './commons/NestSlider.vue'
+import NestRange from './commons/NestRange.vue'
 import NestSelect from './commons/NestSelect.vue'
 
 import NestHeader from './public/NestHeader'
@@ -13,7 +13,7 @@ let components = {
   NestCheck,
   NestRadio,
   NestListView,
-  NestSlider,
+  NestRange,
   NestHeader,
   NestSelect
 };

@@ -29,7 +29,7 @@
           <nest-radio v-model="rentalVal" :options="rentalOpts" size="small"></nest-radio>
           <div class="slider-val">0 - 不限</div>
           <div class="slider-container">
-            <nest-slider></nest-slider>
+            <nest-range></nest-range>
           </div>
         </div>
         <div class="condition">
