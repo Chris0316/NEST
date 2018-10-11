@@ -2,7 +2,7 @@
   <div class="nest-header">
     <div class="search-wrap">
       <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1);"></div>
-      <div class="search-box">
+      <div class="search-box" @click="$router.push('Search')">
         <nest-select @keyValue="changekey"/>
       </div>
       <div class="location">马尼拉</div>
@@ -27,10 +27,7 @@
         <div class="condition">
           <div class="condition-title">租金</div>
           <nest-radio v-model="rentalVal" :options="rentalOpts" size="small"></nest-radio>
-          <div class="slider-val">0 - 不限</div>
-          <div class="slider-container">
-            <nest-range></nest-range>
-          </div>
+          <nest-range class="range-container" v-model="rangeVal" :min="0" :max="125000" :step="5000"></nest-range>
         </div>
         <div class="condition">
           <div class="condition-title">房型</div>
@@ -85,6 +82,7 @@
         sortOpts: ['默认排序', '均价由低到高', '均价由高到低', '开盘时间顺序', '开盘时间倒序'],
         rentalVal: '',
         rentalOpts: ['15000-30000', '30000-40000', '40000-50000', '50000以上'],
+        rangeVal: [0, 1000000],
         houseTypeVal: '',
         houseTypeOpts: ['公寓', '别墅', '居民', '车位'],
         purposeVal: '',
@@ -237,16 +235,7 @@
     line-height: 1;
   }
 
-  .slider-val {
-    margin-top: .4rem;
-    font-size: .24rem;
-    color: #333;
-    line-height: 1;
-    text-align: center;
-  }
-
-  .slider-container {
-    margin-top: .14rem;
+  .range-container {
     padding: 0 .3rem;
   }
 </style>
