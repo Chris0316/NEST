@@ -27,6 +27,15 @@
 <style rel="stylesheet/scss" lang="scss">
   @import "./assets/scss/commons.scss";
 
+  .slide-left-enter-active,
+  .slide-left-leave-active,
+  .slide-right-enter-active,
+  .slide-right-leave-active {
+    position: absolute;
+    /*will-change: transform;*/
+    transition: transform 500ms;
+  }
+
   .slide-left-enter {
     position: absolute;
     transform: translate3d(100%, 0, 0);
@@ -34,9 +43,6 @@
   }
 
   .slide-left-enter-active {
-    position: absolute;
-    will-change: transform;
-    transition: all 500ms;
     z-index: 2;
   }
 
@@ -46,9 +52,6 @@
   }
 
   .slide-left-leave-active {
-    position: absolute;
-    will-change: transform;
-    transition: all 500ms;
     transform: translate3d(0, 0, 0);
     z-index: 1;
   }
@@ -59,7 +62,6 @@
   }
 
   .slide-right-enter-active {
-    position: absolute;
     z-index: 1;
   }
 
@@ -69,9 +71,6 @@
   }
 
   .slide-right-leave-active {
-    position: absolute;
-    will-change: transform;
-    transition: all 500ms;
     transform: translate3d(100%, 0, 0);
     z-index: 2;
   }
