@@ -1,8 +1,6 @@
 <template>
   <div class="nest-range">
-    <div class="range-val">{{selectedMin}} - {{selectedMax}}</div>
-    <input type="hidden" :value="selectedMin" />
-    <input type="hidden" :value="selectedMax" />
+    <div class="range-val">{{currentStartVal}} - {{currentEndVal}}</div>
     <div class="range-wrap" ref="nestRange">
       <div class="range start"
            :style="{left: rangeStartPos + '%'}"
@@ -25,6 +23,10 @@
   export default {
     name: "nest-range",
     props: {
+      value: {
+        type: Array,
+        default: [0, '不限']
+      },
       min: {
         type: Number,
         default: 0
@@ -42,12 +44,15 @@
       return {
         status: false,
         startX: 0,
-        rangeStartPos: 0,
-        rangeEndPos: 100,
-        rangesOldPos: [0, 100]
+        currentStartVal: this.value[0],
+        currentEndVal: this.value[1],
+        rangesOldVals: this.value
       }
     },
     computed: {
+      range() {
+        return this.max - this.min;
+      },
       slideWidth() {
         return this.$refs.nestRange.offsetWidth;
       },
@@ -58,18 +63,12 @@
         };
         return style;
       },
-      selectedMin() {
-        let range = this.max - this.min,
-            selectedVal = range * (this.rangeStartPos / 100);
-        selectedVal = parseInt(selectedVal / this.step) * this.step;
+      rangeStartPos() {
+        let selectedVal = this.currentStartVal / this.range * 100;
         return selectedVal;
       },
-      selectedMax() {
-        if (this.rangeEndPos === 100)
-          return '不限';
-        let range = this.max - this.min,
-            selectedVal = range * (this.rangeEndPos / 100);
-        selectedVal = parseInt(selectedVal / this.step) * this.step;
+      rangeEndPos() {
+        let selectedVal = this.currentEndVal / this.range * 100;
         return selectedVal;
       }
     },
@@ -80,34 +79,34 @@
       rangeTouchMove(evt) {
         let isStart = evt.target.className.indexOf('start') > -1;
         let currentX = evt.touches[0].clientX, // 移动时当前X坐标
-          offset = currentX - this.startX; // 偏移量 = 移动时X坐标 - 初始X坐标
+            offset = currentX - this.startX; // 偏移量 = 移动时X坐标 - 初始X坐标
         if (isStart) {
-          this.rangeStartPos = this.rangesOldPos[0] + (offset / this.slideWidth * 100);
-          if (this.rangeStartPos < 0) {
-            this.rangeStartPos = 0;
+          this.currentStartVal = parseInt((this.rangesOldVals[0] + (offset / this.slideWidth * this.range)) / this.step) * this.step;
+          if (this.currentStartVal < this.min) {
+            this.currentStartVal = this.min;
           }
-          if (this.rangeStartPos > 100) {
-            this.rangeStartPos = 100;
+          if (this.currentStartVal > this.max) {
+            this.currentStartVal = this.max;
           }
-          if (this.rangeStartPos > this.rangeEndPos) {
-            this.rangeEndPos = this.rangeStartPos;
+          if (this.currentStartVal > this.currentEndVal) {
+            this.currentEndVal = this.currentStartVal;
           }
         } else {
-          this.rangeEndPos = this.rangesOldPos[1] + (offset / this.slideWidth * 100);
-          if (this.rangeEndPos < 0) {
-            this.rangeEndPos = 0;
+          this.currentEndVal = parseInt((this.rangesOldVals[1] + (offset / this.slideWidth * this.range)) / this.step) * this.step;
+          if (this.currentEndVal < this.min) {
+            this.currentEndVal = this.min;
           }
-          if (this.rangeEndPos > 100) {
-            this.rangeEndPos = 100;
+          if (this.currentEndVal > this.max) {
+            this.currentEndVal = this.max;
           }
-          if (this.rangeEndPos < this.rangeStartPos) {
-            this.rangeStartPos = this.rangeEndPos;
+          if (this.currentEndVal < this.currentStartVal) {
+            this.currentStartVal = this.currentEndVal;
           }
         }
       },
       rangeTouchEnd() {
-        this.rangesOldPos = [this.rangeStartPos, this.rangeEndPos];
-        this.$emit('input', [this.selectedMin, this.selectedMax]);
+        this.rangesOldVals = [this.currentStartVal, this.currentEndVal];
+        this.$emit('input', [this.currentStartVal, this.currentEndVal]);
       }
     }
   }

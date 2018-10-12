@@ -82,7 +82,7 @@
         sortOpts: ['默认排序', '均价由低到高', '均价由高到低', '开盘时间顺序', '开盘时间倒序'],
         rentalVal: '',
         rentalOpts: ['15000-30000', '30000-40000', '40000-50000', '50000以上'],
-        rangeVal: [0, 10000],
+        rangeVal: [0, 100000],
         houseTypeVal: '',
         houseTypeOpts: ['公寓', '别墅', '居民', '车位'],
         purposeVal: '',
