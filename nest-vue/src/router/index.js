@@ -18,7 +18,7 @@ export default new Router({
       name: 'LeaseList',
       component: LeaseList
     }, {
-      path: '/Search',
+      path: '/search',
       name: 'Search',
       component: Search
     }, {
