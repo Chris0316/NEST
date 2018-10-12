@@ -1,6 +1,8 @@
 <template>
   <div class="nest-range">
     <div class="range-val">{{selectedMin}} - {{selectedMax}}</div>
+    <input type="hidden" :value="selectedMin" />
+    <input type="hidden" :value="selectedMax" />
     <div class="range-wrap" ref="nestRange">
       <div class="range start"
            :style="{left: rangeStartPos + '%'}"
@@ -85,7 +87,7 @@
             this.rangeStartPos = 0;
           }
           if (this.rangeStartPos > 100) {
-            this.rangeStartPos = 100
+            this.rangeStartPos = 100;
           }
           if (this.rangeStartPos > this.rangeEndPos) {
             this.rangeEndPos = this.rangeStartPos;
@@ -105,6 +107,7 @@
       },
       rangeTouchEnd() {
         this.rangesOldPos = [this.rangeStartPos, this.rangeEndPos];
+        this.$emit('input', [this.selectedMin, this.selectedMax]);
       }
     }
   }

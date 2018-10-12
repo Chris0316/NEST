@@ -27,7 +27,7 @@
         <div class="condition">
           <div class="condition-title">租金</div>
           <nest-radio v-model="rentalVal" :options="rentalOpts" size="small"></nest-radio>
-          <nest-range class="range-container" v-model="rangeVal" :min="0" :max="125000" :step="5000"></nest-range>
+          <nest-range class="range-container" v-model="rangeVal" :max="125000" :step="5000"></nest-range>
         </div>
         <div class="condition">
           <div class="condition-title">房型</div>
@@ -82,7 +82,7 @@
         sortOpts: ['默认排序', '均价由低到高', '均价由高到低', '开盘时间顺序', '开盘时间倒序'],
         rentalVal: '',
         rentalOpts: ['15000-30000', '30000-40000', '40000-50000', '50000以上'],
-        rangeVal: [0, 1000000],
+        rangeVal: [0, 10000],
         houseTypeVal: '',
         houseTypeOpts: ['公寓', '别墅', '居民', '车位'],
         purposeVal: '',
@@ -96,6 +96,11 @@
         parkingVal: '',
         parkingOpts: ['带车位', '不带车位'],
         keyValue:''
+      }
+    },
+    watch: {
+      rangeVal(val) {
+        console.log(val);
       }
     },
     methods: {
