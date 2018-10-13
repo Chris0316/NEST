@@ -2,7 +2,7 @@
   <div class="nest-header">
     <div class="search-wrap">
       <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1);"></div>
-      <div class="search-box" @click="$router.push('Search')">
+      <div class="search-box" @click="$router.push({ name: 'Search' })">
         <nest-select @keyValue="changekey"/>
       </div>
       <div class="location">马尼拉</div>

@@ -25,7 +25,7 @@
     props: {
       value: {
         type: Array,
-        default: [0, '不限']
+        default: ['不限', '不限']
       },
       min: {
         type: Number,
@@ -100,7 +100,6 @@
             this.currentEndVal = this.currentStartVal;
           }
         } else {
-          console.log(this.rangesOldVals)
           this.currentEndVal = parseInt((this.rangesOldVals[1] + (offset / this.slideWidth * this.range)) / this.step) * this.step;
           if (this.currentEndVal < this.min - this.step) {
             this.currentEndVal = this.min - this.step;
