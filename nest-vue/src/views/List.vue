@@ -1,7 +1,7 @@
 <template>
   <div class="lease-list">
     <NestHeader></NestHeader>
-    <NestListView class="list-top"></NestListView>
+    <NestListView class="list-top" :routeType="$route.params"></NestListView>
   </div>
 </template>
 

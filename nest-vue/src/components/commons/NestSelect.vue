@@ -17,6 +17,10 @@
   export default {
     name: "nest-select",
     props: {
+      seleNum:{
+        type:Number,
+        default:0
+      },
       options: {
         type: Array,
         default: function () {
@@ -35,7 +39,7 @@
     },
     data() {
       return {
-        selectedIndex: 0,
+        selectedIndex: this.seleNum,
         listShow: false,
         pointtran: false,
         select: true

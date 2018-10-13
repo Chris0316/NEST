@@ -42,7 +42,7 @@
                 <div class="price">{{recommend.pricem}}</div>
                 <div class="price-msg">P/月</div>
               </div>
-              <div class="rent" v-if="recommend.rentsize">
+              <div class="rent" v-else-if="recommend.rentsize">
                 <div class="price">{{recommend.pricem}}</div>
                 <div class="price-msg">P/㎡</div>
                 <div class="room-size">{{recommend.rentsize}}</div>
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+  // {routeType: "rent"} second new parking
   export default {
     name: "nest-list-view",
     props: {
@@ -78,21 +79,21 @@
             {
               roomimg: '',
               roomplace: 'Jazz residence户型Jazz residence户型residence户型residence户型',
-              roomsizes: "Makati, 1207 Metro Manila",
+              roomsizes: "新房旧房Makati,新房旧房Makati,  1207 Metro Manila",
               pricem: 23000,
               rentsize: '28.00-100.55 ㎡'
             },
             {
               roomimg: '',
               roomplace: 'Jazz residence户型',
-              roomsizes: "Makati, 1207 Metro Manila",
+              roomsizes: "新房旧房Makati, 1207 Metro Manila",
               pricem: 23000,
               rentsize: '28.00-100.55 ㎡'
             },
             {
               roomimg: '',
               roomplace: 'Jazz residence户型Jazz residence户型residence户型residence户型',
-              roomsizes: ['10F', '100.55 ㎡'],
+              roomsizes: "车位Makati, 1207 Metro Manila",
               pricem: 23000
             },
             {
@@ -116,6 +117,15 @@
           ];
         }
       },
+      routeType:{
+        type:Object,
+        default:function () {
+          return {}
+        }
+      }
+    },
+    created(){
+      console.log(this.routeType);
     },
     data() {
       return {
@@ -235,8 +245,6 @@
       display: flex;
       width: 100%;
       height: 1.74rem;
-      /*width: 3.75rem;*/
-      /*height: 0.87rem;*/
       align-items: center;
       margin-bottom: 0.4rem;
       .move-wrap {
@@ -313,6 +321,7 @@
         color: #d5be88;
         font-size: 0.24rem;
         border-radius: 0.1rem;
+        line-height: 1;
       }
       .type-str {
         word-break: break-all;
