@@ -23,7 +23,7 @@
         <div class="name">车位</div>
       </router-link>
     </div>
-    <div class="bedrooms">
+    <div class="bedrooms" ref="scroll1">
       <div class="bedrooms-wrap">
         <div class="bedroom">
           <div class="title">温馨一居室</div>
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="bedrooms budget">
+    <div class="bedrooms budget" ref="scroll2">
       <div class="bedrooms-wrap">
         <div class="bedroom">
           <div class="title">500万预算</div>
@@ -68,6 +68,8 @@
 </template>
 
 <script>
+  import BScroll from 'better-scroll';
+
   export default {
     props: {
       leaseArr: {
@@ -91,6 +93,18 @@
         ],
         curindex: 0
       }
+    },
+    mounted() {
+      setTimeout(() => {
+        new BScroll(this.$refs.scroll1,{
+          scrollX: true,
+          click: true
+        });
+        new BScroll(this.$refs.scroll2,{
+          scrollX: true,
+          click: true
+        });
+      }, 20)
     },
     methods: {
       leaseChange(i) {
@@ -152,7 +166,7 @@
     .bedrooms {
       margin-top: 1rem;
       display: flex;
-      overflow-x: auto;
+      overflow: hidden;
       .bedrooms-wrap {
         display: flex;
       }
