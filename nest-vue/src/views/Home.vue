@@ -96,11 +96,13 @@
     },
     mounted() {
       setTimeout(() => {
-        new BScroll(this.$refs.scroll1,{
+        new BScroll(this.$refs.scroll1, {
+          eventPassthrough: 'vertical',
           scrollX: true,
           click: true
         });
-        new BScroll(this.$refs.scroll2,{
+        new BScroll(this.$refs.scroll2, {
+          eventPassthrough: 'vertical',
           scrollX: true,
           click: true
         });
