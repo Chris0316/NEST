@@ -1,6 +1,6 @@
 <template>
   <div class="nest-range">
-    <div class="range-val">{{currentStartVal}} - {{currentEndVal}}</div>
+    <div class="range-val">{{convertValueToText(currentStartVal)}} - {{convertValueToText(currentEndVal)}}</div>
     <div class="range-wrap" ref="nestRange">
       <div class="range start"
            :style="{left: rangeStartPos + '%'}"
@@ -44,14 +44,17 @@
       return {
         status: false,
         startX: 0,
-        currentStartVal: this.value[0],
-        currentEndVal: this.value[1],
-        rangesOldVals: this.value
+        currentStartVal: this.value[0]  === '不限' ? this.min - this.step : this.value[0],
+        currentEndVal: this.value[1]  === '不限' ? this.max + this.step : this.value[1],
+        rangesOldVals: [
+          this.value[0] === '不限' ? this.min - this.step : this.value[0],
+          this.value[1] === '不限' ? this.max + this.step : this.value[1]
+        ]
       }
     },
     computed: {
       range() {
-        return this.max - this.min;
+        return (this.max - this.min) + this.step*2;
       },
       slideWidth() {
         return this.$refs.nestRange.offsetWidth;
@@ -64,15 +67,20 @@
         return style;
       },
       rangeStartPos() {
-        let selectedVal = this.currentStartVal / this.range * 100;
-        return selectedVal;
+        let pos = (this.currentStartVal + this.step) / this.range * 100;
+        return pos;
       },
       rangeEndPos() {
-        let selectedVal = this.currentEndVal / this.range * 100;
-        return selectedVal;
+        let pos = (this.currentEndVal + this.step) / this.range * 100;
+        return pos;
       }
     },
     methods: {
+      convertValueToText(val) {
+        if (val === this.min - this.step || val === this.max + this.step)
+          return '不限';
+        return val;
+      },
       rangeTouchStart(evt) {
         this.startX = evt.touches[0].clientX;
       },
@@ -82,22 +90,23 @@
             offset = currentX - this.startX; // 偏移量 = 移动时X坐标 - 初始X坐标
         if (isStart) {
           this.currentStartVal = parseInt((this.rangesOldVals[0] + (offset / this.slideWidth * this.range)) / this.step) * this.step;
-          if (this.currentStartVal < this.min) {
-            this.currentStartVal = this.min;
+          if (this.currentStartVal < this.min - this.step) {
+            this.currentStartVal = this.min - this.step;
           }
-          if (this.currentStartVal > this.max) {
-            this.currentStartVal = this.max;
+          if (this.currentStartVal > this.max + this.step) {
+            this.currentStartVal = this.max + this.step;
           }
           if (this.currentStartVal > this.currentEndVal) {
             this.currentEndVal = this.currentStartVal;
           }
         } else {
+          console.log(this.rangesOldVals)
           this.currentEndVal = parseInt((this.rangesOldVals[1] + (offset / this.slideWidth * this.range)) / this.step) * this.step;
-          if (this.currentEndVal < this.min) {
-            this.currentEndVal = this.min;
+          if (this.currentEndVal < this.min - this.step) {
+            this.currentEndVal = this.min - this.step;
           }
-          if (this.currentEndVal > this.max) {
-            this.currentEndVal = this.max;
+          if (this.currentEndVal > this.max + this.step) {
+            this.currentEndVal = this.max + this.step;
           }
           if (this.currentEndVal < this.currentStartVal) {
             this.currentStartVal = this.currentEndVal;
@@ -144,7 +153,7 @@
     position: absolute;
     width: .3rem;
     height: .3rem;
-    border-radius: .3rem;
+    border-radius: 50%;
     border: .02rem solid #0f9183;
     background-color: #fff;
     box-sizing: border-box;
