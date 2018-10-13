@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import LeaseList from '@/views/LeaseList'
+import List from '@/views/List'
 import Search from '@/views/Search'
 import Details from '@/views/Details'
 
@@ -15,8 +15,8 @@ export default new Router({
       component: Home
     }, {
       path: '/list/:type',
-      name: 'LeaseList',
-      component: LeaseList
+      name: 'List',
+      component: List
     }, {
       path: '/search',
       name: 'Search',

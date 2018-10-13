@@ -4,7 +4,7 @@
       <div class="search-box">
         <input class="search-msg" type="text" v-model="searchkey" @input="inputFun">
         <div class="search-img" @click="saveKey"></div>
-        <nest-select class="sear-sel" @keyValue="changekey"/>
+        <nest-select class="sear-sel" @keyValue="changekey" :seleNum="0"/>
       </div>
       <div class="cancel" @click="cleanAll">
         取消
