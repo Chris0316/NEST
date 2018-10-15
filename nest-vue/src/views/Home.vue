@@ -1,55 +1,55 @@
 <template>
   <div class="home">
     <nest-header header-type="home"></nest-header>
-    <div class="todotype">
-      <router-link to="" class="todo">
-        <div class="todo-img"></div>
+    <div class="menus">
+      <router-link to="" class="menu-item">
+        <div class="menu-icon"></div>
         <div class="name">发布房源</div>
       </router-link>
-      <router-link to="/list/rent" class="todo">
-        <div class="todo-img"></div>
+      <router-link to="/list/rent" class="menu-item">
+        <div class="menu-icon"></div>
         <div class="name">租房</div>
       </router-link>
-      <router-link to="/list/second" class="todo">
-        <div class="todo-img"></div>
+      <router-link to="/list/second" class="menu-item">
+        <div class="menu-icon"></div>
         <div class="name">二手房</div>
       </router-link>
-      <router-link to="/list/new" class="todo">
-        <div class="todo-img"></div>
+      <router-link to="/list/new" class="menu-item">
+        <div class="menu-icon"></div>
         <div class="name">新房</div>
       </router-link>
-      <router-link to="/list/parking" class="todo">
-        <div class="todo-img"></div>
+      <router-link to="/list/parking" class="menu-item">
+        <div class="menu-icon"></div>
         <div class="name">车位</div>
       </router-link>
     </div>
-    <div class="bedrooms" ref="scroll1">
-      <div class="bedrooms-wrap">
-        <div class="bedroom">
+    <div class="topics" ref="scroll1">
+      <div class="topic-wrap">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="bedroom">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="bedroom">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
       </div>
     </div>
-    <div class="bedrooms budget" ref="scroll2">
-      <div class="bedrooms-wrap">
-        <div class="bedroom">
+    <div class="topics budget" ref="scroll2">
+      <div class="topic-wrap">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="bedroom">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="bedroom">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
@@ -58,7 +58,7 @@
     <div class="recommend">
       <div class="left">为你推荐</div>
       <div class="right">
-        <div class="lease" :class="{on: curindex == i }" v-for="(lease ,i) in leaseArr" :key="i"
+        <div class="lease" :class="{on: curindex == i }" v-for="(lease,i) in leaseArr" :key="i"
              @click="leaseChange(i)">{{lease}}
         </div>
       </div>
@@ -95,7 +95,7 @@
       }
     },
     mounted() {
-      setTimeout(() => {
+      this.$nextTick(() => {
         new BScroll(this.$refs.scroll1, {
           eventPassthrough: 'vertical',
           scrollX: true,
@@ -106,7 +106,7 @@
           scrollX: true,
           click: true
         });
-      }, 20)
+      });
     },
     methods: {
       leaseChange(i) {
@@ -141,16 +141,16 @@
     background-color: #fff;
     /*overflow: hidden;*/
     padding-top: 0.2rem;
-    .todotype {
+    .menus {
       margin-left: 0.28rem;
       padding-right: 0.28rem;
       margin-top: 0.7rem;
       display: flex;
       justify-content: space-between;
-      .todo {
+      .menu-item {
         @include rowcenter;
         flex-direction: column;
-        .todo-img {
+        .menu-icon {
           margin-bottom: 0.25rem;
           width: 1.1rem;
           height: 1.1rem;
@@ -165,14 +165,14 @@
         }
       }
     }
-    .bedrooms {
+    .topics {
       margin-top: 1rem;
       display: flex;
       overflow: hidden;
-      .bedrooms-wrap {
+      .topic-wrap {
         display: flex;
       }
-      .bedroom {
+      .topic {
         flex-shrink: 0;
         margin-right: 0.1rem;
         display: flex;

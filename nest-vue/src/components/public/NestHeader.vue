@@ -137,9 +137,6 @@
     border-radius: 0.1rem;
     box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
     box-sizing: border-box;
-    &:active {
-      background-color: #e8e8ea;
-    }
     &::before {
       position: absolute;
       content: "";
