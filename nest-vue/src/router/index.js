@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
+import Explore from '@/views/Explore'
+import Follow from '@/views/Follow'
 import List from '@/views/List'
 import Search from '@/views/Search'
 import Details from '@/views/Details'
@@ -11,8 +12,15 @@ export default new Router({
   routes:
     [{
       path: '/',
-      name: 'Home',
-      component: Home
+      redirect: { name: 'Explore' }
+    }, {
+      path: '/explore',
+      name: 'Explore',
+      component: Explore
+    }, {
+      path: '/follow',
+      name: 'Follow',
+      component: Follow
     }, {
       path: '/list/:type',
       name: 'List',

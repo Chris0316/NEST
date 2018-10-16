@@ -63,7 +63,8 @@
         </div>
       </div>
     </div>
-    <NestListView double/>
+    <nest-list-view double/>
+    <nest-nav page="explore"></nest-nav>
   </div>
 </template>
 
@@ -93,9 +94,7 @@
     methods: {
       leaseChange(i) {
         this.curindex = i;
-      }
-    },
-    methods: {
+      },
       initSwiper() {
         new Swiper(this.$refs.swiper1, {
           slidesPerView: 'auto',
@@ -131,7 +130,7 @@
     width: 100%;
     background-color: #fff;
     /*overflow: hidden;*/
-    padding-top: 0.2rem;
+    padding: 0.2rem 0 .8rem;
     .menus {
       margin-left: 0.28rem;
       padding-right: 0.28rem;
