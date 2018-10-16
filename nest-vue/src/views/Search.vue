@@ -36,7 +36,7 @@
       <div class="search-item" v-for="(searitem,i) in listData" :key="i">{{searitem}}</div>
     </div>
     <div class="act" v-else="!listShow">
-      <div class="search-item">马尼拉</div>
+      <div class="search-item" @click="$router.push({ name: 'Details', params: { type: 'rent',id:456 }})">马尼拉</div>
       <div class="search-item">jazz</div>
     </div>
   </div>
@@ -90,6 +90,7 @@
       cleanAll() {
         this.listShow = true;
         this.searchkey = '';
+        this.$router.go(-1);
       }
     },
   }

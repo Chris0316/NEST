@@ -2,14 +2,14 @@
   <div class="list-view">
     <!--  false是一行  -->
     <div v-if="double">
-      <div class="room-msg">
-        <div class="room" v-for="(recommend,index) in recommends">
-          <div class="room-img"></div>
-          <div class="room-place">{{recommend.roomplace}}</div>
-          <div class="room-size" v-if="recommend.roomsizes.constructor === Array">
+      <div class="list-wrap">
+        <div class="unit" v-for="(recommend,index) in recommends">
+          <div class="unit-img"></div>
+          <div class="unit-place">{{recommend.roomplace}}</div>
+          <div class="unit-size" v-if="recommend.roomsizes.constructor === Array">
             <div class="left" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
           </div>
-          <div class="room-size" v-else="!recommend.roomsizes.constructor === Array">
+          <div class="unit-size" v-else="!recommend.roomsizes.constructor === Array">
             <div class="left-str">{{recommend.roomsizes}}</div>
           </div>
 
@@ -165,11 +165,11 @@
     overflow: hidden;
   }
 
-  .room-msg {
+  .list-wrap {
     margin-left: 0.28rem;
     display: flex;
     flex-wrap: wrap;
-    .room {
+    .unit {
       margin-right: 0.34rem;
       margin-bottom: 0.45rem;
       display: flex;
@@ -179,7 +179,7 @@
         margin-right: 0rem;
       }
     }
-    .room-img {
+    .unit-img {
       width: 3.3rem;
       height: 2.36rem;
       border-radius: 0.1rem;
@@ -187,7 +187,7 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
-    .room-place {
+    .unit-place {
       word-break: break-all;
       margin-top: 0.2rem;
       margin-bottom: 0.2rem;
@@ -201,7 +201,7 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
-    .room-size {
+    .unit-size {
       display: flex;
       margin-bottom: 0.2rem;
       .left {
