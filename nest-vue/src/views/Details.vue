@@ -8,7 +8,9 @@
       <span>公寓</span>
       <a href="javascript:;" class="link">详细地址</a>
     </div>
-    <div class="main-info">
+
+    <!--new、 old-->
+    <div v-if="propnew" class="main-info">
       <div class="item">
         <div class="txt-1"><span class="bold">100,000</span> P/㎡</div>
         <div class="label">均价</div>
@@ -18,7 +20,32 @@
         <div class="label">开盘时间</div>
       </div>
     </div>
-    <div class="details-module">
+    <div v-if="propsecond" class="main-info">
+      <div class="item">
+        <div class="txt-1"><span class="bold">660</span> 万</div>
+        <div class="label">售价</div>
+      </div>
+      <div class="item">
+        <div class="txt-1"><span class="bold">一室一厅</span> LOFT</div>
+        <div class="label">户型</div>
+      </div>
+      <div class="item">
+        <div class="txt-1"><span class="bold">30</span> ㎡</div>
+        <div class="label">面积</div>
+      </div>
+    </div>
+    <div v-if="propparking" class="main-info">
+      <div class="item">
+        <div class="txt-1"><span class="bold">6000</span> P/月</div>
+        <div class="label">租金</div>
+      </div>
+      <div class="item">
+        <div class="txt-2">10㎡</div>
+        <div class="label">面积</div>
+      </div>
+    </div>
+
+    <div class="details-module" v-if="propnew || propsecond">
       <div class="module-title">基本信息</div>
       <div class="info-line">
         <div class="cell">
@@ -81,6 +108,60 @@
         </div>
       </div>
     </div>
+    <div class="details-module" v-if="propparking">
+      <div class="module-title">基本信息</div>
+      <div class="info-line">
+        <div class="cell">
+          <div class="label">用途:</div>
+          <div class="value">住房</div>
+        </div>
+        <div class="cell">
+          <div class="label">发布时间:</div>
+          <div class="value">2018/9/15</div>
+        </div>
+      </div>
+      <div class="info-line">
+        <div class="cell">
+          <div class="label">租期:</div>
+          <div class="value">12-24个月</div>
+        </div>
+        <div class="cell">
+          <div class="label">发布时间:</div>
+          <div class="value">2018/9/15</div>
+        </div>
+      </div>
+      <div class="info-line">
+        <div class="cell">
+          <div class="label">电梯:</div>
+          <div class="value">有</div>
+        </div>
+        <div class="cell">
+          <div class="label">楼层:</div>
+          <div class="value">11层 (底层)</div>
+        </div>
+      </div>
+    </div>
+
+    <!--new才有户型介绍-->
+    <div class="details-module details-spe">
+      <div class="module-title title-spe">户型介绍</div>
+      <div class="info-list">
+        <div class="info-item">
+          <div class="info-img"></div>
+          <div class="info-text1">3室2厅2卫</div>
+          <div class="info-text2">建面 91㎡ 朝向南</div>
+          <div class="info-text3">约569万</div>
+        </div>
+        <div class="info-item">
+          <div class="info-img"></div>
+          <div class="info-text1">3室2厅2卫</div>
+          <div class="info-text2">建面 91㎡ 朝向南</div>
+          <div class="info-text3">约569万</div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="details-module">
       <div class="module-title">介绍</div>
       <div class="publisher-introduce">
@@ -103,7 +184,9 @@
       <div class="details-module">
         <div class="module-title">周边楼盘</div>
       </div>
-      <div class="scroll-wrapper">
+
+      <!--new second-->
+      <div class="scroll-wrapper" v-if="propnew">
         <div class="item">
           <div class="item-img"></div>
           <div class="item-title">Callisto Towers at Circuit Makati</div>
@@ -123,6 +206,36 @@
           <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100</span></div>
         </div>
       </div>
+      <div class="scroll-wrapper" v-if="propsecond">
+        <div class="item">
+          <div class="item-img"></div>
+          <div class="item-title">Callisto Towers at Circuit Makati</div>
+          <div class="unit-size">
+            <div class="left">10F</div>
+            <div class="left">150.55㎡</div>
+          </div>
+          <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+        </div>
+        <div class="item">
+          <div class="item-img"></div>
+          <div class="item-title">Callisto Towers at Circuit Makati</div>
+          <div class="unit-size">
+            <div class="left">10F</div>
+            <div class="left">150.55㎡</div>
+          </div>
+          <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+        </div>
+        <div class="item">
+          <div class="item-img"></div>
+          <div class="item-title">Callisto Towers at Circuit Makati</div>
+          <div class="unit-size">
+            <div class="left">10F</div>
+            <div class="left">150.55㎡</div>
+          </div>
+          <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+        </div>
+      </div>
+
     </div>
     <div class="publish">
       <div class="tips">我也要出售？</div>
@@ -140,12 +253,36 @@
 </template>
 
 <script>
+  // {routeType: "rent"} second new parking
   export default {
+    props:{
+      rent:{
+        type: Boolean,
+        default: false
+      },
+      second:{
+        type: Boolean,
+        default: false
+      },
+      new:{
+        type: Boolean,
+        default: true
+      },
+      parking:{
+        type: Boolean,
+        default: false
+      },
+    },
     created(){
       console.log(this.$route.params);
     },
     data () {
-      return {}
+      return {
+        proprent:this.rent,
+        propsecond:this.second,
+        propnew:this.new,
+        propparking:this.parking,
+      }
     }
   }
 </script>
@@ -374,6 +511,20 @@
         line-height: .3rem;
         white-space: initial;
       }
+      .unit-size {
+        display: flex;
+        margin-top: 0.15rem;
+        margin-bottom: 0.15rem;
+        .left {
+          margin-right: 0.1rem;
+          padding: 0.06rem 0.12rem;
+          background: #fbf8f3;
+          color: #d5be88;
+          font-size: 0.24rem;
+          border-radius: 0.1rem;
+          line-height: 1;
+        }
+      }
       .item-sub {
         margin-top: .15rem;
         color: #999;
@@ -397,6 +548,7 @@
       }
     }
   }
+
   .publish {
     padding-top: .7rem;
     height: 4.85rem;
@@ -468,6 +620,47 @@
       line-height: 1rem;
       color: #fff;
       background-color: #0F9183;
+    }
+  }
+  .info-list{
+    margin-top: 0.2rem;
+    display: flex;
+    .info-item{
+      margin-right: 0.34rem;
+      margin-left: 0.28rem;
+      display: flex;
+      flex-direction: column;
+      &:nth-of-type(even) {
+        margin-left: 0rem;
+      }
+    }
+    .info-img{
+      width: 3.3rem;
+      height: 2.36rem;
+      background: #e8e8ea;
+      border-radius: 0.1rem;
+    }
+    .info-text1{
+      margin: 0.1rem 0rem;
+      font-size:0.28rem;
+      color: #333333;
+      font-weight: bold;
+    }
+    .info-text2{
+      margin-bottom: 0.1rem;
+      font-size: 0.24rem;
+      color: #b2b2b2;
+    }
+    .info-text3{
+      font-size: 0.28rem;
+      color: #0F9183;
+      font-weight: bold;
+    }
+  }
+  .details-spe{
+    padding: 0rem 0rem 0.6rem 0rem;
+    .title-spe{
+      margin-left: 0.28rem;
     }
   }
 </style>
