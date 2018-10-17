@@ -48,7 +48,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .radio-row {
     margin-bottom: .28rem;
     display: flex;

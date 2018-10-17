@@ -51,7 +51,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .check-row {
     margin-bottom: .28rem;
     display: flex;

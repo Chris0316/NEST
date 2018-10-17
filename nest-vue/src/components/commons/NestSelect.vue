@@ -76,7 +76,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .nest-select {
     position: relative;
     top: 0.78rem;

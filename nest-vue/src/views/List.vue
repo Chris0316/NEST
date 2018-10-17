@@ -13,7 +13,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .lease-list {
     box-sizing: border-box;
     width: 100%;

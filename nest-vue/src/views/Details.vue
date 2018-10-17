@@ -150,7 +150,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .details {
     background-color: #fff;
   }

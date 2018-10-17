@@ -120,7 +120,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .range-val {
     margin-top: .4rem;
     font-size: .24rem;

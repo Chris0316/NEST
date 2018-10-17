@@ -160,7 +160,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .list-view {
     overflow: hidden;
   }

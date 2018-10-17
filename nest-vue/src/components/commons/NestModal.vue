@@ -55,7 +55,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .nest-modal {
     position: fixed;
     top: 0;

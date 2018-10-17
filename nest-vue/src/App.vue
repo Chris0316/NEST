@@ -30,7 +30,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style lang="scss">
   @import "./assets/scss/commons.scss";
 
   .slide-left-enter-active,

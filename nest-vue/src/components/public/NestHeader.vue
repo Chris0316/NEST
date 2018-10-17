@@ -112,7 +112,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .nest-header {
     padding: 0 .28rem;
   }
