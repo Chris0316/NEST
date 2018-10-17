@@ -7,6 +7,7 @@ import NestRange from './commons/NestRange.vue'
 import NestSelect from './commons/NestSelect.vue'
 
 import NestHeader from './public/NestHeader'
+import NestNav from './public/NestNav'
 
 let components = {
   NestModal,
@@ -14,8 +15,9 @@ let components = {
   NestRadio,
   NestListView,
   NestRange,
+  NestSelect,
   NestHeader,
-  NestSelect
+  NestNav
 };
 
 let install = function () {

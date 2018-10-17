@@ -96,7 +96,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   input {
     background: none;
     outline: none;

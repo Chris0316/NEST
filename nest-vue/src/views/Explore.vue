@@ -23,33 +23,33 @@
         <div class="name">车位</div>
       </router-link>
     </div>
-    <div class="topics" ref="scroll1">
-      <div class="topic-wrap">
-        <div class="topic">
+    <div class="swiper-container topics" ref="swiper1">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="topic">
+        <div class="swiper-slide topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="topic">
+        <div class="swiper-slide topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
       </div>
     </div>
-    <div class="topics budget" ref="scroll2">
-      <div class="topic-wrap">
-        <div class="topic">
+    <div class="swiper-container topics budget" ref="swiper2">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="topic">
+        <div class="swiper-slide topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="topic">
+        <div class="swiper-slide topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
@@ -63,12 +63,14 @@
         </div>
       </div>
     </div>
-    <NestListView double/>
+    <nest-list-view double/>
+    <nest-nav page="explore"></nest-nav>
   </div>
 </template>
 
 <script>
-  import BScroll from 'better-scroll';
+  import 'swiper/dist/css/swiper.min.css'
+  import Swiper from 'swiper'
 
   export default {
     props: {
@@ -81,41 +83,29 @@
     },
     data() {
       return {
-        options: [
-          {
-            val: '二手房',
-            id: 'second'
-          },
-          {
-            val: '租房',
-            id: 'rent'
-          }
-        ],
         curindex: 0
       }
     },
     mounted() {
-      this.$nextTick(() => {
-        new BScroll(this.$refs.scroll1, {
-          eventPassthrough: 'vertical',
-          scrollX: true,
-          click: true
-        });
-        new BScroll(this.$refs.scroll2, {
-          eventPassthrough: 'vertical',
-          scrollX: true,
-          click: true
-        });
-      });
+      setTimeout(() => {
+        this.initSwiper();
+      }, 20);
     },
     methods: {
       leaseChange(i) {
         this.curindex = i;
-      }
-    },
-    computed: {
-      selectedVal() {
-        return this.options[0].val
+      },
+      initSwiper() {
+        new Swiper(this.$refs.swiper1, {
+          slidesPerView: 'auto',
+          freeMode: true,
+          releaseOnEdges: false
+        });
+        new Swiper(this.$refs.swiper2, {
+          slidesPerView: 'auto',
+          freeMode: true,
+          releaseOnEdges: false
+        });
       }
     }
   }
@@ -140,7 +130,7 @@
     width: 100%;
     background-color: #fff;
     /*overflow: hidden;*/
-    padding-top: 0.2rem;
+    padding: 0.2rem 0 .8rem;
     .menus {
       margin-left: 0.28rem;
       padding-right: 0.28rem;
@@ -167,25 +157,15 @@
     }
     .topics {
       margin-top: 1rem;
-      display: flex;
-      overflow: hidden;
-      .topic-wrap {
-        display: flex;
-      }
+      padding: 0 .28rem;
       .topic {
-        flex-shrink: 0;
         margin-right: 0.1rem;
-        display: flex;
-        flex-direction: column;
         width: 2.8rem;
         height: 2rem;
         background: #f5f5f7;
         border-radius: 0.1rem;
-        &:first-child {
-          margin-left: 0.28rem;
-        }
         &:last-child {
-          margin-right: 0.28rem;
+          margin-right: 0;
         }
         .title {
           margin-top: 0.2rem;

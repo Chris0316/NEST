@@ -112,7 +112,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .nest-header {
     padding: 0 .28rem;
   }
@@ -137,6 +137,7 @@
     border-radius: 0.1rem;
     box-shadow: 0px 0px 0.2rem rgba(176, 183, 187, 0.4);
     box-sizing: border-box;
+    z-index: 0;
     &::before {
       position: absolute;
       content: "";
@@ -146,6 +147,18 @@
       height: .32rem;
       background: url('../../assets/images/search-img.png') no-repeat;
       background-size: 100% 100%;
+    }
+    &:active {
+      &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e8e8ea;
+        z-index: -1;
+      }
     }
   }
 
