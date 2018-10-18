@@ -1,7 +1,9 @@
 <template>
   <div class="nest-select">
     <div class="search-sle" v-if="select" @click.stop="dropDown">
-      <div class="types">{{selectedVal}}</div>
+      <div class="types">
+        <div class="type-text">{{selectedVal}}</div>
+      </div>
       <div class="point" :class="{trans: pointtran===true }"></div>
     </div>
     <div class="typelist" v-if="listShow">
@@ -78,31 +80,41 @@
 
 <style lang="scss" scoped>
   .nest-select {
-    position: relative;
-    top: 0.78rem;
+    position: absolute;
+    right: 0rem;
     z-index: 1;
     .search-sle {
       box-sizing: border-box;
       display: flex;
       align-items: center;
-      position: absolute;
-      right: 0rem;
-      top: -0.6rem;
       width: 1.47rem;
-      height: 0.34rem;
-      border-left: 1px solid #cccccc;
+      height: 0.8rem;
     }
     .types {
-      padding-left: 0.2rem;
+      display: flex;
+      align-items: center;
       padding-top: 0.01rem;
       padding-bottom: 0.01rem;
       font-size: 0.24rem;
       color: #333333;
+      .type-text{
+        display: flex;
+        align-items: center;
+      }
+      .type-text::before{
+        display: block;
+        content: '';
+        margin-right: 0.2rem;
+        width: 1px;
+        height: 0.34rem;
+        background: #cccccc;
+      }
+
     }
     .point {
       position: absolute;
       right: 0.04rem;
-      top: 0.15rem;
+      top: 0.35rem;
       margin-left: 0.14rem;
       margin-right: 0.25rem;
       width: 0.14rem;
@@ -116,6 +128,7 @@
     }
     .typelist {
       position: absolute;
+      top: 0.78rem;
       right: 0rem;
       width: 1.4rem;
       border: 1px solid #e8e8ea;

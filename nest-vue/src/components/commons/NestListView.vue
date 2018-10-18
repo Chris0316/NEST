@@ -12,10 +12,19 @@
           <div class="unit-size" v-else="!recommend.roomsizes.constructor === Array">
             <div class="left-str">{{recommend.roomsizes}}</div>
           </div>
-
-          <div class="price-m">
+          <div class="price-m" v-if="proprent">
             <div class="num">{{recommend.pricem}}</div>
             <div class="month">P/月</div>
+          </div>
+          <div class="price-m" v-if="propnew">
+            <div class="num">{{recommend.pricem}}</div>
+            <div class="month">P/㎡</div>
+            <div class="size">28.00-100.55 ㎡</div>
+          </div>
+          <div class="price-m" v-if="propsecond">
+          <div class="num">{{recommend.pricem}}</div>
+          <div class="month">万</div>
+            <div class="size">210,000 P/平</div>
           </div>
         </div>
       </div>
@@ -64,6 +73,22 @@
   export default {
     name: "nest-list-view",
     props: {
+      rent:{
+        type: Boolean,
+        default: true
+      },
+      second:{
+        type: Boolean,
+        default: false
+      },
+      new:{
+        type: Boolean,
+        default: false
+      },
+      parking:{
+        type: Boolean,
+        default: false
+      },
       double: {
         type: Boolean,
         default: false
@@ -129,6 +154,10 @@
     },
     data() {
       return {
+        proprent:this.rent,
+        propsecond:this.second,
+        propnew:this.new,
+        propparking:this.parking,
         startX: 0,
         distanceX: 0,
         endX: 0,
@@ -232,7 +261,12 @@
       }
       .month {
         margin-left: 0.1rem;
+        margin-right: 0.1rem;
         font-size: 0.24rem;
+      }
+      .size{
+        font-size: 0.22rem;
+        color: #B2B2B2;
       }
     }
   }
