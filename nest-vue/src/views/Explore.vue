@@ -25,7 +25,7 @@
     </div>
     <div class="swiper-container topics" ref="swiper1">
       <div class="swiper-wrapper">
-        <div class="swiper-slide topic">
+        <div class="swiper-slide topic" @click="showToast">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
@@ -92,6 +92,13 @@
       }, 20);
     },
     methods: {
+      showToast() {
+        this.$toast.info({
+          callback: () => {
+            console.log(343)
+          }
+        });
+      },
       leaseChange(i) {
         this.curindex = i;
       },
