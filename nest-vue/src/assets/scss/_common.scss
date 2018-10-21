@@ -10,6 +10,21 @@ body {
   min-height: 100%;
 }
 
+.arrow-right {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: .24rem;
+    height: .24rem;
+    border-right: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}
+
 .border-bottom {
   position: relative;
   &::before {

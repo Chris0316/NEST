@@ -15,6 +15,10 @@
       }
     },
     props: {
+      type: {
+        type: String,
+        default: 'info'
+      },
       visible: {
         type: Boolean,
         default: false
@@ -39,6 +43,7 @@
         this.toastShow = false;
         if (this.callback)
           this.callback();
+        this.$emit('close');
       },
       setTimer() {
         setTimeout(() => {

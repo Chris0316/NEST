@@ -94,6 +94,7 @@
     methods: {
       showToast() {
         this.$toast.info({
+          message: '你妈妈喊你接电话，你到底接不接',
           callback: () => {
             console.log(343)
           }

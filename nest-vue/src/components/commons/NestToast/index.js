@@ -4,19 +4,23 @@ import NestToast from './NestToast';
 const ToastConstructor = Vue.extend(NestToast);
 let instance;
 
+let showToast = (type, options = {}) => {
+  options.type = type;
+  options.visible = true;
+  instance = instance || new ToastConstructor({
+    propsData: options
+  }).$mount(document.createElement('div'));
+  document.body.appendChild(instance.$el);
+
+  // toast实例销毁
+  instance.$on('close', () => {
+    instance = null;
+  });
+};
+
 const Toast = {
-  info(options = {}) {
-    console.log(instance)
-    instance = instance || new ToastConstructor({
-      propsData: {
-        visible: true,
-        message: options.message,
-        duration: options.duration,
-        callback: options.callback
-      }
-    }).$mount(document.createElement('div'));
-    document.body.appendChild(instance.$el);
-    // todo vue实例待销毁
+  info(options) {
+    showToast('info', options);
   }
 };
 
