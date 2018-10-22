@@ -201,7 +201,6 @@
     font-size: .28rem;
     color: #333;
     box-sizing: border-box;
-    overflow: hidden;
     border-radius: .1rem;
     &.active {
       color: #fff;
