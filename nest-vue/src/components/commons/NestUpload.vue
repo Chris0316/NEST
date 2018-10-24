@@ -6,19 +6,23 @@
           添加
           <input type="file" accept="image/*" @change="selectMedia" multiple class="hidden" />
         </label>
-        <div class="upload-item img" v-else-if="mediaInCell(rowIndex, cellIndex)">
-          <img :src="mediaInCell(rowIndex, cellIndex)" alt="">
+        <div class="upload-item img"
+             v-else-if="mediaInCell(rowIndex, cellIndex)"
+             :style="{ backgroundImage: 'url(' + mediaInCell(rowIndex, cellIndex) + ')' }">
         </div>
       </div>
     </div>
   </div>
   <label class="nest-upload empty" v-else>
-    添加图片/视频
+    <!--添加图片/视频, video/*-->
+    添加图片
     <input type="file" accept="image/*" @change="selectMedia" multiple class="hidden" />
   </label>
 </template>
 
 <script>
+  import canvasResize from 'canvas-resize';
+
   export default {
     name: "nest-upload",
     props: {
@@ -45,12 +49,15 @@
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length) return;
         Object.keys(files).forEach((key) => {
-          let file = files[key],
-              fileReader = new FileReader();
-          fileReader.readAsDataURL(file);
-          fileReader.onloadend = (e) => {
-            this.finalMediaArr.unshift(e.target.result);
-          }
+          let file = files[key];
+          canvasResize(file, {
+            crop: false,
+            quality: 0.9,
+            rotate: 0,
+            callback: baseStr => {
+              this.finalMediaArr.unshift(baseStr);
+            }
+          });
         })
       }
     }
@@ -97,11 +104,9 @@
     box-sizing: border-box;
     &.img {
       position: relative;
-      padding: 0;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
     }
   }
 </style>
