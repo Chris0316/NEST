@@ -10,6 +10,10 @@ body {
   min-height: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 .arrow-right {
   position: relative;
   &::after {
