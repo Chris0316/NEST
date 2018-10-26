@@ -2,15 +2,15 @@
   <div class="nest-upload" v-if="finalMediaArr.length > 0">
     <div class="upload-row" v-for="(rowNum, rowIndex) in Math.ceil((finalMediaArr.length + 1) / 4)">
       <div class="upload-cell" v-for="(cellNum, cellIndex) in 4">
-        <label class="upload-item add" v-if="rowIndex * 4 + cellIndex === finalMediaArr.length">
+        <div class="upload-item img"
+             v-if="rowIndex * 4 + cellIndex < finalMediaArr.length"
+             :style="{ backgroundImage: 'url(' + mediaInCell(rowIndex, cellIndex) + ')' }">
+          <span class="close" @click="deleteImg(rowIndex, cellIndex)"></span>
+        </div>
+        <label class="upload-item add" v-else-if="rowIndex * 4 + cellIndex === finalMediaArr.length">
           添加
           <input type="file" accept="image/*" @change="selectMedia" multiple class="hidden" />
         </label>
-        <div class="upload-item img"
-             v-else-if="mediaInCell(rowIndex, cellIndex)"
-             :style="{ backgroundImage: 'url(' + mediaInCell(rowIndex, cellIndex) + ')' }">
-          <span class="close"></span>
-        </div>
       </div>
     </div>
   </div>
@@ -43,6 +43,10 @@
       mediaInCell(rowIndex, cellIndex) {
         let mediaIndex = rowIndex * 4 + cellIndex;
         return this.finalMediaArr[mediaIndex];
+      },
+      deleteImg(rowIndex, cellIndex) {
+        let mediaIndex = rowIndex * 4 + cellIndex;
+        this.finalMediaArr.splice(mediaIndex, 1);
       },
       selectMedia(e) {
         let files = e.target.files || e.dataTransfer.files;
