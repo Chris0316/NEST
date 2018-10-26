@@ -1,14 +1,15 @@
 <template>
-  <div class="nest-upload" v-if="finalMediaArr.length > 1">
-    <div class="upload-row" v-for="(rowNum, rowIndex) in Math.ceil(finalMediaArr.length / 4)">
+  <div class="nest-upload" v-if="finalMediaArr.length > 0">
+    <div class="upload-row" v-for="(rowNum, rowIndex) in Math.ceil((finalMediaArr.length + 1) / 4)">
       <div class="upload-cell" v-for="(cellNum, cellIndex) in 4">
-        <label class="upload-item" v-if="mediaInCell(rowIndex, cellIndex) === 'control'">
+        <label class="upload-item add" v-if="rowIndex * 4 + cellIndex === finalMediaArr.length">
           添加
           <input type="file" accept="image/*" @change="selectMedia" multiple class="hidden" />
         </label>
         <div class="upload-item img"
              v-else-if="mediaInCell(rowIndex, cellIndex)"
              :style="{ backgroundImage: 'url(' + mediaInCell(rowIndex, cellIndex) + ')' }">
+          <span class="close"></span>
         </div>
       </div>
     </div>
@@ -35,8 +36,6 @@
     },
     computed: {
       finalMediaArr() {
-        if (this.mediaSrcArr.indexOf('control') === -1)
-          this.mediaSrcArr.push('control');
         return this.mediaSrcArr;
       }
     },
@@ -55,7 +54,7 @@
             quality: 0.9,
             rotate: 0,
             callback: baseStr => {
-              this.finalMediaArr.unshift(baseStr);
+              this.finalMediaArr.push(baseStr);
             }
           });
         })
@@ -92,6 +91,7 @@
     height: 1.4rem;
   }
   .upload-item {
+    position: relative;
     padding-top: .8rem;
     display: block;
     width: 100%;
@@ -103,10 +103,30 @@
     line-height: 1;
     box-sizing: border-box;
     &.img {
-      position: relative;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
+    }
+    &.add {
+      &::before {
+        position: absolute;
+        content: "";
+        top: .31rem;
+        left: .51rem;
+        width: .38rem;
+        height: .38rem;
+        background: url('../../assets/images/upload-plus.png') no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .close {
+      position: absolute;
+      right: -.1rem;
+      top: -.1rem;
+      width: .38rem;
+      height: .38rem;
+      background: url('../../assets/images/upload-del.png') no-repeat;
+      background-size: 100% 100%;
     }
   }
 </style>
