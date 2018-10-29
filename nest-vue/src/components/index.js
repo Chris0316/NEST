@@ -5,6 +5,7 @@ import NestListView from './commons/NestListView.vue'
 import NestRange from './commons/NestRange.vue'
 import NestSelect from './commons/NestSelect.vue'
 import NestUpload from './commons/NestUpload.vue'
+import NestSwitch from './commons/NestSwitch.vue'
 
 import NestHeader from './public/NestHeader'
 import NestNav from './public/NestNav'
@@ -20,7 +21,8 @@ let components = {
   NestSelect,
   NestHeader,
   NestNav,
-  NestUpload
+  NestUpload,
+  NestSwitch
 };
 
 let install = function (Vue) {

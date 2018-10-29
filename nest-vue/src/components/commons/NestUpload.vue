@@ -53,15 +53,19 @@
         if (!files.length) return;
         Object.keys(files).forEach((key) => {
           let file = files[key];
-          canvasResize(file, {
-            crop: false,
-            quality: 0.9,
-            rotate: 0,
-            callback: baseStr => {
-              this.finalMediaArr.push(baseStr);
-            }
-          });
+          this.compressImg(file);
         })
+      },
+      compressImg(file) {
+        //todo 尺寸压缩，质量压缩
+        canvasResize(file, {
+          crop: false,
+          quality: 0.9,
+          rotate: 0,
+          callback: baseStr => {
+            this.finalMediaArr.push(baseStr);
+          }
+        });
       }
     }
   }

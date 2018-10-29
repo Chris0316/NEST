@@ -1,5 +1,29 @@
 <template>
-  
+  <div class="login">
+    <div class="header">
+      <div class="back" @click="$router.go(-1);"></div>
+    </div>
+    <div class="content">
+      <div class="title border-bottom">欢迎登录鸟巢</div>
+      <div class="form-group border-bottom">
+        <div class="left">+63 <span class="flag"></span><div class="arrow-down"></div></div>
+        <div class="right">
+          <input type="tel" class="form-input" placeholder="请输入手机号" />
+        </div>
+      </div>
+      <div class="form-tip">
+        未注册的手机号自动创建鸟巢账户
+      </div>
+      <button type="button" class="nest-btn" disabled>获取短信验证码</button>
+      <div class="login-tip">其他登录方式</div>
+      <div class="third-login">
+        <div class="third wechat"></div>
+        <div class="third fb"></div>
+        <div class="third line"></div>
+      </div>
+      <div class="contract-tip">登录代表你已同意鸟巢用户协议及隐私政策</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,6 +32,141 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .login {
+    padding: 0 .28rem;
+    .header {
+      height: 1.2rem;
+    }
+    .back {
+      width: .9rem;
+      height: 100%;
+      background: url('../../assets/images/return-icon.png') no-repeat left center;
+      background-size: .42rem .32rem;
+    }
+    .content {
+      padding: 0 .4rem;
+    }
+    .title {
+      height: 1.16rem;
+      margin-top: .4rem;
+      font-size: .46rem;
+      font-weight: bold;
+      color: #333;
+      box-sizing: border-box;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      height: 1rem;
+      .left {
+        position: relative;
+        width: 1.85rem;
+        font-size: .28rem;
+        color: #333;
+        .flag {
+          position: absolute;
+          top: 50%;
+          right: .48rem;
+          width: .4rem;
+          height: .26rem;
+          background-color: red;
+          transform: translateY(-50%);
+        }
+        .arrow-down {
+          position: absolute;
+          top: 50%;
+          right: .24rem;
+          width: .14rem;
+          height: .09rem;
+          background: url('../../assets/images/triangle.png') no-repeat;
+          background-size: 100% 100%;
+          transform: translateY(-50%);
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          top: 50%;
+          right: 0;
+          width: 1px;
+          height: .32rem;
+          background-color: #ccc;
+          transform: scaleX(.5) translateY(-50%);
+          transform-origin: 100% 0;
+        }
+      }
+      .right {
+        flex: 1;
+        .form-input {
+          padding: 0 .2rem;
+          font-size: .28rem;
+          color: #333;
+          width: 100%;
+          box-sizing: border-box;
+          border: none;
+          &::-webkit-input-placeholder {
+            color: #b3b3b3;
+          }
+        }
+      }
+    }
+    .form-tip {
+      margin-top: .2rem;
+      font-size: .24rem;
+      color: #b3b3b3;
+      line-height: 1;
+    }
+    .nest-btn {
+      margin-top: .6rem;
+      display: block;
+      border: none;
+      border-radius: .1rem;
+      width: 100%;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .3rem;
+      color: #fff;
+      background-color: #0f9183;
+      text-align: center;
+      &[disabled], &.disabled {
+        background-color: #d9d9d9;
+      }
+    }
+    .login-tip {
+      margin-top: 1.7rem;
+      font-size: .24rem;
+      color: #999;
+      line-height: 1;
+      text-align: center;
+    }
+    .third-login {
+      margin-top: .4rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 .97rem;
+      .third {
+        width: 1rem;
+        height: 1rem;
+        &.wechat {
+          background: url('../../assets/images/icon-wechat.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        &.fb {
+          background: url('../../assets/images/icon-facebook.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        &.line {
+          background: url('../../assets/images/icon-line.png') no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+    .contract-tip {
+      margin-top: 1.2rem;
+      line-height: 1;
+      font-size: .24rem;
+      text-align: center;
+      color: #b3b3b3;
+    }
+  }
 </style>

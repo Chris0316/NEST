@@ -5,6 +5,8 @@ import Follow from '@/views/Follow'
 import List from '@/views/List'
 import Search from '@/views/Search'
 import Details from '@/views/Details'
+import Login from '@/views/auth/Login'
+import SmsCode from '@/views/auth/SmsCode'
 
 Vue.use(Router)
 
@@ -33,6 +35,14 @@ export default new Router({
       path: '/details/:type/:id',
       name: 'Details',
       component: Details
+    }, {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    }, {
+      path: '/sms',
+      name: 'SmsCode',
+      component: SmsCode
     }]
 })
 
