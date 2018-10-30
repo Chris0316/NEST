@@ -7,6 +7,7 @@ import Search from '@/views/Search'
 import Details from '@/views/Details'
 import Login from '@/views/auth/Login'
 import SmsCode from '@/views/auth/SmsCode'
+import BaseInfo1 from '@/views/auth/BaseInfo1'
 
 Vue.use(Router)
 
@@ -43,6 +44,10 @@ export default new Router({
       path: '/sms',
       name: 'SmsCode',
       component: SmsCode
+    }, {
+      path: '/info_1',
+      name: 'BaseInfo1',
+      component: BaseInfo1
     }]
 })
 

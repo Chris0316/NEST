@@ -3,10 +3,9 @@
     <div class="header">
       <div class="back" @click="$router.go(-1);"></div>
     </div>
-    <input type="text"/>
     <div class="content">
       <div class="title">输入验证码</div>
-      <div class="sms-tip">短信验证码发送失败，请点击重新获取验证码</div>
+      <div class="title-tip">短信验证码发送失败，请点击重新获取验证码</div>
       <div class="sms-widget">
         <input type="tel" maxlength="6" autocomplete="off" v-model="smsCode"
                @input="checkSms" ref="smsInp" />
@@ -19,6 +18,7 @@
           <li>{{ smsCode6 }}</li>
         </ul>
       </div>
+      <div class="sms-link">重新获取验证码</div>
     </div>
   </div>
 </template>
@@ -82,7 +82,7 @@
       font-weight: bold;
       color: #333;
     }
-    .sms-tip {
+    .title-tip {
       margin-top: .2rem;
       font-size: .24rem;
       color: #b3b3b3;
@@ -91,7 +91,7 @@
     .sms-widget {
       margin-top: .2rem;
       position: relative;
-      input {
+      input[type=tel] {
         position: absolute;
         left: 0;
         width: 100%;
@@ -118,6 +118,11 @@
           border-bottom: 1px solid #A7A9AA;
         }
       }
+    }
+    .sms-link {
+      margin-top: .7rem;
+      font-size: .28rem;
+      color: #0f9183;
     }
   }
 </style>
