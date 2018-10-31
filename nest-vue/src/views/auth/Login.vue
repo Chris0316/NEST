@@ -14,7 +14,7 @@
       <div class="form-tip">
         未注册的手机号自动创建鸟巢账户
       </div>
-      <button type="button" class="nest-btn" disabled>获取短信验证码</button>
+      <nest-button class="mt90" type="primary" :disabled="true">获取短信验证码</nest-button>
       <div class="login-tip">其他登录方式</div>
       <div class="third-login">
         <div class="third wechat"></div>
@@ -115,22 +115,6 @@
       font-size: .24rem;
       color: #b3b3b3;
       line-height: 1;
-    }
-    .nest-btn {
-      margin-top: .6rem;
-      display: block;
-      border: none;
-      border-radius: .1rem;
-      width: 100%;
-      height: .8rem;
-      line-height: .8rem;
-      font-size: .3rem;
-      color: #fff;
-      background-color: #0f9183;
-      text-align: center;
-      &[disabled], &.disabled {
-        background-color: #d9d9d9;
-      }
     }
     .login-tip {
       margin-top: 1.7rem;

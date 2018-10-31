@@ -6,8 +6,11 @@
           <input type="radio" class="nest-radio-input"
                  v-model="currentValue"
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
-                 @change="$emit('input', $event.target.value)" />
-          <span class="nest-radio-core">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+                 @change="$emit('input', currentValue)" />
+          <div class="nest-radio-core" :class="{ 'text-left': isAlignLeft }">
+            <span class="radio-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }" />
+            <span class="radio-text">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
+          </div>
         </label>
       </div>
     </div>
@@ -26,6 +29,10 @@
       size: {
         type: String,
         default: 'large'
+      },
+      isAlignLeft: {
+        type: Boolean,
+        default: false
       },
       options: Array
     },
@@ -84,17 +91,49 @@
 
   .nest-radio-core {
     padding: 0 .28rem;
-    display: block;
+    display: flex;
     height: .6rem;
-    line-height: .6rem;
+    align-items: center;
     border-radius: .1rem;
     background-color: #f2f2f2;
     font-size: .28rem;
     color: #999;
     text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    &.text-left {
+      text-align: left;
+    }
+    .radio-img {
+      margin-right: .2rem;
+      width: .7rem;
+      height: .46rem;
+      background-color: red;
+      background-size: 100% 100%;
+    }
+    .radio-text {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .large {
+    .radio-row {
+      margin-bottom: .2rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .radio-cell {
+      margin-right: .2rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .nest-radio-core {
+      height: .8rem;
+      font-size: .3rem;
+    }
   }
 
   .small {
