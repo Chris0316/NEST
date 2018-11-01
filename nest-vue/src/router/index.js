@@ -6,6 +6,7 @@ import Router from 'vue-router'
  * */
 import Explore from '@/views/Explore'
 import Follow from '@/views/Follow'
+import Live from '@/views/Live'
 import My from '@/views/My'
 
 /**
@@ -44,6 +45,10 @@ export default new Router({
       path: '/my',
       name: 'My',
       component: My
+    }, {
+      path: '/live',
+      name: 'Live',
+      component: Live
     }, {
       path: '/list/:type',
       name: 'List',

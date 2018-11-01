@@ -30,7 +30,6 @@
 <style lang="scss" scoped>
   .nest-switch {
     display: inline-block;
-    padding: .3rem;
     .switch-actual {
       display: none;
       &:checked {
