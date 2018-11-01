@@ -34,9 +34,11 @@
       display: none;
       &:checked {
         & + .switch-core {
+          border: 1px solid #ADD9D5;
           background-color: #ADD9D5;
           &::after {
-            background-color: #0f9183;
+            background: #0f9183 url('../../assets/images/icon-right.png') center center no-repeat;
+            background-size: .24rem .16rem;
             left: 100%;
             transform: translate3d(-100%, -50%, 0);
           }
@@ -47,10 +49,12 @@
       position: relative;
       display: block;
       width: 1rem;
-      height: .5rem;
-      border-radius: .5rem;
+      height: .6rem;
+      border: 1px solid #d9d9d9;
+      border-radius: .6rem;
       background-color: #f2f2f2;
       transition: background-color .3s;
+      box-sizing: border-box;
       &::after {
         position: absolute;
         content: "";
@@ -59,7 +63,8 @@
         width: .6rem;
         height: .6rem;
         border-radius: .6rem;
-        background-color: #d9d9d9;
+        background: #d9d9d9 url('../../assets/images/icon-wrong.png') center center no-repeat;
+        background-size: .18rem .18rem;
         transition: .3s;
         transform: translate3d(0, -50%, 0);
       }
