@@ -3,7 +3,7 @@
     <span class="indicator" :class="{ 'textarea': type === 'textarea' }" v-if="hasIndicator" v-show="!hasFocused && !currentVal && !placeholder"></span>
     <input class="nest-input" :class="textAlign" v-if="type !== 'textarea'" :type="type" v-model="currentVal" :maxlength="maxLength" :placeholder="placeholder"
            @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)" />
-    <textarea class="nest-textarea" v-else :placeholder="placeholder" @focus="hasFocused = true" @blur="hasFocused = false"></textarea>
+    <textarea class="nest-textarea" v-else :placeholder="placeholder" v-model="currentVal" @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)"></textarea>
   </div>
 </template>
 
