@@ -8,7 +8,7 @@
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="$emit('input', currentValue)"/>
           <div class="nest-checkbox-core" :class="{ 'text-left': isAlignLeft }">
-            <span class="check-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }" />
+            <span class="check-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }"></span>
             <span class="check-text">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
           </div>
         </label>
@@ -21,7 +21,12 @@
   export default {
     name: "nest-check",
     props: {
-      value: Array,
+      value: {
+        type: Array,
+        default: () => {
+          return [];
+        }
+      },
       countInRow: {
         type: Number,
         default: 2

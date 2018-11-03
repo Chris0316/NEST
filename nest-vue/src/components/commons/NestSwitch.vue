@@ -39,8 +39,7 @@
           &::after {
             background: #0f9183 url('../../assets/images/icon-right.png') center center no-repeat;
             background-size: .24rem .16rem;
-            left: 100%;
-            transform: translate3d(-100%, -50%, 0);
+            transform: translate3d(.4rem, -50%, 0);
           }
         }
       }

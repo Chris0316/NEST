@@ -10,7 +10,7 @@ import Live from '@/views/Live'
 import My from '@/views/My'
 
 /**
-* 可公用页面组件
+* 探索流程页面
 * */
 import List from '@/views/List'
 import Search from '@/views/Search'
@@ -25,6 +25,11 @@ import BaseInfo1 from '@/views/auth/BaseInfo1'
 import BaseInfo2 from '@/views/auth/BaseInfo2'
 import Country from '@/views/auth/Country'
 import Language from '@/views/auth/Language'
+
+/**
+ * 帮住流程页面
+ * */
+import LivePublish from '@/views/live/Publish'
 
 Vue.use(Router)
 
@@ -49,6 +54,10 @@ export default new Router({
       path: '/live',
       name: 'Live',
       component: Live
+    }, {
+      path: '/live/publish',
+      name: 'LivePublish',
+      component: LivePublish
     }, {
       path: '/list/:type',
       name: 'List',

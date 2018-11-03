@@ -16,7 +16,7 @@ body {
 
 .arrow-right {
   position: relative;
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     margin-top: -.1rem;
@@ -31,9 +31,23 @@ body {
   }
 }
 
-.border-bottom {
+.border-top {
   position: relative;
   &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+  }
+}
+
+.border-bottom {
+  position: relative;
+  &::after {
     content: '';
     position: absolute;
     left: 0;

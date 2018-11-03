@@ -8,7 +8,7 @@
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="$emit('input', currentValue)" />
           <div class="nest-radio-core" :class="{ 'text-left': isAlignLeft }">
-            <span class="radio-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }" />
+            <span class="radio-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }"></span>
             <span class="radio-text">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
           </div>
         </label>
@@ -28,7 +28,7 @@
       },
       size: {
         type: String,
-        default: 'large'
+        default: ''
       },
       isAlignLeft: {
         type: Boolean,

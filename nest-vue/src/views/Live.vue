@@ -3,7 +3,7 @@
     <div class="live-title">帮住</div>
     <div class="swiper-container live-modules" ref="swiper1">
       <div class="swiper-wrapper">
-        <div class="swiper-slide module">
+        <div class="swiper-slide module" @click="$router.push({ name: 'LivePublish' })">
           <div class="title">帮住</div>
           <div class="desc">给我您的需求<br>帮您淘满意的房源</div>
         </div>

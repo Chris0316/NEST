@@ -1,7 +1,7 @@
 <template>
   <div class="nest-field">
-    <span class="indicator" v-if="hasIndicator" v-show="!hasFocused && !currentVal"></span>
-    <input class="nest-input" v-if="type !== 'textarea'" :type="type" v-model="currentVal" :maxlength="maxlength" :placeholder="placeholder"
+    <span class="indicator" v-if="hasIndicator" v-show="!hasFocused && !currentVal && !placeholder"></span>
+    <input class="nest-input" :class="textAlign" v-if="type !== 'textarea'" :type="type" v-model="currentVal" :maxlength="maxlength" :placeholder="placeholder"
            @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)" />
   </div>
 </template>
@@ -25,6 +25,10 @@
         type: String,
         default: 'text'
       },
+      textAlign: {
+        type: String,
+        default: 'left'
+      },
       maxlength: String,
       placeholder: String
     }
@@ -34,6 +38,7 @@
 <style lang="scss" scoped>
   .nest-field {
     position: relative;
+    flex: 1;
     .indicator {
       position: absolute;
       content: '';
@@ -50,6 +55,12 @@
       border: none;
       font-size: .28rem;
       color: #333;
+      &.center {
+        text-align: center;
+      }
+      &::-webkit-input-placeholder {
+        color: #b3b3b3;
+      }
     }
   }
 </style>
