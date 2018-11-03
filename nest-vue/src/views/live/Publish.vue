@@ -53,6 +53,13 @@
         <span class="label">手机号</span>
         <nest-field placeholder="无需区号，11位数"></nest-field>
       </div>
+      <div class="form-textarea">
+        <span class="label">其他需求</span>
+        <nest-field type="textarea"></nest-field>
+      </div>
+    </div>
+    <div class="btn-wrapper">
+      <nest-button type="primary">提交</nest-button>
     </div>
   </div>
 </template>
@@ -129,14 +136,18 @@
       display: flex;
       align-items: center;
       height: 1rem;
-      .label {
-        width: 1.9rem;
-        font-size: .28rem;
-        color: #333;
-      }
       .radio {
         width: 2.6rem;
       }
+    }
+    .label {
+      width: 1.9rem;
+      font-size: .28rem;
+      color: #333;
+    }
+    .form-textarea {
+      padding-top: .36rem;
+      display: flex;
     }
     .split {
       margin: 0 .2rem;
@@ -171,6 +182,10 @@
         background: url('../../assets/images/publish.png') no-repeat;
         background-size: 100% 100%;
       }
+    }
+    .btn-wrapper {
+      padding: 1px .68rem 1rem;
+      background-color: #f2f2f2;
     }
   }
 </style>

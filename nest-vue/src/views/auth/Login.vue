@@ -8,7 +8,7 @@
       <div class="form-group border-bottom">
         <div class="left">+63 <span class="flag"></span><div class="arrow-down"></div></div>
         <div class="right">
-          <input type="tel" class="form-input" placeholder="请输入手机号" />
+          <nest-field type="tel" class="form-input" placeholder="请输入手机号"></nest-field>
         </div>
       </div>
       <div class="form-tip">
@@ -99,14 +99,6 @@
         flex: 1;
         .form-input {
           padding: 0 .2rem;
-          font-size: .28rem;
-          color: #333;
-          width: 100%;
-          box-sizing: border-box;
-          border: none;
-          &::-webkit-input-placeholder {
-            color: #b3b3b3;
-          }
         }
       }
     }
