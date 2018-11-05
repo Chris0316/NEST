@@ -33,5 +33,18 @@ export default {
    */
   setSessionStorage(key, value) {
     window.sessionStorage.setItem(key, value);
+  },
+
+  /**
+   * 搜索界面输入的历史值
+   * 往LocalStorage中保存值
+   * @param storageKey
+   * @param searchWorld
+   */
+  fetch(storageKey){
+    return JSON.parse(localStorage.getItem(storageKey) || '[]')
+  },
+  save(storageKey,searchWorld){
+    localStorage.setItem(storageKey,JSON.stringify(searchWorld))
   }
 }
