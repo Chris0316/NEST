@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-header" v-if="!isFull">{{ title }}</div>
       <a href="javascript:;" class="modal-close" v-if="hasClear && !isFull" @click="$emit('modalClear')">清空</a>
-      <div class="modal-body">
+      <div class="modal-body" :class="{ full: bodyFull }">
         <slot></slot>
       </div>
       <div class="modal-footer" v-if="hasFooter">
@@ -50,6 +50,10 @@
       hasFooter: {
         type: Boolean,
         default: true
+      },
+      bodyFull: {
+        type: Boolean,
+        default: false
       }
     }
   }
@@ -106,6 +110,9 @@
 
   .modal-body {
     padding: .2rem .4rem .4rem;
+    &.full {
+      padding: 0;
+    }
   }
 
   .modal-footer {

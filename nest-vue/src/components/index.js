@@ -8,6 +8,7 @@ import NestUpload from './commons/NestUpload.vue'
 import NestSwitch from './commons/NestSwitch.vue'
 import NestField from './commons/NestField.vue'
 import NestButton from './commons/NestButton.vue'
+import NestCalendar from './commons/NestCalendar.vue'
 
 import NestHeader from './public/NestHeader'
 import NestNav from './public/NestNav'
@@ -26,7 +27,8 @@ let components = {
   NestUpload,
   NestSwitch,
   NestField,
-  NestButton
+  NestButton,
+  NestCalendar
 };
 
 let install = function (Vue) {

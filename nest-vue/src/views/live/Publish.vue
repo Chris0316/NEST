@@ -20,7 +20,7 @@
         <nest-field placeholder="最大金额" text-align="center"></nest-field>
         <span class="unit">万(Peso)</span>
       </div>
-      <div class="detail-link" v-if="!detailShow">
+      <div class="detail-link" v-if="!detailShow" @click="detailShow = true">
         <span>点击填写详细信息，轻松方便出租</span>
       </div>
       <template v-if="detailShow">
@@ -61,6 +61,9 @@
     <div class="btn-wrapper">
       <nest-button type="primary">提交</nest-button>
     </div>
+    <nest-modal :status="calendarShow" title="选择日期" :body-full="true">
+      <nest-calendar></nest-calendar>
+    </nest-modal>
   </div>
 </template>
 
@@ -76,7 +79,8 @@
         detailShow: false,
         waysOpts: ['整租', '合租'],
         typeOpts: ['一居室', '二居室', '三居室', '其他'],
-        sexOpts: ['先生', '女士']
+        sexOpts: ['先生', '女士'],
+        calendarShow: false
       }
     }
   }

@@ -1,6 +1,5 @@
 <template>
   <div class="follow">
-    asdfasdf
     <nest-nav page="follow"></nest-nav>
   </div>
 </template>
