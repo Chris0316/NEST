@@ -61,7 +61,7 @@
     <div class="btn-wrapper">
       <nest-button type="primary">提交</nest-button>
     </div>
-    <nest-modal :status="calendarShow" title="选择日期" :body-full="true">
+    <nest-modal :status="calendarShow" title="选择日期" :body-full="true" @modalClose="calendarShow = false">
       <nest-calendar></nest-calendar>
     </nest-modal>
   </div>
@@ -80,7 +80,7 @@
         waysOpts: ['整租', '合租'],
         typeOpts: ['一居室', '二居室', '三居室', '其他'],
         sexOpts: ['先生', '女士'],
-        calendarShow: false
+        calendarShow: true
       }
     }
   }

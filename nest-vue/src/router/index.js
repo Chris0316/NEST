@@ -1,105 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-/**
- * 四大模块首页
- * */
-import Explore from '@/views/Explore'
-import Follow from '@/views/Follow'
-import Live from '@/views/Live'
-import My from '@/views/My'
+import explore from './explore'
+import follow from './follow'
+import live from './live'
+import my from './my'
+import auth from './auth'
 
-/**
-* 探索流程页面
-* */
-import List from '@/views/List'
-import Search from '@/views/Search'
-import Details from '@/views/Details'
-import Pulish from '@/views/Pulish'
-
-/**
- * 登录/注册流程页面
- * */
-import Login from '@/views/auth/Login'
-import SmsCode from '@/views/auth/SmsCode'
-import BaseInfo1 from '@/views/auth/BaseInfo1'
-import BaseInfo2 from '@/views/auth/BaseInfo2'
 import Country from '@/views/auth/Country'
 import Language from '@/views/auth/Language'
 
-/**
- * 帮住流程页面
- * */
-import LivePublish from '@/views/live/Publish'
-
 Vue.use(Router)
 
+let routes = [
+  { path: '/', redirect: { name: 'Explore' } },
+  { path: '/country', name: 'Country', component: Country },
+  { path: '/language', name: 'Language', component: Language }
+].concat(explore, follow, live, my, auth);
+
 export default new Router({
-  routes:
-    [{
-      path: '/',
-      redirect: { name: 'Explore' }
-    }, {
-      path: '/explore',
-      name: 'Explore',
-      component: Explore
-    }, {
-      path: '/follow',
-      name: 'Follow',
-      component: Follow
-    }, {
-      path: '/my',
-      name: 'My',
-      component: My
-    }, {
-      path: '/live',
-      name: 'Live',
-      component: Live
-    }, {
-      path: '/live/publish',
-      name: 'LivePublish',
-      component: LivePublish
-    }, {
-      path: '/list/:type',
-      name: 'List',
-      component: List
-    }, {
-      path: '/search',
-      name: 'Search',
-      component: Search
-    }, {
-      path: '/details/:type/:id',
-      name: 'Details',
-      component: Details
-    }, {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    }, {
-      path: '/country',
-      name: 'Country',
-      component: Country
-    }, {
-      path: '/language',
-      name: 'Language',
-      component: Language
-    }, {
-      path: '/sms',
-      name: 'SmsCode',
-      component: SmsCode
-    }, {
-      path: '/info_1',
-      name: 'BaseInfo1',
-      component: BaseInfo1
-    }, {
-      path: '/info_2',
-      name: 'BaseInfo2',
-      component: BaseInfo2
-    }, {
-      path: '/pulish',
-      name: 'Pulish',
-      component: Pulish
-    }]
+  routes: routes
 })
 
 

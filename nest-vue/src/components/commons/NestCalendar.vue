@@ -39,7 +39,9 @@
       return {
         fullYear: this.value.getFullYear(),
         monthIndex: this.value.getMonth(),
-        options: []
+        options: [],
+        startDate: '',
+        endDate: ''
       }
     },
     props: {
