@@ -1,6 +1,6 @@
 <template>
   <div class="nest-field">
-    <span class="indicator" :class="{ 'textarea': type === 'textarea' }" v-if="hasIndicator" v-show="!hasFocused && !currentVal && !placeholder"></span>
+    <span class="indicator" :class="{ 'textarea': type === 'textarea', 'center': textAlign === 'center'}" v-if="hasIndicator" v-show="!hasFocused && !currentVal && !placeholder"></span>
     <input class="nest-input" :class="textAlign" v-if="type !== 'textarea'" :type="type" v-model="currentVal" :maxlength="maxLength" :placeholder="placeholder"
            @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)" />
     <textarea class="nest-textarea" v-else :placeholder="placeholder" v-model="currentVal" @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)"></textarea>
@@ -51,6 +51,10 @@
       height: .1rem;
       border-radius: .1rem;
       background-color: #d9d9d9;
+      &.center{
+        margin-left: -.05rem;
+        left: 50%;
+      }
       &.textarea {
         top: .14rem;
         margin-top: 0;

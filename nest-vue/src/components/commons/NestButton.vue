@@ -36,6 +36,10 @@
     font-size: .3rem;
     color: #fff;
     text-align: center;
+    &.m68{
+      margin: 0 auto;
+      width: 6.14rem;
+    }
     &.default {
 
     }
