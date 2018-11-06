@@ -2,29 +2,60 @@
   <div class="list-view">
     <!--  false是一行  -->
     <div v-if="double">
-      <div class="list-wrap">
-        <div class="unit" v-for="(recommend,index) in recommends">
-          <div class="unit-img"></div>
-          <div class="unit-place">{{recommend.roomplace}}</div>
-          <div class="unit-size" v-if="recommend.roomsizes.constructor === Array">
-            <div class="left" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
+      <!--多行-->
+      <div class="list-wrap" v-if="!listnowrap">
+          <div class="unit" v-for="(recommend,index) in recommends">
+            <div class="unit-img"></div>
+            <div class="unit-place">{{recommend.roomplace}}</div>
+            <div class="unit-size" v-if="recommend.roomsizes.constructor === Array">
+              <div class="left" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
+            </div>
+            <div class="unit-size" v-else="!recommend.roomsizes.constructor === Array">
+              <div class="left-str">{{recommend.roomsizes}}</div>
+            </div>
+            <div class="price-m" v-if="proprent">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">P/月</div>
+            </div>
+            <div class="price-m" v-if="propnew">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">P/㎡</div>
+              <div class="size">28.00-100.55 ㎡</div>
+            </div>
+            <div class="price-m" v-if="propsecond">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">万</div>
+              <div class="size">210,000 P/平</div>
+            </div>
           </div>
-          <div class="unit-size" v-else="!recommend.roomsizes.constructor === Array">
-            <div class="left-str">{{recommend.roomsizes}}</div>
-          </div>
-          <div class="price-m" v-if="proprent">
-            <div class="num">{{recommend.pricem}}</div>
-            <div class="month">P/月</div>
-          </div>
-          <div class="price-m" v-if="propnew">
-            <div class="num">{{recommend.pricem}}</div>
-            <div class="month">P/㎡</div>
-            <div class="size">28.00-100.55 ㎡</div>
-          </div>
-          <div class="price-m" v-if="propsecond">
-          <div class="num">{{recommend.pricem}}</div>
-          <div class="month">万</div>
-            <div class="size">210,000 P/平</div>
+      </div>
+
+      <!-- 一行 -->
+      <div v-if="listnowrap" class="list-wrap list-nowrap">
+        <div class="list-x">
+          <div class="unit" v-for="(recommend,index) in recommends">
+            <div class="unit-img"></div>
+            <div class="unit-place">{{recommend.roomplace}}</div>
+            <div class="unit-size" v-if="recommend.roomsizes.constructor === Array">
+              <div class="left" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
+            </div>
+            <div class="unit-size" v-else="!recommend.roomsizes.constructor === Array">
+              <div class="left-str">{{recommend.roomsizes}}</div>
+            </div>
+            <div class="price-m" v-if="proprent">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">P/月</div>
+            </div>
+            <div class="price-m" v-if="propnew">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">P/㎡</div>
+              <div class="size">28.00-100.55 ㎡</div>
+            </div>
+            <div class="price-m" v-if="propsecond">
+              <div class="num">{{recommend.pricem}}</div>
+              <div class="month">万</div>
+              <div class="size">210,000 P/平</div>
+            </div>
           </div>
         </div>
       </div>
@@ -73,6 +104,10 @@
   export default {
     name: "nest-list-view",
     props: {
+      listnowrap:{
+        type: Boolean,
+        default: false
+      },
       rent:{
         type: Boolean,
         default: true
@@ -270,6 +305,28 @@
       }
     }
   }
+  .list-x{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .list-nowrap{
+    padding-right: 0.28rem;
+    margin-left: 0rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    border: 1px solid #fff;
+    .unit{
+      &:nth-of-type(even) {
+        margin-right: 0.34rem;
+      }
+      &:first-child{
+        margin-left: 0.28rem;
+      }
+      &:last-child{
+        margin-right:  0.28rem;
+      }
+    }
+  }
 
   .search-list {
     display: flex;
@@ -385,5 +442,6 @@
       }
     }
   }
+
 
 </style>

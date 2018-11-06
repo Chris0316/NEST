@@ -15,6 +15,7 @@ import My from '@/views/My'
 import List from '@/views/List'
 import Search from '@/views/Search'
 import Details from '@/views/Details'
+import Pulish from '@/views/Pulish'
 
 /**
  * 登录/注册流程页面
@@ -94,6 +95,10 @@ export default new Router({
       path: '/info_2',
       name: 'BaseInfo2',
       component: BaseInfo2
+    }, {
+      path: '/pulish',
+      name: 'Pulish',
+      component: Pulish
     }]
 })
 

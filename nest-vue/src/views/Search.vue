@@ -43,13 +43,14 @@
 </template>
 
 <script>
-  import storageUtil from '../storageUtil/storageUtil'
+  import storageUtil from '../utils/Storage'
 
   export default {
     name: "search",
     created() {
       // 读取本地数据
-      this.listData = storageUtil.fetch();
+      this.listData = storageUtil.fetch('storageKey');
+      console.log(this.listData);
       // this.listData = ['马尼拉', 'jazz', '马尼拉', 'jazz'];
     },
     data() {
@@ -68,7 +69,7 @@
           return;
         }
         this.listData.push(Keyname);
-        storageUtil.save(this.listData);
+        storageUtil.save('storageKey',this.listData);
         this.searchkey = '';
       },
       changekey(keymsg) {
