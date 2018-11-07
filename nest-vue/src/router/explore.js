@@ -1,8 +1,8 @@
 import Explore from '@/views/Explore'
-import List from '@/views/List'
+import List from '@/views/explore/List'
 import Search from '@/views/Search'
-import Details from '@/views/Details'
-import Publish from '@/views/Publish'
+import Details from '@/views/explore/Details'
+import Publish from '@/views/explore/Publish'
 
 export default [
   { path: '/explore', name: 'Explore', component: Explore },

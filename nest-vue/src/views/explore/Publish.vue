@@ -164,43 +164,43 @@
         <div class="fac-title">配套设施</div>
         <div class="fac-row">
           <div class="fac-item">
-            <img class="fac-img fac-img0" src="../assets/images/fac0.png" alt="">
+            <img class="fac-img fac-img0" src="../../assets/images/fac0.png" alt="">
             <div class="fac-name">洗衣机</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img1" src="../assets/images/fac1.png" alt="">
+            <img class="fac-img fac-img1" src="../../assets/images/fac1.png" alt="">
             <div class="fac-name">静音空调</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img2" src="../assets/images/fac2.png" alt="">
+            <img class="fac-img fac-img2" src="../../assets/images/fac2.png" alt="">
             <div class="fac-name">普通空调</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img3" src="../assets/images/fac3.png" alt="">
+            <img class="fac-img fac-img3" src="../../assets/images/fac3.png" alt="">
             <div class="fac-name">热水器</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img4" src="../assets/images/fac4.png" alt="">
+            <img class="fac-img fac-img4" src="../../assets/images/fac4.png" alt="">
             <div class="fac-name">床</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img5" src="../assets/images/fac-on5.png" alt="">
+            <img class="fac-img fac-img5" src="../../assets/images/fac-on5.png" alt="">
             <div class="fac-name">电视</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img6" src="../assets/images/fac6.png" alt="">
+            <img class="fac-img fac-img6" src="../../assets/images/fac6.png" alt="">
             <div class="fac-name">冰箱</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img7" src="../assets/images/fac7.png" alt="">
+            <img class="fac-img fac-img7" src="../../assets/images/fac7.png" alt="">
             <div class="fac-name">宽带</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img8" src="../assets/images/fac8.png" alt="">
+            <img class="fac-img fac-img8" src="../../assets/images/fac8.png" alt="">
             <div class="fac-name">沙发</div>
           </div>
           <div class="fac-item">
-            <img class="fac-img fac-img9" src="../assets/images/fac9.png" alt="">
+            <img class="fac-img fac-img9" src="../../assets/images/fac9.png" alt="">
             <div class="fac-name">衣柜</div>
           </div>
         </div>
@@ -563,7 +563,7 @@
         margin: auto;
         width: 0.45rem;
         height: 0.4rem;
-        background: url("../assets/images/return-icon.png") no-repeat;
+        background: url("../../assets/images/return-icon.png") no-repeat;
         background-size: 100% 100%;
       }
     }
@@ -823,7 +823,7 @@
       margin-left: 0.19rem;
       width: 0.35rem;
       height: 0.34rem;
-      background: url("../assets/images/del-more.png") no-repeat;
+      background: url("../../assets/images/del-more.png") no-repeat;
       background-size: 100% 100%;
     }
     .pub-bottom {

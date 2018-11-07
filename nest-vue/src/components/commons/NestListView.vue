@@ -255,7 +255,8 @@
       word-break: break-all;
       margin-top: 0.2rem;
       margin-bottom: 0.2rem;
-      height: 0.76rem;
+      height: .64rem;
+      line-height: .32rem;
       font-size: 0.28rem;
       color: #333333;
       font-weight: bold;
@@ -383,6 +384,10 @@
         background-size: 100% 100%;
       }
       .msg-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: .08rem 0;
         flex-shrink: 0;
         width: 3.96rem;
         margin-left: 0.28rem;
@@ -391,7 +396,8 @@
       .title {
         word-break: break-all;
         margin-bottom: 0.1rem;
-        height: 0.76rem;
+        height: 0.64rem;
+        line-height: .32rem;
         font-size: 0.28rem;
         color: #333333;
         font-weight: bold;

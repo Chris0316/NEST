@@ -505,7 +505,7 @@
         content: "";
         width: .24rem;
         height: .24rem;
-        background: url('../assets/images/icon-plus.png') no-repeat;
+        background: url('../../assets/images/icon-plus.png') no-repeat;
         background-size: 100% 100%;
       }
       &.disabled {
@@ -645,7 +645,7 @@
         vertical-align: middle;
         width: .42rem;
         height: .38rem;
-        background: url("../assets/images/favorite.png") no-repeat;
+        background: url("../../assets/images/favorite.png") no-repeat;
         background-size: 100% 100%;
       }
       .share {
@@ -653,7 +653,7 @@
         vertical-align: middle;
         width: .38rem;
         height: .38rem;
-        background: url("../assets/images/share.png") no-repeat;
+        background: url("../../assets/images/share.png") no-repeat;
         background-size: 100% 100%;
       }
     }
