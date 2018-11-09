@@ -2,7 +2,7 @@
   <div class="home">
     <nest-header header-type="home"></nest-header>
     <div class="menus">
-      <router-link to="" class="menu-item">
+      <router-link to="/explore/publish" class="menu-item">
         <div class="menu-icon"></div>
         <div class="name">发布房源</div>
       </router-link>

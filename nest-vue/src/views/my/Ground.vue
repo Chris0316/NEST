@@ -5,20 +5,50 @@
       帮住广场
     </div>
     <div class="row-wrapper">
-      <div class="control-bar border-bottom">
+      <div class="control-bar">
         <button class="control-btn">类型</button>
         <button class="control-btn">区域</button>
       </div>
     </div>
-    <div class="list-item">
-      <div class="item border-bottom"></div>
+    <div class="list">
+      <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
+        <div class="item"
+             slot="content"
+             :class="item.type">
+          <div class="item-img"></div>
+          <div class="item-content">
+            <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span></div>
+            <div class="desc">
+              预算：{{ item.budget }}<br>
+              地区：{{ item.area }}
+            </div>
+            <div class="date">{{ item.date }}</div>
+          </div>
+        </div>
+        <template slot="controls">
+          <div class="follow"></div>
+          <div class="share"></div>
+        </template>
+      </nest-swipe-cell>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Ground"
+    name: "Ground",
+    data() {
+      return {
+        startPos: 0,
+        pos: 0,
+        options: [
+          { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
+          { title: '公寓', type: 'buy', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
+          { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
+          { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' }
+        ]
+      }
+    }
   }
 </script>
 
@@ -82,8 +112,81 @@
         transform-origin: left top;
       }
     }
+    .list {
+      margin-top: .6rem;
+    }
     .list-item {
+      margin-bottom: .4rem;
+    }
+    .item {
+      display: flex;
       padding: 0 .28rem;
+      &.rent {
+        .item-img {
+          background-color: rgba(139,181,223,.15);
+        }
+        .tag {
+          color: #8BB5DF;
+          background-color: rgba(139,181,223,.15);
+        }
+      }
+      &.buy {
+        .item-img {
+          background: rgba(213,190,136,.15);
+        }
+        .tag {
+          color: #D5BE88;
+          background-color: rgba(213,190,136,.15);
+        }
+      }
+      .item-img {
+        margin-right: .28rem;
+        width: 1.74rem;
+        height: 1.74rem;
+      }
+      .item-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: .06rem 0;
+        flex: 1;
+        .title {
+          display: flex;
+          align-items: center;
+          height: .36rem;
+          /*font-size: 0;*/
+          .txt {
+            /*display: inline-block;*/
+            /*vertical-align: middle;*/
+            font-size: .32rem;
+            font-weight: bold;
+            line-height: 1;
+            color: #333;
+          }
+          .tag {
+            /*display: inline-block;*/
+            /*vertical-align: middle;*/
+            padding: .06rem 0;
+            box-sizing: border-box;
+            margin-left: .2rem;
+            width: .8rem;
+            height: .36rem;
+            line-height: 1;
+            border-radius: .1rem;
+            font-size: .24rem;
+            text-align: center;
+          }
+        }
+        .desc {
+          font-size: .24rem;
+          color: #999;
+          line-height: .32rem;
+        }
+        .date {
+          font-size: .22rem;
+          color: #b3b3b3;
+        }
+      }
     }
   }
 </style>
