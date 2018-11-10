@@ -44,11 +44,6 @@
           {title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19'}
         ]
       }
-    },
-    watch: {
-      selectedIndex(val) {
-        console.log(val);
-      }
     }
   }
 </script>

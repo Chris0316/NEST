@@ -28,7 +28,7 @@
     data() {
       return {
         sexType: '',
-        sexTypeOpts: ['男士', '女士', '其他']
+        sexTypeOpts: ['先生', '女士', '其他']
       }
     }
   }

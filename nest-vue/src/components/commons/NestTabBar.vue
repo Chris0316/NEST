@@ -51,7 +51,7 @@
       color: #999;
       line-height: .68rem;
       box-sizing: border-box;
-      border: .04rem solid transparent;
+      border-bottom: .04rem solid transparent;
       &.on {
         color: #0f9183;
         border-bottom-color: #0f9183;
