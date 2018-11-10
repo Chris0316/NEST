@@ -10,6 +10,7 @@ import NestField from './commons/NestField.vue'
 import NestButton from './commons/NestButton.vue'
 import NestCalendar from './commons/NestCalendar.vue'
 import NestSwipeCell from './commons/NestSwipeCell.vue'
+import NestTabBar from './commons/NestTabBar.vue'
 
 import NestHeader from './public/NestHeader'
 import NestNav from './public/NestNav'
@@ -30,7 +31,8 @@ let components = {
   NestField,
   NestButton,
   NestCalendar,
-  NestSwipeCell
+  NestSwipeCell,
+  NestTabBar
 };
 
 let install = function (Vue) {

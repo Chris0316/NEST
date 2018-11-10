@@ -9,7 +9,7 @@
          @transitionend="removeTransition">
       <slot name="content"></slot>
     </div>
-    <div class="item-control" ref="control">
+    <div class="swipe-control" ref="control">
       <slot name="controls" ref="controlBar"></slot>
     </div>
   </div>
@@ -66,23 +66,11 @@
       transition: transform .3s ease-out;
     }
   }
-  .item-control {
+  .swipe-control {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     z-index: 1;
-    .follow {
-      width: 1.2rem;
-      height: .87rem;
-      background: rgba(15,145,131,.1) url('../../assets/images/heart.png') no-repeat center center;
-      background-size: .36rem .32rem;
-    }
-    .share {
-      width: 1.2rem;
-      height: .87rem;
-      background: rgba(15,145,131,.1) url('../../assets/images/share.png') no-repeat center center;
-      background-size: .3rem .3rem;
-    }
   }
 </style>

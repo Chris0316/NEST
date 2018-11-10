@@ -6,8 +6,8 @@
     </div>
     <div class="row-wrapper">
       <div class="control-bar">
-        <button class="control-btn">类型</button>
-        <button class="control-btn">区域</button>
+        <button class="control-btn" @click="typeShow = true">类型</button>
+        <button class="control-btn" @click="locationShow = true">区域</button>
       </div>
     </div>
     <div class="list">
@@ -31,6 +31,12 @@
         </template>
       </nest-swipe-cell>
     </div>
+    <nest-modal title="类型" modal-confirm-txt="确定" @modalClose="typeShow = false" :status="typeShow">
+      <nest-check v-model="typeVal" :options="typeOpts"></nest-check>
+    </nest-modal>
+    <nest-modal title="地点" modal-confirm-txt="确定" @modalClose="locationShow = false" :status="locationShow">
+      <nest-check v-model="locationVal" :options="locationOpts"></nest-check>
+    </nest-modal>
   </div>
 </template>
 
@@ -39,8 +45,12 @@
     name: "Ground",
     data() {
       return {
-        startPos: 0,
-        pos: 0,
+        locationShow: false,
+        typeShow: false,
+        locationVal: [],
+        locationOpts: ['马卡提(Makati)', '帕赛(Pasay)', '马尼拉市(City of Manila)', '曼达卢永(Mandaluyong)', '奎松(Quezon)', 'BGC(BGC, Taguig)', '帕西市(Pasig)'],
+        typeVal: [],
+        typeOpts: ['购置', '租赁'],
         options: [
           { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
           { title: '公寓', type: 'buy', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
@@ -151,27 +161,21 @@
         padding: .06rem 0;
         flex: 1;
         .title {
-          display: flex;
-          align-items: center;
-          height: .36rem;
-          /*font-size: 0;*/
+          font-size: 0;
           .txt {
-            /*display: inline-block;*/
-            /*vertical-align: middle;*/
+            display: inline-block;
+            vertical-align: middle;
             font-size: .32rem;
             font-weight: bold;
-            line-height: 1;
             color: #333;
           }
           .tag {
-            /*display: inline-block;*/
-            /*vertical-align: middle;*/
-            padding: .06rem 0;
-            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: middle;
             margin-left: .2rem;
             width: .8rem;
             height: .36rem;
-            line-height: 1;
+            line-height: .36rem;
             border-radius: .1rem;
             font-size: .24rem;
             text-align: center;
@@ -187,6 +191,18 @@
           color: #b3b3b3;
         }
       }
+    }
+    .follow {
+      width: 1.2rem;
+      height: .87rem;
+      background: rgba(15,145,131,.1) url('../../assets/images/heart.png') no-repeat center center;
+      background-size: .36rem .32rem;
+    }
+    .share {
+      width: 1.2rem;
+      height: .87rem;
+      background: rgba(15,145,131,.1) url('../../assets/images/share.png') no-repeat center center;
+      background-size: .3rem .3rem;
     }
   }
 </style>
