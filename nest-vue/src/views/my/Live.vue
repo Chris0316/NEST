@@ -4,28 +4,37 @@
       <div class="back" @click="$router.go(-1);"></div>
       我的帮住
     </div>
-    <nest-tab-bar class="tabs" :options="tabs" v-model="selectedIndex"></nest-tab-bar>
+    <nest-tab-bar class="tabs" v-model="tabSelected">
+      <nest-tab-item id="my">我的</nest-tab-item>
+      <nest-tab-item id="collect">收藏</nest-tab-item>
+    </nest-tab-bar>
     <div class="list">
-      <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
-        <div class="item"
-             slot="content"
-             :class="item.type">
-          <div class="item-img"></div>
-          <div class="item-content">
-            <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span>
+      <nest-tab-container v-model="tabSelected">
+        <nest-tab-container-item id="my">
+          <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
+            <div class="item"
+                 slot="content"
+                 :class="item.type">
+              <div class="item-img"></div>
+              <div class="item-content">
+                <div class="title">
+                  <span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span>
+                </div>
+                <div class="desc">
+                  预算：{{ item.budget }}<br>
+                  地区：{{ item.area }}
+                </div>
+                <div class="date">{{ item.date }}</div>
+              </div>
             </div>
-            <div class="desc">
-              预算：{{ item.budget }}<br>
-              地区：{{ item.area }}
+            <div slot="controls" class="item-control">
+              <div class="share"></div>
+              <div class="delete"></div>
             </div>
-            <div class="date">{{ item.date }}</div>
-          </div>
-        </div>
-        <div slot="controls" class="item-control">
-          <div class="share"></div>
-          <div class="delete"></div>
-        </div>
-      </nest-swipe-cell>
+          </nest-swipe-cell>
+        </nest-tab-container-item>
+        <nest-tab-container-item id="collect">456</nest-tab-container-item>
+      </nest-tab-container>
     </div>
   </div>
 </template>
@@ -35,8 +44,7 @@
     name: "Live",
     data() {
       return {
-        selectedIndex: 0,
-        tabs: ['我的', '收藏'],
+        tabSelected: 'my',
         options: [
           {title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19'},
           {title: '公寓', type: 'buy', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19'},

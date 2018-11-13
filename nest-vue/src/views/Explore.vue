@@ -58,7 +58,10 @@
     <div class="recommend">
       <div class="left">为你推荐</div>
       <div class="right">
-        <nest-tab-bar class="tabs" :options="tabs" v-model="selectedIndex" align="right"></nest-tab-bar>
+        <nest-tab-bar class="tabs" v-model="tabSelected" align="right">
+          <nest-tab-item id="rent">出租</nest-tab-item>
+          <nest-tab-item id="sell">出售</nest-tab-item>
+        </nest-tab-bar>
       </div>
     </div>
     <nest-list-view double/>
@@ -73,8 +76,7 @@
   export default {
     data() {
       return {
-        tabs: ['出租', '销售'],
-        selectedIndex: 0
+        tabSelected: 'rent'
       }
     },
     mounted() {

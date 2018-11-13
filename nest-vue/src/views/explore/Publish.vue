@@ -1,8 +1,8 @@
 <template>
-  <div class="pulish">
-    <div class="title">
+  <div class="publish">
+    <div class="header border-bottom">
+      <div class="back" @click="$router.go(-1);"></div>
       发布出租信息
-      <div class="return-img"></div>
     </div>
     <nest-upload></nest-upload>
     <div class="tag">
@@ -543,29 +543,26 @@
     resize: none
   }
 
-  .pulish {
+  .publish {
     overflow: hidden;
     font-size: 0.28rem;
     color: #333;
-    .title {
+    .header {
       position: relative;
-      width: 100%;
+      display: flex;
+      padding: 0 .28rem;
       height: 1.2rem;
-      text-align: center;
-      line-height: 1.2rem;
-      font-size: 0.32rem;
-      color: #333;
-      .return-img {
-        position: absolute;
-        left: 0.28rem;
-        top: 0rem;
-        bottom: 0rem;
-        margin: auto;
-        width: 0.45rem;
-        height: 0.4rem;
-        background: url("../../assets/images/return-icon.png") no-repeat;
-        background-size: 100% 100%;
-      }
+      justify-content: center;
+      align-items: center;
+    }
+    .back {
+      position: absolute;
+      top: 0;
+      left: .28rem;
+      width: .9rem;
+      height: 100%;
+      background: url('../../assets/images/return-icon.png') no-repeat left center;
+      background-size: .42rem .32rem;
     }
     .upload {
       width: 100%;

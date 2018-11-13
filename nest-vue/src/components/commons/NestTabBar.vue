@@ -1,11 +1,6 @@
 <template>
   <div class="nest-tab-bar" :class="[layout, align]">
-    <div class="tab-item"
-         :class="{ 'on': index === value }"
-         v-for="(item, index) in options"
-         @click="$emit('input', index)">
-      {{ item }}
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -13,7 +8,7 @@
   export default {
     name: "nest-tab-bar",
     props: {
-      value: Number,
+      value: String,
       layout: {
         type: String,
         default: 'auto'
@@ -21,8 +16,7 @@
       align: {
         type: String,
         default: 'left'
-      },
-      options: Array
+      }
     }
   }
 </script>
@@ -44,17 +38,6 @@
       .tab-item {
         margin-right: 0;
         margin-left: .45rem;
-      }
-    }
-    .tab-item {
-      margin-right: .45rem;
-      color: #999;
-      line-height: .68rem;
-      box-sizing: border-box;
-      border-bottom: .04rem solid transparent;
-      &.on {
-        color: #0f9183;
-        border-bottom-color: #0f9183;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="nest-modal" :class="{ full: isFull }">
-    <transition name="dialog">
+    <transition :name="dialogTranName">
       <div class="modal-dialog" v-show="status">
         <div class="modal-header" v-if="!isFull">{{ title }}</div>
         <a href="javascript:;" class="modal-close" v-if="hasClear && !isFull" @click="$emit('modalClear')">清空</a>
@@ -59,6 +59,15 @@
         type: Boolean,
         default: false
       }
+    },
+    computed: {
+      dialogTranName() {
+        if (this.isFull) {
+          return 'dialog-full'
+        } else {
+          return 'dialog'
+        }
+      }
     }
   }
 </script>
@@ -71,13 +80,18 @@
     .mask-enter, .mask-leave-to {
       opacity: 0;
     }
-    .dialog-enter-active, .dialog-leave-active {
+    .dialog-enter-active, .dialog-leave-active,
+    .dialog-full-enter-active, .dialog-full-leave-active {
       transform: translate3d(0,0,0);
       transition: .5s;
     }
     .dialog-enter, .dialog-leave-to {
       opacity: 0;
       transform: translate3d(0,-.2rem,0);
+    }
+    .dialog-full-enter, .dialog-full-leave-to {
+      opacity: 0;
+      transform: translate3d(.2rem,0,0);
     }
     .modal-backdrop {
       position: fixed;
@@ -134,7 +148,7 @@
       color: #fff;
       background-color: #0f9183;
     }
-    .full {
+    &.full {
       .modal-dialog {
         display: flex;
         flex-direction: column;
