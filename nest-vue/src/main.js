@@ -4,6 +4,7 @@ import Vue from 'vue'
 import components from './components'
 import App from './App'
 import router from './router'
+import './libs/remadaptor'
 
 Vue.use(components)
 
