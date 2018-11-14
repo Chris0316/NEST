@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="live-ground border-bottom">
-      <div class="banner"></div>
+      <div class="banner" @click="$router.push({ name: 'MyGround' })"></div>
     </div>
     <div class="form-group border-bottom arrow-right">
       <div class="label">我的信息</div>
@@ -75,6 +75,7 @@
 <style lang="scss" scoped>
   .my {
     padding: .4rem .28rem 2rem;
+    box-sizing: border-box;
     .personal-info {
       display: flex;
       justify-content: space-between;

@@ -36,10 +36,10 @@
         <div class="item-label">户型</div>
         <nest-check class="mt20" :options="typeOpts"></nest-check>
         <div class="item-label">可入住时间</div>
-        <div class="form-group border-bottom">
-          <nest-field placeholder="起始日期" text-align="center"></nest-field>
+        <div class="form-group border-bottom" @click="calendarShow = true">
+          <nest-field placeholder="起始日期" text-align="center" :readonly="true"></nest-field>
           <span class="split"></span>
-          <nest-field placeholder="截止日期" text-align="center"></nest-field>
+          <nest-field placeholder="截止日期" text-align="center" :readonly="true"></nest-field>
         </div>
       </template>
       <div class="form-group mt80 border-top border-bottom">
@@ -62,7 +62,7 @@
       <nest-button type="primary">提交</nest-button>
     </div>
     <nest-modal :status="calendarShow" title="选择日期" :body-full="true" @modalClose="calendarShow = false">
-      <nest-calendar></nest-calendar>
+      <nest-calendar :range="true" v-model="selectedDate"></nest-calendar>
     </nest-modal>
   </div>
 </template>
@@ -80,7 +80,8 @@
         waysOpts: ['整租', '合租'],
         typeOpts: ['一居室', '二居室', '三居室', '其他'],
         sexOpts: ['先生', '女士'],
-        calendarShow: true
+        calendarShow: false,
+        selectedDate: [new Date(2018, 9, 31)]
       }
     }
   }

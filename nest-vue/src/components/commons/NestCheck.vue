@@ -118,7 +118,7 @@
         white-space: nowrap;
       }
     }
-    .large {
+    &.large {
       .check-row {
         margin-bottom: .2rem;
         &:last-child {
@@ -137,7 +137,7 @@
         color: #333;
       }
     }
-    .small {
+    &.small {
       .check-row {
         margin-bottom: .2rem;
         &:last-child {

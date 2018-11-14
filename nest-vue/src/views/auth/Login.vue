@@ -35,6 +35,7 @@
 <style lang="scss" scoped>
   .login {
     padding: 0 .28rem;
+    box-sizing: border-box;
     .header {
       height: 1.2rem;
     }

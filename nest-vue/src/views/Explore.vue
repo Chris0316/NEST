@@ -2,7 +2,7 @@
   <div class="home">
     <nest-header header-type="home"></nest-header>
     <div class="menus">
-      <router-link to="" class="menu-item">
+      <router-link to="/explore/publish" class="menu-item">
         <div class="menu-icon"></div>
         <div class="name">发布房源</div>
       </router-link>
@@ -58,9 +58,10 @@
     <div class="recommend">
       <div class="left">为你推荐</div>
       <div class="right">
-        <div class="lease" :class="{on: curindex == i }" v-for="(lease,i) in leaseArr" :key="i"
-             @click="leaseChange(i)">{{lease}}
-        </div>
+        <nest-tab-bar class="tabs" v-model="tabSelected" align="right">
+          <nest-tab-item id="rent">出租</nest-tab-item>
+          <nest-tab-item id="sell">出售</nest-tab-item>
+        </nest-tab-bar>
       </div>
     </div>
     <nest-list-view double/>
@@ -73,17 +74,9 @@
   import Swiper from 'swiper'
 
   export default {
-    props: {
-      leaseArr: {
-        type: Array,
-        default: function () {
-          return ['出租', '销售'];
-        }
-      }
-    },
     data() {
       return {
-        curindex: 0
+        tabSelected: 'rent'
       }
     },
     mounted() {
@@ -209,10 +202,8 @@
         display: flex;
         font-size: 0.28rem;
         color: #999999;
-        .lease {
-          margin-right: 0.45rem;
-          padding-bottom: 0.2rem;
-          border-bottom: 0.04rem solid #ffff;
+        .tabs {
+          padding-right: .28rem;
         }
         .on {
           color: #0f9183;

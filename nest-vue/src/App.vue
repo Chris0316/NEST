@@ -1,7 +1,7 @@
 <template>
   <div id="app" @touchstart>
     <transition :name="transitionName">
-      <router-view/>
+      <router-view class="view" />
     </transition>
   </div>
 </template>
@@ -32,6 +32,12 @@
 
 <style lang="scss">
   @import "./assets/scss/commons.scss";
+
+  .view {
+    width: 100%;
+    min-height: 100%;
+    background-color: #fff;
+  }
 
   .slide-left-enter-active,
   .slide-left-leave-active,

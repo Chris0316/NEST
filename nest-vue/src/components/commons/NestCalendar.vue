@@ -7,9 +7,9 @@
         <div class="cell right" @click="fullYear++;"></div>
       </div>
       <div class="control-group">
-        <div class="cell left" @click="monthIndex === 0 ? monthIndex = 11 : monthIndex--"></div>
+        <div class="cell left" @click="prevMonth"></div>
         <div class="cell">{{ monthIndex + 1 }}</div>
-        <div class="cell right" @click="monthIndex === 11 ? monthIndex = 0 : monthIndex++"></div>
+        <div class="cell right" @click="nextMonth"></div>
       </div>
     </div>
     <ul class="calendar-th border-bottom">
@@ -23,10 +23,10 @@
     </ul>
     <ul class="calendar-tr">
       <li class="calendar-cell"
-          :class="[{ 'disabled': item.monthType !== 'current' }, item.itemStyle]"
+          :class="[{ 'disabled': item.monthType !== 'current' }, getDatesClass(item)]"
           v-for="item in options"
           @click="selectDate(item)">
-        {{ item.date }}
+        {{ item.date.getDate() }}
       </li>
     </ul>
   </div>
@@ -36,29 +36,39 @@
   export default {
     name: "nest-calendar",
     data() {
+      const value = Array.isArray(this.value) ? this.value : (this.value ? [this.value] : []);
       return {
-        fullYear: this.value.getFullYear(),
-        monthIndex: this.value.getMonth(),
+        fullYear: value.length === 0 ? new Date().getFullYear() : value[0].getFullYear(),
+        monthIndex: value.length === 0 ? new Date().getMonth() : value[0].getMonth(),
         options: [],
-        startDate: '',
-        endDate: ''
+        currentVal: value
       }
     },
     props: {
+      /**
+       * v-model绑定时无论是否是范围取值都需要传入数组
+       * */
       value: {
-        type: Date,
-        default: function () {
-          return new Date();
-        }
+        type: Array
+      },
+      range: {
+        type: Boolean,
+        default: false
       }
     },
     created() {
-      this.options = this.render()
+      this.options = this.render();
     },
     computed: {
+      /**
+       * 当月天数
+       * */
       currentMonthOfDays() {
         return this.daysInTargetMonth(this.fullYear, this.monthIndex);
       },
+      /**
+       * 上月天数
+       * */
       prevMonthOfDays() {
         let year = this.fullYear;
         let monthIndex = this.monthIndex - 1;
@@ -68,7 +78,10 @@
         }
         return this.daysInTargetMonth(year, monthIndex);
       },
-      targetDay() {
+      /**
+       * 指定月份1号是星期几
+       * */
+      dayOfCurrentMonth() {
         return new Date(this.fullYear, this.monthIndex, 1).getDay();
       }
     },
@@ -88,36 +101,103 @@
         }
         return daysInMonth[monthIndex];
       },
+      /**
+       * 渲染日历
+       * */
       render() {
         let daysArr = [],
-          nextMonthDay = 0;
-        for (let i = 1; i <= this.targetDay; i++) {
+          date = null,
+          nextMonthOfDays = 0;
+        for (let i = 1; i <= this.dayOfCurrentMonth; i++) {
+          date = this.getFullDate(this.fullYear, this.monthIndex - 1, this.prevMonthOfDays - this.dayOfCurrentMonth + i);
           daysArr.push({
             monthType: 'prev',
-            itemStyle: '',
-            date: this.prevMonthOfDays - this.targetDay + i
+            date: date
           });
         }
-        for (let j = 1; j <= 42 - this.targetDay; j++) {
+        for (let j = 1; j <= 42 - this.dayOfCurrentMonth; j++) {
           if (j > this.currentMonthOfDays) {
-            nextMonthDay++;
+            nextMonthOfDays++;
+            date = this.getFullDate(this.fullYear, this.monthIndex + 1, nextMonthOfDays);
             daysArr.push({
               monthType: 'next',
-              itemStyle: '',
-              date: nextMonthDay
+              date: date
             });
           } else {
+            date = this.getFullDate(this.fullYear, this.monthIndex, j);
             daysArr.push({
               monthType: 'current',
-              itemStyle: '',
-              date: j
+              date: date
             });
           }
         }
         return daysArr;
       },
+      getFullDate(year, monthIndex, date) {
+        if (monthIndex < 0) {
+          year--;
+          monthIndex = 11;
+        } else if (monthIndex > 11) {
+          year++;
+          monthIndex = 0;
+        }
+        return new Date(year, monthIndex, date);
+      },
+      prevMonth() {
+        if (this.monthIndex === 0) {
+          this.monthIndex = 11;
+          this.fullYear--;
+        } else {
+          this.monthIndex--;
+        }
+      },
+      nextMonth() {
+        if (this.monthIndex === 11) {
+          this.monthIndex = 0;
+          this.fullYear++;
+        } else {
+          this.monthIndex++;
+        }
+      },
+      /**
+       * 渲染日历状态
+       * @param item 当前月份日历每一天
+       * */
+      getDatesClass(item) {
+        let className = '',
+          date = item.date;
+        if (this.currentVal.length === 1 && date.getTime() === this.currentVal[0].getTime()) {
+          className = 'active';
+        } else if (this.currentVal.length === 2) {
+          if (date.getTime() === this.currentVal[0].getTime() || date.getTime() === this.currentVal[1].getTime()) {
+            className = 'active';
+          } else if (date.getTime() > this.currentVal[0].getTime() && date.getTime() < this.currentVal[1].getTime()) {
+            className = 'active-range';
+          }
+        }
+        return className;
+      },
+      /**
+       * 选中日历状态
+       * @param item 当前月份日历每一天
+       * */
       selectDate(item) {
-        item.itemStyle = 'active';
+        if (!this.range) {
+          this.currentVal = [item.date];
+          this.$emit('input', this.currentVal);
+        } else {
+          if (this.currentVal.length === 2 || this.currentVal.length === 0) {
+            this.currentVal = [];
+            this.currentVal.push(item.date);
+          } else if (this.currentVal.length === 1) {
+            if (item.date.getTime() <= this.currentVal[0].getTime()) {
+              this.currentVal = [item.date];
+            } else {
+              this.currentVal.push(item.date);
+              this.$emit('input', this.currentVal);
+            }
+          }
+        }
       }
     }
   }
@@ -173,6 +253,10 @@
       }
       &.active {
         background-color: #0f9183;
+        color: #fff;
+      }
+      &.active-range {
+        background-color: #ADD9D5;
         color: #fff;
       }
     }

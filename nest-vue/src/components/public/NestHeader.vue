@@ -98,16 +98,10 @@
         keyValue:''
       }
     },
-    watch: {
-      rangeVal(val) {
-        console.log(val);
-      }
-    },
     methods: {
       changekey(keymsg){
         this.keyValue = keymsg;
-        console.log(this.keyValue);
-      },
+      }
     },
   }
 </script>

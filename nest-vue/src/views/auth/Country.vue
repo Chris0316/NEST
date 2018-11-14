@@ -53,6 +53,7 @@
 <style lang="scss" scoped>
   .country {
     padding: 0 .28rem;
+    box-sizing: border-box;
     .header {
       height: 1.2rem;
     }

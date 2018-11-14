@@ -28,7 +28,7 @@
     data() {
       return {
         sexType: '',
-        sexTypeOpts: ['男士', '女士', '其他']
+        sexTypeOpts: ['先生', '女士', '其他']
       }
     }
   }
@@ -37,6 +37,7 @@
 <style lang="scss" scoped>
   .base-info {
     padding: 0 .28rem;
+    box-sizing: border-box;
     .header {
       height: 1.2rem;
     }
