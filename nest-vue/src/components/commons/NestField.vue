@@ -7,22 +7,24 @@
     <input class="nest-input" :class="textAlign"
            v-if="type !== 'textarea'"
            :type="type"
-           v-model="currentVal"
            :maxlength="maxLength"
            :placeholder="placeholder"
            :readonly="readonly"
            :disabled="disabled"
+           :value="currentVal"
            @focus="hasFocused = true"
            @blur="hasFocused = false"
-           @input="$emit('input', currentVal)" />
+           @change="$emit('change', currentVal)"
+           @input="handleInput" />
     <textarea class="nest-textarea" v-else
               :placeholder="placeholder"
               v-model="currentVal"
+              :rows="rows"
               :readonly="readonly"
               :disabled="disabled"
               @focus="hasFocused = true"
               @blur="hasFocused = false"
-              @input="$emit('input', currentVal)">
+              @change="$emit('change', currentVal)">
     </textarea>
   </div>
 </template>
@@ -46,20 +48,28 @@
         type: String,
         default: 'text'
       },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      },
       textAlign: {
         type: String,
         default: 'left'
       },
+      rows: String,
+      disabled: Boolean,
+      readonly: Boolean,
       maxLength: String,
       placeholder: String
+    },
+    watch: {
+      value(val) {
+        this.currentVal = val;
+      },
+      currentVal (val) {
+        this.$emit('input', val);
+      }
+    },
+    methods: {
+      handleInput(e) {
+        this.currentVal = e.target.value;
+      }
     }
   }
 </script>

@@ -37,9 +37,9 @@
         <nest-check class="mt20" :options="typeOpts"></nest-check>
         <div class="item-label">可入住时间</div>
         <div class="form-group border-bottom" @click="calendarShow = true">
-          <nest-field placeholder="起始日期" text-align="center" :readonly="true"></nest-field>
+          <nest-field placeholder="起始日期" text-align="center" :readonly="true" v-model="startDate"></nest-field>
           <span class="split"></span>
-          <nest-field placeholder="截止日期" text-align="center" :readonly="true"></nest-field>
+          <nest-field placeholder="截止日期" text-align="center" :readonly="true" v-model="endDate"></nest-field>
         </div>
       </template>
       <div class="form-group mt80 border-top border-bottom">
@@ -81,7 +81,15 @@
         typeOpts: ['一居室', '二居室', '三居室', '其他'],
         sexOpts: ['先生', '女士'],
         calendarShow: false,
-        selectedDate: [new Date(2018, 9, 31)]
+        selectedDate: [],
+        startDate: '',
+        endDate: ''
+      }
+    },
+    watch: {
+      selectedDate(val) {
+        this.startDate = val[0].getFullYear() + '-' + (val[0].getMonth() + 1) + '-' + val[0].getDate();
+        this.endDate = val[1].getFullYear() + '-' + (val[1].getMonth() + 1) + '-' + val[1].getDate();
       }
     }
   }
