@@ -1,9 +1,29 @@
 <template>
   <div class="nest-field">
-    <span class="indicator" :class="{ 'textarea': type === 'textarea', 'center': textAlign === 'center'}" v-if="hasIndicator" v-show="!hasFocused && !currentVal && !placeholder"></span>
-    <input class="nest-input" :class="textAlign" v-if="type !== 'textarea'" :type="type" v-model="currentVal" :maxlength="maxLength" :placeholder="placeholder"
-           @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)" />
-    <textarea class="nest-textarea" v-else :placeholder="placeholder" v-model="currentVal" @focus="hasFocused = true" @blur="hasFocused = false" @input="$emit('input', currentVal)"></textarea>
+    <span class="indicator" :class="{ 'textarea': type === 'textarea', 'center': textAlign === 'center'}"
+          v-if="hasIndicator"
+          v-show="!hasFocused && !currentVal && !placeholder">
+    </span>
+    <input class="nest-input" :class="textAlign"
+           v-if="type !== 'textarea'"
+           :type="type"
+           v-model="currentVal"
+           :maxlength="maxLength"
+           :placeholder="placeholder"
+           :readonly="readonly"
+           :disabled="disabled"
+           @focus="hasFocused = true"
+           @blur="hasFocused = false"
+           @input="$emit('input', currentVal)" />
+    <textarea class="nest-textarea" v-else
+              :placeholder="placeholder"
+              v-model="currentVal"
+              :readonly="readonly"
+              :disabled="disabled"
+              @focus="hasFocused = true"
+              @blur="hasFocused = false"
+              @input="$emit('input', currentVal)">
+    </textarea>
   </div>
 </template>
 
@@ -25,6 +45,14 @@
       type: {
         type: String,
         default: 'text'
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      readonly: {
+        type: Boolean,
+        default: false
       },
       textAlign: {
         type: String,

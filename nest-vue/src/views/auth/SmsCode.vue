@@ -63,6 +63,7 @@
 <style lang="scss" scoped>
   .sms-code {
     padding: 0 .28rem;
+    box-sizing: border-box;
     .header {
       height: 1.2rem;
     }

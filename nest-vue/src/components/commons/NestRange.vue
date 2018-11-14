@@ -114,7 +114,7 @@
       },
       rangeTouchEnd() {
         this.rangesOldVals = [this.currentStartVal, this.currentEndVal];
-        this.$emit('input', [this.currentStartVal, this.currentEndVal]);
+        this.$emit('input', this.rangesOldVals);
       }
     }
   }
