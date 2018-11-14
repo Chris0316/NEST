@@ -6,7 +6,7 @@
       <div class="modal-body" :class="{ full: bodyFull }">
         <slot></slot>
       </div>
-      <div class="modal-footer" v-if="hasFooter">
+      <div :class="oneline?'modal-oneline':'modal-footer'" v-if="hasFooter">
         <button class="modal-btn cancel" v-if="hasCancel" @click="$emit('modalCancel')">{{ modalCancelTxt }}</button>
         <button class="modal-btn confirm" @click="$emit('modalConfirm')">{{ modalConfirmTxt }}</button>
       </div>
@@ -54,7 +54,11 @@
       bodyFull: {
         type: Boolean,
         default: false
-      }
+      },
+      oneline: {
+        type: Boolean,
+        default: false
+      },
     }
   }
 </script>
@@ -117,6 +121,18 @@
 
   .modal-footer {
     padding: .2rem .4rem .4rem;
+  }
+  .modal-oneline{
+    display: flex;
+    justify-content: space-around;
+    padding: .2rem .4rem .4rem;
+    .modal-btn{
+      width:2.5rem;
+    }
+    .cancel{
+      color: #999999;
+      background: #F2F2F2;
+    }
   }
 
   .modal-btn {

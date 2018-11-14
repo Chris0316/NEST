@@ -2,30 +2,40 @@
   <div class="search">
     <div class="search-wrap">
       <div class="search-box">
-        <input class="search-msg" type="text" v-model="searchkey" @input="inputFun">
+        <input class="search-msg" type="text" v-model="searchkey" @input="inputFun" @focus="focusFun" @blur="blurFun">
         <div class="search-img" @click="saveKey"></div>
-        <nest-select class="sear-sel" @keyValue="changekey" :seleNum="0"/>
+
+        <!--首页搜索-->
+        <!--<nest-select class="sear-sel" @keyValue="changekey" :seleNum="0"/>-->
+
+
+        <div class="delete" v-if="deleteShow" @click="clearSearch"></div>
       </div>
       <div class="cancel" @click="cleanAll">
         取消
       </div>
     </div>
     <div class="no-act" v-if="listShow">
-      <div class="near">我的附近</div>
-      <div class="near-place">
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-        <div class="one-place">jazz</div>
-      </div>
+
+      <!--首页搜索-->
+      <!--<div class="near">我的附近</div>-->
+      <!--<div class="near-place">-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+        <!--<div class="one-place">jazz</div>-->
+      <!--</div>-->
+
+
+
       <div class="search-pre">
         <div class="left">历史搜索</div>
         <div class="right" @click="cleanList">
@@ -58,7 +68,8 @@
         listData: [],
         listShow: true,
         searchkey: '',
-        keyValue: ''
+        keyValue: '',
+        deleteShow:false
       }
     },
     methods: {
@@ -92,6 +103,15 @@
         this.listShow = true;
         this.searchkey = '';
         this.$router.go(-1);
+      },
+      blurFun(){
+        this.deleteShow = false;
+      },
+      focusFun(){
+        this.deleteShow = true
+      },
+      clearSearch(){
+        this.searchkey = '';
       }
     },
   }
@@ -126,6 +146,16 @@
         position: relative;
         width: 5.06rem;
         height: 0.8rem;
+        .delete{
+          position: absolute;
+          top: 50%;
+          right: 0.25rem;
+          margin-top: -0.16rem;
+          width: 0.32rem;
+          height: 0.32rem;
+          background: url("../assets/images/delete.png") no-repeat;
+          background-size: 100% 100%;
+        }
       }
       .search-msg {
         box-sizing: border-box;
