@@ -503,7 +503,6 @@
             margin-bottom: 0.18rem;
             font-size: 0.32rem;
             color: #333;
-            font-weight: bold;
           }
           .skill{
             font-size: 0.24rem;
