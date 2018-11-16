@@ -14,7 +14,7 @@
       <div class="form-tip">
         未注册的手机号自动创建鸟巢账户
       </div>
-      <nest-button class="mt90" type="primary" @click="getSms">获取短信验证码</nest-button>
+      <nest-button class="mt60" type="primary" size="full" @click="getSms">获取短信验证码</nest-button>
       <div class="login-tip" @click="getSms">其他登录方式</div>
       <div class="third-login">
         <div class="third wechat"></div>

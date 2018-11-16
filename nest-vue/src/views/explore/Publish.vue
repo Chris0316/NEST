@@ -6,12 +6,7 @@
     </div>
     <nest-upload></nest-upload>
     <div class="tag">
-      <!--tag-item-->
-      <div class="control-btn">公寓</div>
-      <div class="control-btn">别墅</div>
-      <div class="control-btn">民居</div>
-      <div class="control-btn">商铺 / 写字楼</div>
-      <div class="control-btn">车位</div>
+      <nest-radio :options="typeOpts" :count-in-row="3" cell-type="default"></nest-radio>
     </div>
     <div class="realm ">
       <div class="realm-name">用途</div>
@@ -127,7 +122,7 @@
       <div class="realm ">
         <div class="realm-name">车位</div>
         <div class="realm-content">
-          <nest-radio :countInRow="3" size="small" :options="['有(免费)','有(需另议)','无']"></nest-radio>
+          <nest-radio :countInRow="3" size="small" :options="['有(免费)','有(另议)','无']"></nest-radio>
         </div>
       </div>
       <div class="realm ">
@@ -527,7 +522,12 @@
 
 <script>
   export default {
-    name: "Pulish"
+    name: "Pulish",
+    data() {
+      return {
+        typeOpts: ['公寓','别墅','民居','商铺/写字楼','车位']
+      }
+    }
   }
 </script>
 
@@ -574,33 +574,8 @@
     }
     .tag {
       margin: 0rem 0.28rem;
-      display: flex;
-      flex-wrap: wrap;
-      padding-top: 0.2rem;
+      padding: 0.2rem 0;
       border-bottom: 1px solid #E5E5E5;
-      .tag-item {
-        margin-right: 0.28rem;
-        margin-bottom: 0.2rem;
-        font-size: 0.28rem;
-        padding: 0.17rem 0.32rem;
-        line-height: 1;
-        border: 1px solid #b2b2b2;
-        border-radius: 0.1rem;
-        /*position: relative;*/
-        /*&::before {*/
-        /*content: '';*/
-        /*position: absolute;*/
-        /*left: 0;*/
-        /*bottom: 0;*/
-        /*width: 100%;*/
-        /*border-top: 1px solid #b2b2b2;*/
-        /*transform-origin: 0 100%;*/
-        /*transform: scaleY(0.5);*/
-        /*}*/
-        &:nth-child(4) {
-          margin-right: 0rem;
-        }
-      }
     }
     .realm {
       position: relative;

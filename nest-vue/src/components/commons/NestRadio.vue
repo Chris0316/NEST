@@ -7,7 +7,7 @@
                  v-model="currentValue"
                  :value="optionsInCell(rowIndex, cellIndex).value || optionsInCell(rowIndex, cellIndex)"
                  @change="$emit('input', currentValue)" />
-          <div class="nest-radio-core" :class="{ 'text-left': isAlignLeft, 'default': showDefault }">
+          <div class="nest-radio-core" :class="[{ 'text-left': isAlignLeft, 'default-txt': showDefault }, cellType]">
             <span class="radio-img" v-if="optionsInCell(rowIndex, cellIndex).icon" :style="{ backgroundImage: 'url(' + optionsInCell(rowIndex, cellIndex).icon + ')' }"></span>
             <span class="radio-text">{{ optionsInCell(rowIndex, cellIndex).label || optionsInCell(rowIndex, cellIndex) }}</span>
           </div>
@@ -38,6 +38,7 @@
         type: Boolean,
         default: false
       },
+      cellType: String,
       options: Array
     },
     data() {
@@ -88,7 +89,10 @@
           position: relative;
           color: #fff;
           background-color: #0f9183;
-          &.default {
+          &::before {
+            display: none;
+          }
+          &.default-txt {
             &::after {
               position: absolute;
               content: '默认';
@@ -104,6 +108,7 @@
       }
     }
     .nest-radio-core {
+      position: relative;
       padding: 0 .28rem;
       display: flex;
       height: .6rem;
@@ -115,6 +120,23 @@
       text-align: center;
       &.text-left {
         text-align: left;
+      }
+      &.default {
+        background-color: transparent;
+        color: #333;
+        &::before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          border: 1px solid #b2b2b2;
+          border-radius: .2rem;
+          box-sizing: border-box;
+          width: 200%;
+          height: 200%;
+          transform: scale(0.5);
+          transform-origin: left top;
+        }
       }
       .radio-img {
         margin-right: .2rem;
