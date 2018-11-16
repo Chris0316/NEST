@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="btn-wrapper" v-if="pageType === 'my'">
-      <nest-button type="primary">发布新的帮住</nest-button>
+      <nest-button type="primary" size="full">发布新的帮住</nest-button>
     </div>
     <div class="control-bar" v-else>
       <div class="controls">

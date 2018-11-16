@@ -59,7 +59,7 @@
       </div>
     </div>
     <div class="btn-wrapper">
-      <nest-button type="primary">提交</nest-button>
+      <nest-button type="primary" size="full">提交</nest-button>
     </div>
     <nest-modal :status="calendarShow" title="选择日期" :body-full="true" @modalClose="calendarShow = false">
       <nest-calendar :range="true" v-model="selectedDate"></nest-calendar>

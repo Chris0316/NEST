@@ -8,6 +8,9 @@
       <nest-tab-item id="my">我的</nest-tab-item>
       <nest-tab-item id="collect">收藏</nest-tab-item>
     </nest-tab-bar>
+    <div class="btn-wrap">
+      <nest-button>发布中</nest-button>
+    </div>
     <div class="list">
       <nest-tab-container v-model="tabSelected">
         <nest-tab-container-item id="my">
@@ -78,6 +81,9 @@
     }
     .tabs {
       padding: 0 .28rem;
+    }
+    .btn-wrap {
+      padding: .4rem .28rem 0;
     }
     .list {
       margin-top: .6rem;

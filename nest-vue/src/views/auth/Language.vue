@@ -6,7 +6,7 @@
     <div class="content">
       <div class="title">语言</div>
       <nest-check class="mt60" :options="languageOpts" v-model="language" size="large" :count-in-row="1"></nest-check>
-      <nest-button class="mt263" type="primary" :disabled="true">保存</nest-button>
+      <nest-button class="mt263" type="primary" size="full" :disabled="true">保存</nest-button>
     </div>
   </div>
 </template>

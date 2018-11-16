@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="btn-wrapper">
-      <nest-button type="primary">确定</nest-button>
+      <nest-button type="primary" size="full">确定</nest-button>
     </div>
   </div>
 </template>

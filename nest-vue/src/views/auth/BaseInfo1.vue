@@ -21,7 +21,7 @@
         <nest-field class="group-right"></nest-field>
       </div>
       <div class="form-tip">姓名和昵称是平台上的唯一标识，一旦设定不可修改</div>
-      <nest-button class="mt90" type="primary" :disabled="true">下一步</nest-button>
+      <nest-button class="mt90" type="primary" size="full" :disabled="true">下一步</nest-button>
     </div>
   </div>
 </template>

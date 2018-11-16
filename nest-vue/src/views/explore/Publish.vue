@@ -518,7 +518,7 @@
       <nest-field type="textarea"></nest-field>
     </div>
     <div class="pub-bottom">
-      <nest-button type="primary m68">发布</nest-button>
+      <nest-button type="primary" size="full">发布</nest-button>
     </div>
 
 
@@ -824,7 +824,7 @@
       background-size: 100% 100%;
     }
     .pub-bottom {
-      padding: 0.5rem 0rem 1rem 0rem;
+      padding: 0.5rem .68rem 1rem;
       background: #F2F2F2;
     }
     .control-btn {

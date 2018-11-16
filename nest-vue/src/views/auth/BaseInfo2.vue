@@ -17,7 +17,7 @@
         <nest-field class="group-right"></nest-field>
       </div>
       <div class="form-tip">设置邮箱，更好的使用帮住功能</div>
-      <nest-button class="mt90" type="primary" :disabled="true">完成</nest-button>
+      <nest-button class="mt90" type="primary" size="full" :disabled="true">完成</nest-button>
     </div>
   </div>
 </template>
