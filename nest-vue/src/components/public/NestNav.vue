@@ -29,7 +29,7 @@
     height: .8rem;
     background: #fff;
     box-shadow: 0 -.01rem .05rem 0 rgba(234, 234, 234, 1);
-    z-index: 1;
+    z-index: 2;
   }
   .nav-item {
     position: relative;

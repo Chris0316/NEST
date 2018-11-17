@@ -62,38 +62,35 @@
     </div>
     <div v-else>
       <div class="search-list">
-        <div class="search-item" v-for="(recommend,index) in recommends">
-          <div class="move-wrap"
-               :style="{left: currentIndex==index?distanceX+'rem':'0rem'}"
-               @touchstart="fingerStart(index,$event)"
-               @touchmove="fingerMove"
-               @touchend="fingerEnd"
-          >
-            <div class="item-img"></div>
-            <div class="msg-wrap">
-              <div class="title">{{recommend.roomplace}}</div>
-              <div class="type-wrap" v-if="recommend.roomsizes.constructor === Array">
-                <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
-              </div>
-              <div class="type-wrap" v-else="!recommend.roomsizes.constructor === Array">
-                <div class="type-str">{{recommend.roomsizes}}</div>
-              </div>
-              <div class="rent" v-if="!recommend.rentsize">
-                <div class="price">{{recommend.pricem}}</div>
-                <div class="price-msg">P/月</div>
-              </div>
-              <div class="rent" v-else-if="recommend.rentsize">
-                <div class="price">{{recommend.pricem}}</div>
-                <div class="price-msg">P/㎡</div>
-                <div class="room-size">{{recommend.rentsize}}</div>
+        <nest-swipe-cell  v-for="(recommend,index) in recommends" :key="index">
+          <div class="search-item" slot="content">
+            <div class="move-wrap">
+              <div class="item-img"></div>
+              <div class="msg-wrap">
+                <div class="title">{{recommend.roomplace}}</div>
+                <div class="type-wrap" v-if="recommend.roomsizes.constructor === Array">
+                  <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
+                </div>
+                <div class="type-wrap" v-else="!recommend.roomsizes.constructor === Array">
+                  <div class="type-str">{{recommend.roomsizes}}</div>
+                </div>
+                <div class="rent" v-if="!recommend.rentsize">
+                  <div class="price">{{recommend.pricem}}</div>
+                  <div class="price-msg">P/月</div>
+                </div>
+                <div class="rent" v-else-if="recommend.rentsize">
+                  <div class="price">{{recommend.pricem}}</div>
+                  <div class="price-msg">P/㎡</div>
+                  <div class="room-size">{{recommend.rentsize}}</div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="collect">
+          <div class="collect" slot="controls">
             <div class="heart"></div>
             <div class="share"></div>
           </div>
-        </div>
+        </nest-swipe-cell>
       </div>
     </div>
   </div>
@@ -192,34 +189,11 @@
         proprent:this.rent,
         propsecond:this.second,
         propnew:this.new,
-        propparking:this.parking,
-        startX: 0,
-        distanceX: 0,
-        endX: 0,
-        currentIndex: -1
+        propparking:this.parking
       }
     },
     methods: {
-      fingerStart(i, ev) {
-        this.currentIndex = i;
-        this.startX = ev.changedTouches[0].clientX;
-      },
-      fingerMove(ev) {
 
-        var mediumX = (ev.changedTouches[0].clientX - this.startX) * 2 / 100;
-        if (this.mediumX >= 0) {
-          return;
-        }
-        if (mediumX < -0.6) {
-          this.distanceX = -1.2;
-        } else if (mediumX > -0.6) {
-          this.distanceX = 0;
-        }
-      },
-      fingerEnd(ev) {
-        // this.distanceX = ev.changedTouches[0].clientX-this.startX;
-        // console.log('end',this.distanceX);
-      },
     }
   }
 </script>
@@ -228,7 +202,6 @@
   .list-view {
     overflow: hidden;
   }
-
   .list-wrap {
     margin-left: 0.28rem;
     display: flex;
@@ -328,12 +301,10 @@
       }
     }
   }
-
   .search-list {
     display: flex;
     flex-direction: column;
     .search-item {
-      position: relative;
       display: flex;
       width: 100%;
       height: 1.74rem;
@@ -347,31 +318,6 @@
         display: flex;
         background: #fff;
         transition: left 0.5s;
-      }
-      .collect {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        flex-shrink: 0;
-        width: 1.2rem;
-        height: 1.74rem;
-        background-color: #e7f4f2;
-      }
-      .heart {
-        width: 0.36rem;
-        height: 0.32rem;
-        background: url("../../assets/images/heart.png") no-repeat;
-        background-size: 100% 100%;
-      }
-      .share {
-        width: 0.3rem;
-        height: 0.3rem;
-        background: url("../../assets/images/share.png") no-repeat;
-        background-size: 100% 100%;
       }
       .item-img {
         margin-left: 0.28rem;
@@ -446,6 +392,28 @@
         font-size: 0.22rem;
         color: #cccccc;
       }
+    }
+    .collect {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      flex-shrink: 0;
+      width: 1.2rem;
+      height: 1.74rem;
+      background-color: #e7f4f2;
+    }
+    .heart {
+      width: 0.36rem;
+      height: 0.32rem;
+      background: url("../../assets/images/heart.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .share {
+      width: 0.3rem;
+      height: 0.3rem;
+      background: url("../../assets/images/share.png") no-repeat;
+      background-size: 100% 100%;
     }
   }
 
