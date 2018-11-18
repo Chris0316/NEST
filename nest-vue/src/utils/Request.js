@@ -21,6 +21,7 @@ instance.interceptors.response.use(response => {
    * 如通过xmlhttprequest 状态码标识 逻辑可写在下面error中
    */
   const res = response.data;
+
   if (res.status == 401) {
     //未授权跳转到登录
   }else if(res.status >= 300 || res.status < 200){
