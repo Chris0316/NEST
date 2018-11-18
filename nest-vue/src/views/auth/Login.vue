@@ -8,7 +8,7 @@
       <div class="form-group border-bottom">
         <div class="left">+63 <span class="flag"></span><div class="arrow-down"></div></div>
         <div class="right">
-          <nest-field type="tel" class="form-input" placeholder="请输入手机号"></nest-field>
+          <nest-field type="tel" class="form-input" placeholder="请输入手机号" v-model="phone"></nest-field>
         </div>
       </div>
       <div class="form-tip">
@@ -31,10 +31,16 @@
 
   export default {
     name: "Login",
+    data() {
+      return {
+        phone: '13802934458'
+      }
+    },
     methods: {
       getSms() {
-        AuthService.getSms('13800000005', (res) => {
-          console.log(res);
+        AuthService.getSms(this.phone, (res) => {
+          let key = res.data.key;
+          this.$router.push({ name: 'SmsCode', query: { phone: this.phone, key: key } })
         });
       }
     }

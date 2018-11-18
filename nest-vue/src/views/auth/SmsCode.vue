@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import AuthService from '../../services/AuthService';
+
   export default {
     name: "sms-code",
     data() {
@@ -51,8 +53,19 @@
         return this.smsCode.substring(5, 6);
       }
     },
+    mounted() {
+      this.$refs.smsInp.focus();
+    },
     methods: {
-      checkSms() {},
+      checkSms() {
+        let phone = this.$route.query.phone,
+          key = this.$route.query.key;
+        if (this.smsCode.length === 6) {
+          AuthService.smsLogin(phone, this.smsCode, key, (res) => {
+            console.log(res);
+          })
+        }
+      },
       smsFocus() {
         this.$refs.smsInp.focus();
       }
