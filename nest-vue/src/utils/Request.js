@@ -1,16 +1,16 @@
 import axios from 'axios';
+import Utils from './Utils';
+
 
 let instance = axios.create({
   baseURL: 'http://api.ohmynest.com/api',
-  timeout: 1000 * 10,
-  headers: {}
+  timeout: 1000 * 3
 });
 
 instance.interceptors.request.use(config => {
-  console.log('请求发送前');
+  config.headers['Authorization'] = Utils.getAccessToken() ? 'Bearer ' + Utils.getAccessToken() : '';
   return config;
 }, error => {
-  console.log('请求发生错误');
   return Promise.reject(error);
 });
 
