@@ -145,15 +145,21 @@
       <div class="module-title title-spe">户型介绍</div>
 
 
-      <div class="swiper-container info-list" ref="infoList">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide info-item">
+      <div class="info-list" ref="swiper1">
+        <div class="info-list-wrap">
+          <div class="info-item">
             <div class="info-img"></div>
             <div class="info-text1">3室2厅2卫</div>
             <div class="info-text2">建面 91㎡ 朝向南</div>
             <div class="info-text3">约569万</div>
           </div>
-          <div class="swiper-slide info-item">
+          <div class="info-item">
+            <div class="info-img "></div>
+            <div class="info-text1 ">3室2厅2卫</div>
+            <div class="info-text2 ">建面 91㎡ 朝向南</div>
+            <div class="info-text3 ">约569万</div>
+          </div>
+          <div class="info-item">
             <div class="info-img "></div>
             <div class="info-text1 ">3室2厅2卫</div>
             <div class="info-text2 ">建面 91㎡ 朝向南</div>
@@ -163,18 +169,18 @@
       </div>
 
       <!--<div class="info-list">-->
-        <!--<div class="info-item">-->
-          <!--<div class="info-img"></div>-->
-          <!--<div class="info-text1">3室2厅2卫</div>-->
-          <!--<div class="info-text2">建面 91㎡ 朝向南</div>-->
-          <!--<div class="info-text3">约569万</div>-->
-        <!--</div>-->
-        <!--<div class="info-item">-->
-          <!--<div class="info-img"></div>-->
-          <!--<div class="info-text1">3室2厅2卫</div>-->
-          <!--<div class="info-text2">建面 91㎡ 朝向南</div>-->
-          <!--<div class="info-text3">约569万</div>-->
-        <!--</div>-->
+      <!--<div class="info-item">-->
+      <!--<div class="info-img"></div>-->
+      <!--<div class="info-text1">3室2厅2卫</div>-->
+      <!--<div class="info-text2">建面 91㎡ 朝向南</div>-->
+      <!--<div class="info-text3">约569万</div>-->
+      <!--</div>-->
+      <!--<div class="info-item">-->
+      <!--<div class="info-img"></div>-->
+      <!--<div class="info-text1">3室2厅2卫</div>-->
+      <!--<div class="info-text2">建面 91㎡ 朝向南</div>-->
+      <!--<div class="info-text3">约569万</div>-->
+      <!--</div>-->
       <!--</div>-->
 
     </div>
@@ -202,72 +208,61 @@
       </div>
 
       <!--new second-->
-      <div v-if="propnew" class="swiper-container scroll-wrapper" ref="scrollWrapper2">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers at Circuit Makati</div>
-              <div class="item-sub">Makati, 1207 Metro Manila</div>
-              <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100.55 ㎡</span></div>
+      <div v-if="propnew" class="similar" ref="swiper2">
+        <div class="similar-wrap">
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers at Circuit Makati</div>
+            <div class="item-sub">Makati, 1207 Metro Manila</div>
+            <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100.55 ㎡</span>
             </div>
           </div>
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers</div>
-              <div class="item-sub">Makati, 1207 Metro Manila</div>
-              <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100.55 ㎡</span></div>
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers</div>
+            <div class="item-sub">Makati, 1207 Metro Manila</div>
+            <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100.55 ㎡</span>
             </div>
           </div>
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers at Circuit Makati</div>
-              <div class="item-sub">Makati, 1207 Metro Manila</div>
-              <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100</span></div>
-            </div>
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers at Circuit Makati</div>
+            <div class="item-sub">Makati, 1207 Metro Manila</div>
+            <div class="item-desc"><span class="tag-main">210,000 P/㎡</span><span class="tag-sub">28.00-100</span></div>
           </div>
         </div>
       </div>
-      <div v-if="propsecond"  class="swiper-container scroll-wrapper" ref="scrollWrapper2">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers at Circuit Makati</div>
-              <div class="unit-size">
-                <div class="left">10F</div>
-                <div class="left">150.55㎡</div>
-              </div>
-              <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+      <div v-if="propsecond" class="similar" ref="swiper2">
+        <div class="similar-wrap">
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers at Circuit Makati</div>
+            <div class="unit-size">
+              <div class="left">10F</div>
+              <div class="left">150.55㎡</div>
             </div>
+            <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
           </div>
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers at Circuit Makati</div>
-              <div class="unit-size">
-                <div class="left">10F</div>
-                <div class="left">150.55㎡</div>
-              </div>
-              <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers at Circuit Makati</div>
+            <div class="unit-size">
+              <div class="left">10F</div>
+              <div class="left">150.55㎡</div>
             </div>
+            <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
           </div>
-          <div class="swiper-slide one-r">
-            <div class="item">
-              <div class="item-img"></div>
-              <div class="item-title">Callisto Towers at Circuit Makati</div>
-              <div class="unit-size">
-                <div class="left">10F</div>
-                <div class="left">150.55㎡</div>
-              </div>
-              <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
+          <div class="item">
+            <div class="item-img"></div>
+            <div class="item-title">Callisto Towers at Circuit Makati</div>
+            <div class="unit-size">
+              <div class="left">10F</div>
+              <div class="left">150.55㎡</div>
             </div>
+            <div class="item-desc"><span class="tag-main">40万</span><span class="tag-sub">210,000 P/平</span></div>
           </div>
         </div>
       </div>
-
     </div>
     <div class="publish">
       <div class="tips">我也要出售？</div>
@@ -285,53 +280,58 @@
 </template>
 
 <script>
-  import 'swiper/dist/css/swiper.min.css'
-  import Swiper from 'swiper'
+  import BScroll from 'better-scroll';
+
   // {routeType: "rent"} second new parking
   export default {
-    props:{
-      rent:{
+    props: {
+      rent: {
         type: Boolean,
         default: false
       },
-      second:{
+      second: {
         type: Boolean,
         default: false
       },
-      new:{
+      new: {
         type: Boolean,
         default: true
       },
-      parking:{
+      parking: {
         type: Boolean,
         default: false
       },
     },
-    created(){
-      setTimeout(()=>{
+    created() {
+      this.$nextTick(() => {
         this.initSwiper();
-        },20);
+      });
       console.log(this.$route.params);
     },
-    data () {
+    data() {
       return {
-        proprent:this.rent,
-        propsecond:this.second,
-        propnew:this.new,
-        propparking:this.parking,
+        proprent: this.rent,
+        propsecond: this.second,
+        propnew: this.new,
+        propparking: this.parking,
       }
     },
-    methods:{
-      initSwiper(){
-        new Swiper(this.$refs.scrollWrapper2, {
-          slidesPerView: 'auto',
-          freeMode: true
+    methods: {
+      initSwiper() {
+        new BScroll(this.$refs.swiper1, {
+          eventPassthrough: 'vertical',
+          scrollX: true,
+          click: true
         });
-
-        new Swiper(this.$refs.infoList, {
-          slidesPerView: 'auto',
-          freeMode: true
+        new BScroll(this.$refs.swiper2, {
+          eventPassthrough: 'vertical',
+          scrollX: true,
+          click: true
         });
+        // new Swiper(this.$refs.infoList, {
+        //   slidesPerView: 'auto',
+        //   freeMode: true
+        // });
       }
     }
   }
@@ -342,6 +342,7 @@
   .details {
     background-color: #fff;
   }
+
   .head-bar {
     position: fixed;
     top: 0;
@@ -537,15 +538,15 @@
     padding-bottom: .85rem;
   }
 
-  .scroll-wrapper {
-    padding: 0 .28rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    font-size: 0;
+  .similar {
+    display: flex;
+    overflow: hidden;
+    .similar-wrap {
+      display: flex;
+      padding: 0 .28rem;
+    }
     .item {
-      display: inline-block;
-      vertical-align: top;
+      flex-shrink: 0;
       width: 3.6rem;
       margin-right: .6rem;
       .item-img {
@@ -624,6 +625,7 @@
       box-sizing: border-box;
     }
   }
+
   .control-bar {
     display: flex;
     position: fixed;
@@ -674,59 +676,64 @@
       background-color: #0F9183;
     }
   }
-  .info-list{
+
+  .info-list {
     margin-top: 0.2rem;
     display: flex;
-    .info-item{
+    overflow: hidden;
+    .info-list-wrap {
+      display: flex;
+      padding: 0 .28rem;
+    }
+    .info-item {
       margin-right: 0.34rem;
-      margin-left: 0.28rem;
       display: flex;
       flex-direction: column;
-      width: auto;
-      height: auto;
-      &:nth-of-type(even) {
-        margin-left: 0rem;
+      &:last-child {
+        margin-right: 0;
       }
     }
-    .info-img{
+    .info-img {
       width: 3.3rem;
       height: 2.36rem;
       background: #e8e8ea;
       border-radius: 0.1rem;
     }
-    .info-text1{
+    .info-text1 {
       margin: 0.1rem 0rem;
-      font-size:0.28rem;
+      font-size: 0.28rem;
       color: #333333;
       font-weight: bold;
     }
-    .info-text2{
+    .info-text2 {
       margin-bottom: 0.1rem;
       font-size: 0.24rem;
       color: #b2b2b2;
     }
-    .info-text3{
+    .info-text3 {
       font-size: 0.28rem;
       color: #0F9183;
       font-weight: bold;
     }
   }
-  .details-spe{
+
+  .details-spe {
     padding: 0rem 0rem 0.6rem 0rem;
-    .title-spe{
+    .title-spe {
       margin-left: 0.28rem;
     }
   }
-  .scroll-wrapper{
+
+  .scroll-wrapper {
     box-sizing: border-box;
     padding: 0 .28rem;
-    .swiper-slide{
+    .swiper-slide {
       width: auto;
       height: auto;
     }
-    .one-r{
+    .one-r {
       margin-right: 0.34rem;
-      &:last-child{
+      &:last-child {
         margin-right: 0rem;
       }
     }

@@ -11,27 +11,25 @@
       </div>
     </div>
     <div class="list">
-      <scroller :on-refresh="refresh" :on-infinite="infinite">
-        <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
-          <div class="item"
-               slot="content"
-               :class="item.type">
-            <div class="item-img"></div>
-            <div class="item-content">
-              <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span></div>
-              <div class="desc">
-                预算：{{ item.budget }}<br>
-                地区：{{ item.area }}
-              </div>
-              <div class="date">{{ item.date }}</div>
+      <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
+        <div class="item"
+             slot="content"
+             :class="item.type">
+          <div class="item-img"></div>
+          <div class="item-content">
+            <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span></div>
+            <div class="desc">
+              预算：{{ item.budget }}<br>
+              地区：{{ item.area }}
             </div>
+            <div class="date">{{ item.date }}</div>
           </div>
-          <template slot="controls">
-            <div class="follow"></div>
-            <div class="share"></div>
-          </template>
-        </nest-swipe-cell>
-      </scroller>
+        </div>
+        <template slot="controls">
+          <div class="follow"></div>
+          <div class="share"></div>
+        </template>
+      </nest-swipe-cell>
     </div>
     <nest-modal title="类型" modal-confirm-txt="确定" @modalClose="typeShow = false" :status="typeShow">
       <nest-check v-model="typeVal" :options="typeOpts"></nest-check>
@@ -59,12 +57,6 @@
           { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' },
           { title: '公寓', type: 'rent', budget: '400-500万Peso', area: '马卡提（Makati）', date: '2018-08-19' }
         ]
-      }
-    },
-    methods: {
-      refresh(done) {},
-      infinite(done) {
-
       }
     }
   }
@@ -131,9 +123,7 @@
       }
     }
     .list {
-      position: relative;
       margin-top: .6rem;
-      height: 300px;
     }
     .list-item {
       margin-bottom: .4rem;

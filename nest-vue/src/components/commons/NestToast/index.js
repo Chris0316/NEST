@@ -21,6 +21,15 @@ let showToast = (type, options = {}) => {
 const Toast = {
   info(options) {
     showToast('info', options);
+  },
+  loading(options) {
+    showToast('loading', options);
+  },
+  hide() {
+    if (instance) {
+      instance.close();
+      instance = null;
+    }
   }
 };
 

@@ -1,25 +1,25 @@
 <template>
   <div class="live">
     <div class="live-title">帮住</div>
-    <div class="swiper-container live-modules" ref="swiper1">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide module" @click="$router.push({ name: 'LivePublish' })">
+    <div class="live-modules" ref="swiper1">
+      <div class="modules-wrap">
+        <div class="module" @click="$router.push({ name: 'LivePublish' })">
           <div class="title">帮住</div>
           <div class="desc">给我您的需求<br>帮您淘满意的房源</div>
         </div>
-        <div class="swiper-slide module">
+        <div class="module">
           <div class="title">入门攻略</div>
           <div class="desc">帮您了解海外购置房产全流程</div>
         </div>
-        <div class="swiper-slide module">
+        <div class="module">
           <div class="title">买房攻略</div>
           <div class="desc">您的疑惑和顾虑我来消除</div>
         </div>
-        <div class="swiper-slide module">
+        <div class="module">
           <div class="title">开盘快报</div>
           <div class="desc">最新的楼盘资讯早班车，勿错过</div>
         </div>
-        <div class="swiper-slide module">
+        <div class="module">
           <div class="title">时政经济</div>
           <div class="desc">政策先知道，紧握投资形势</div>
         </div>
@@ -69,19 +69,18 @@
 </template>
 
 <script>
-  import 'swiper/dist/css/swiper.min.css'
-  import Swiper from 'swiper';
+  import BScroll from 'better-scroll';
 
   export default {
     name: "Live",
     mounted() {
-      setTimeout(() => {
-        new Swiper(this.$refs.swiper1, {
-          slidesPerView: 'auto',
-          freeMode: true,
-          releaseOnEdges: false
+      this.$nextTick(() => {
+        new BScroll(this.$refs.swiper1, {
+          eventPassthrough: 'vertical',
+          scrollX: true,
+          click: true
         });
-      }, 20);
+      });
     }
   }
 </script>
@@ -96,9 +95,15 @@
       line-height: 1;
     }
     .live-modules {
+      display: flex;
       margin-top: .6rem;
-      padding: 0 .28rem;
+      overflow: hidden;
+      .modules-wrap {
+        display: flex;
+        padding: 0 .28rem;
+      }
       .module {
+        flex-shrink: 0;
         padding: .2rem;
         width: 2.8rem;
         height: 2rem;

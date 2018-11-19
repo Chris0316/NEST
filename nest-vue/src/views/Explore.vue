@@ -23,33 +23,33 @@
         <div class="name">车位</div>
       </router-link>
     </div>
-    <div class="swiper-container topics" ref="swiper1">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide topic" @click="showToast">
+    <div class="topics" ref="swiper1">
+      <div class="topics-wrap">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="swiper-slide topic">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
-        <div class="swiper-slide topic">
+        <div class="topic">
           <div class="title">温馨一居室</div>
           <div class="msg">属于你的独享空间</div>
         </div>
       </div>
     </div>
-    <div class="swiper-container topics budget" ref="swiper2">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide topic">
+    <div class="topics budget" ref="swiper2">
+      <div class="topics-wrap">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="swiper-slide topic">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
-        <div class="swiper-slide topic">
+        <div class="topic">
           <div class="title">500万预算</div>
           <div class="msg">小资一族上车</div>
         </div>
@@ -70,8 +70,7 @@
 </template>
 
 <script>
-  import 'swiper/dist/css/swiper.min.css'
-  import Swiper from 'swiper'
+  import BScroll from 'better-scroll';
 
   export default {
     data() {
@@ -80,32 +79,24 @@
       }
     },
     mounted() {
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.initSwiper();
-      }, 20);
+      });
     },
     methods: {
-      showToast() {
-        this.$toast.info({
-          message: '你妈妈喊你接电话，你到底接不接',
-          callback: () => {
-            console.log(343)
-          }
-        });
-      },
       leaseChange(i) {
         this.curindex = i;
       },
       initSwiper() {
-        new Swiper(this.$refs.swiper1, {
-          slidesPerView: 'auto',
-          freeMode: true,
-          releaseOnEdges: false
+        new BScroll(this.$refs.swiper1, {
+          eventPassthrough: 'vertical',
+          scrollX: true,
+          click: true
         });
-        new Swiper(this.$refs.swiper2, {
-          slidesPerView: 'auto',
-          freeMode: true,
-          releaseOnEdges: false
+        new BScroll(this.$refs.swiper2, {
+          eventPassthrough: 'vertical',
+          scrollX: true,
+          click: true
         });
       }
     }
@@ -158,15 +149,21 @@
     }
     .topics {
       margin-top: 1rem;
-      padding: 0 .28rem;
+      display: flex;
+      overflow: hidden;
+      .topics-wrap {
+        display: flex;
+        padding: 0 .28rem;
+      }
       .topic {
+        flex-shrink: 0;
         margin-right: 0.1rem;
         width: 2.8rem;
         height: 2rem;
         background: #f5f5f7;
         border-radius: 0.1rem;
-        &:last-child {
-          margin-right: 0;
+        &:first-child {
+          margin-left: 0;
         }
         .title {
           margin-top: 0.2rem;
