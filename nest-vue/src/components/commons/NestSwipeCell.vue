@@ -21,7 +21,8 @@
     data() {
       return {
         transitionClass: '',
-        startPos: 0,
+        startX: 0,
+        startY: 0,
         offsetX: 0,
         controlWidth: 0,
         distance: 0
@@ -29,12 +30,28 @@
     },
     methods: {
       handleTouchStart(event) {
-        this.startPos = event.touches[0].clientX; // 手指触点X位置
+        this.startX = event.touches[0].clientX; // 手指触点X位置
+        this.startY = event.touches[0].clientY; // 手指触点Y位置
         this.controlWidth = this.$refs.control.offsetWidth; // 操作按钮栏宽度
+        this._swipeX = true;
+        this._swipeY = true;
       },
       handleTouchMove(event) {
-        let currentPos = event.touches[0].clientX;
-        this.offsetX = (currentPos - this.startPos) + this.distance; // 移动位置
+        let currentX = event.touches[0].clientX,
+          currentY = event.touches[0].clientY,
+          absPos = (currentX - this.startX) + this.distance;
+        if (absPos > 0)
+          absPos = 0;
+        else if (absPos < 0 - this.controlWidth)
+          absPos = 0 - this.controlWidth;
+        if (this._swipeX && Math.abs(currentX - this.startX) - Math.abs(currentY - this.startY) > 0) {
+          // 左右滑动
+          event.stopPropagation();
+          event.preventDefault();
+          this._swipeY = false;
+          this.offsetX = absPos; // 移动位置
+        } else if (this._swipeY && Math.abs(currentX - this.startX) - Math.abs(currentY - this.startY) < 0)
+          this._swipeX = false;
       },
       handleTouchEnd() {
         this.transitionClass = 'release';
@@ -58,6 +75,7 @@
   .nest-swipe-cell, .swipe-wrapper {
     position: relative;
   }
+
   .swipe-wrapper {
     position: relative;
     z-index: 2;
@@ -66,6 +84,7 @@
       transition: transform .3s ease-out;
     }
   }
+
   .swipe-control {
     position: absolute;
     top: 0;

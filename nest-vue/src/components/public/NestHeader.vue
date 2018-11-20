@@ -9,7 +9,7 @@
     </div>
     <div class="control-wrap">
       <nest-button class="mr28" @click="locationShow = !locationShow">地点</nest-button>
-      <nest-button class="mr28" @click="roomTypeShow = !roomTypeShow">地点</nest-button>
+      <nest-button class="mr28" @click="roomTypeShow = !roomTypeShow">户型</nest-button>
       <nest-button class="mr28" @click="conditionShow = !conditionShow" v-if="headerType !== 'home'">筛选</nest-button>
       <div class="sort-btn" @click="sortShow = !sortShow" v-if="headerType !== 'home'"></div>
     </div>
