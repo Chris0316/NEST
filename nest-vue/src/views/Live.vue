@@ -1,93 +1,96 @@
 <template>
   <div class="live">
-    <div class="live-title">帮住</div>
-    <div class="live-modules" ref="swiper1">
-      <div class="modules-wrap">
-        <div class="module" @click="$router.push({ name: 'LivePublish' })">
-          <div class="title">帮住</div>
-          <div class="desc">给我您的需求<br>帮您淘满意的房源</div>
+    <nest-scroll class="app-body">
+      <div class="live-body">
+        <div class="live-title">帮住</div>
+        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="live-modules">
+          <div class="modules-wrap">
+            <div class="module" @click="$router.push({ name: 'LivePublish' })">
+              <div class="title">帮住</div>
+              <div class="desc">给我您的需求<br>帮您淘满意的房源</div>
+            </div>
+            <div class="module">
+              <div class="title">入门攻略</div>
+              <div class="desc">帮您了解海外购置房产全流程</div>
+            </div>
+            <div class="module">
+              <div class="title">买房攻略</div>
+              <div class="desc">您的疑惑和顾虑我来消除</div>
+            </div>
+            <div class="module">
+              <div class="title">开盘快报</div>
+              <div class="desc">最新的楼盘资讯早班车，勿错过</div>
+            </div>
+            <div class="module">
+              <div class="title">时政经济</div>
+              <div class="desc">政策先知道，紧握投资形势</div>
+            </div>
+          </div>
+        </nest-scroll>
+        <div class="category-container">
+          <div class="category">
+            <span class="favorite"></span>
+            <div class="category-text">
+              “外国人”在菲律宾购置房产的政策法规深度解析
+            </div>
+          </div>
         </div>
-        <div class="module">
-          <div class="title">入门攻略</div>
-          <div class="desc">帮您了解海外购置房产全流程</div>
+        <div class="category-container">
+          <div class="category">
+            <span class="favorite"></span>
+            <div class="category-tag hot">
+              <span>购房常识</span>
+            </div>
+            <div class="category-text">
+              菲律宾房产投资入门攻略
+            </div>
+          </div>
         </div>
-        <div class="module">
-          <div class="title">买房攻略</div>
-          <div class="desc">您的疑惑和顾虑我来消除</div>
-        </div>
-        <div class="module">
-          <div class="title">开盘快报</div>
-          <div class="desc">最新的楼盘资讯早班车，勿错过</div>
-        </div>
-        <div class="module">
-          <div class="title">时政经济</div>
-          <div class="desc">政策先知道，紧握投资形势</div>
+        <div class="category-container">
+          <div class="category">
+            <span class="favorite"></span>
+            <div class="category-tag">
+              <span>购房常识</span>
+            </div>
+            <div class="category-text">
+              菲律宾租房流程
+            </div>
+          </div>
+          <div class="category">
+            <span class="favorite"></span>
+            <div class="category-tag">
+              <span>投资参考</span>
+            </div>
+            <div class="category-text">
+              华人海外房产投资“新宠”
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="category-container">
-      <div class="category">
-        <span class="favorite"></span>
-        <div class="category-text">
-          “外国人”在菲律宾购置房产的政策法规深度解析
-        </div>
-      </div>
-    </div>
-    <div class="category-container">
-      <div class="category">
-        <span class="favorite"></span>
-        <div class="category-tag hot">
-          <span>购房常识</span>
-        </div>
-        <div class="category-text">
-          菲律宾房产投资入门攻略
-        </div>
-      </div>
-    </div>
-    <div class="category-container">
-      <div class="category">
-        <span class="favorite"></span>
-        <div class="category-tag">
-          <span>购房常识</span>
-        </div>
-        <div class="category-text">
-          菲律宾租房流程
-        </div>
-      </div>
-      <div class="category">
-        <span class="favorite"></span>
-        <div class="category-tag">
-          <span>投资参考</span>
-        </div>
-        <div class="category-text">
-          华人海外房产投资“新宠”
-        </div>
-      </div>
-    </div>
+    </nest-scroll>
     <nest-nav page="live"></nest-nav>
   </div>
 </template>
 
 <script>
-  import BScroll from 'better-scroll';
-
   export default {
-    name: "Live",
-    mounted() {
-      this.$nextTick(() => {
-        new BScroll(this.$refs.swiper1, {
-          eventPassthrough: 'vertical',
-          scrollX: true,
-          click: true
-        });
-      });
-    }
+    name: "Live"
   }
 </script>
 
 <style lang="scss" scoped>
   .live {
-    padding: .5rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    .app-body {
+      flex: 1;
+      overflow: hidden;
+    }
+    .live-body {
+      padding: .5rem 0 1.5rem;
+    }
     .live-title {
       padding: 0 .28rem;
       font-size: .6rem;

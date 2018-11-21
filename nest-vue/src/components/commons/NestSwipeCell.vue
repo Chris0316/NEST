@@ -44,13 +44,14 @@
           absPos = 0;
         else if (absPos < 0 - this.controlWidth)
           absPos = 0 - this.controlWidth;
-        if (this._swipeX && Math.abs(currentX - this.startX) - Math.abs(currentY - this.startY) > 0) {
+        if (this._swipeX && Math.abs(currentX - this.startX) >= Math.abs(currentY - this.startY)) {
           // 左右滑动
           event.stopPropagation();
           event.preventDefault();
           this._swipeY = false;
           this.offsetX = absPos; // 移动位置
-        } else if (this._swipeY && Math.abs(currentX - this.startX) - Math.abs(currentY - this.startY) < 0)
+        } else if (this._swipeY && Math.abs(currentX - this.startX) < Math.abs(currentY - this.startY))
+          // 上下滑动
           this._swipeX = false;
       },
       handleTouchEnd() {

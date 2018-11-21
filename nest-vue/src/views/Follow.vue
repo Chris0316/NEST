@@ -24,78 +24,81 @@
         <div class="control-btn" @click="followtimeModalFun">关注时间</div>
       </div>
     </div>
-    <nest-tab-container v-model="tabSelected">
-      <nest-tab-container-item id="houseres">
-        <nest-swipe-cell  v-for="(recommend,index) in recommends" :key="index">
-          <div class="search-item"  slot="content">
-            <div class="move-wrap">
-              <div class="item-img"></div>
-              <div class="msg-wrap">
-                <div class="title">{{recommend.roomplace}}</div>
-                <div class="type-wrap" v-if="recommend.roomsizes.constructor === Array">
-                  <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
-                </div>
-                <div class="type-wrap" v-else="!recommend.roomsizes.constructor === Array">
-                  <div class="type-str">{{recommend.roomsizes}}</div>
-                </div>
-                <div class="rent" v-if="!recommend.rentsize">
-                  <div class="price">{{recommend.pricem}}</div>
-                  <div class="price-msg">P/月</div>
-                </div>
-                <div class="rent" v-else-if="recommend.rentsize">
-                  <div class="price">{{recommend.pricem}}</div>
-                  <div class="price-msg">P/㎡</div>
-                  <div class="room-size">{{recommend.rentsize}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="collect-wrap"  slot="controls">
-            <div class="collect">
-              <div class="heart"></div>
-              <div class="share"></div>
-            </div>
-            <div class="collect-del"></div>
-          </div>
-        </nest-swipe-cell>
-      </nest-tab-container-item>
-      <nest-tab-container-item id="econman">
-        <nest-swipe-cell v-for="(item, index) in peopleArr" :key="index">
-          <div class="item" slot="content">
-            <div class="item-cont">
-              <div class="top">
-                <div class="top-l">
-                  <div class="cli"></div>
-                  <div class="det">
-                    <div class="name">Govern</div>
-                    <div class="skill">语言：汉语/英语/韩语/日语</div>
+    <nest-scroll class="app-body">
+      <nest-tab-container v-model="tabSelected">
+        <nest-tab-container-item id="houseres">
+          <nest-swipe-cell  v-for="(recommend,index) in recommends" :key="index">
+            <div class="search-item"  slot="content">
+              <div class="move-wrap">
+                <div class="item-img"></div>
+                <div class="msg-wrap">
+                  <div class="title">{{recommend.roomplace}}</div>
+                  <div class="type-wrap" v-if="recommend.roomsizes.constructor === Array">
+                    <div class="type" v-for="(roomsize,index) in recommend.roomsizes" :key="index">{{roomsize}}</div>
+                  </div>
+                  <div class="type-wrap" v-else="!recommend.roomsizes.constructor === Array">
+                    <div class="type-str">{{recommend.roomsizes}}</div>
+                  </div>
+                  <div class="rent" v-if="!recommend.rentsize">
+                    <div class="price">{{recommend.pricem}}</div>
+                    <div class="price-msg">P/月</div>
+                  </div>
+                  <div class="rent" v-else-if="recommend.rentsize">
+                    <div class="price">{{recommend.pricem}}</div>
+                    <div class="price-msg">P/㎡</div>
+                    <div class="room-size">{{recommend.rentsize}}</div>
                   </div>
                 </div>
-                <div class="top-r">
-                  <div class="follow-btn">已关注</div>
-                  <div class="follow-num">67人关注</div>
+              </div>
+            </div>
+            <div class="collect-wrap"  slot="controls">
+              <div class="collect">
+                <div class="heart"></div>
+                <div class="share"></div>
+              </div>
+              <div class="collect-del"></div>
+            </div>
+          </nest-swipe-cell>
+        </nest-tab-container-item>
+        <nest-tab-container-item id="econman">
+          <nest-swipe-cell v-for="(item, index) in peopleArr" :key="index">
+            <div class="item" slot="content">
+              <div class="item-cont">
+                <div class="top">
+                  <div class="top-l">
+                    <div class="cli"></div>
+                    <div class="det">
+                      <div class="name">Govern</div>
+                      <div class="skill">语言：汉语/英语/韩语/日语</div>
+                    </div>
+                  </div>
+                  <div class="top-r">
+                    <div class="follow-btn">已关注</div>
+                    <div class="follow-num">67人关注</div>
+                  </div>
+                </div>
+                <div class="text1">
+                  近一个月：出租 <span class="sp">13</span>套 &nbsp;售卖 <span class="sp">24</span> 套
+                </div>
+                <div class="text2">
+                  我是来自makati的经纪人，这是个性签名随便写点什么做多两行的
+                  最后一行在这里最后用“...“表示就行了最后一行在这里最后用“...“表示就行了
                 </div>
               </div>
-              <div class="text1">
-                近一个月：出租 <span class="sp">13</span>套 &nbsp;售卖 <span class="sp">24</span> 套
+            </div>
+            <div class="collect-wrap" slot="controls">
+              <div class="collect-l">
+                <img class="icon" src="../assets/images/s-share.png" alt="">
               </div>
-              <div class="text2">
-                我是来自makati的经纪人，这是个性签名随便写点什么做多两行的
-                最后一行在这里最后用“...“表示就行了最后一行在这里最后用“...“表示就行了
+              <div class="collect-r">
+                <img class="icon" src="../assets/images/s-call.png" alt="">
               </div>
             </div>
-          </div>
-          <div class="collect-wrap" slot="controls">
-            <div class="collect-l">
-              <img class="icon" src="../assets/images/s-share.png" alt="">
-            </div>
-            <div class="collect-r">
-              <img class="icon" src="../assets/images/s-call.png" alt="">
-            </div>
-          </div>
-        </nest-swipe-cell>
-      </nest-tab-container-item>
-    </nest-tab-container>
+          </nest-swipe-cell>
+        </nest-tab-container-item>
+      </nest-tab-container>
+    </nest-scroll>
+    <nest-nav page="follow"></nest-nav>
     <!--关注时间-->
     <!--followtime-->
     <nest-modal title="关注时间" :has-clear="false" :has-footer="false" @modalClose="followtimeShow = false"
@@ -119,7 +122,6 @@
       class="textali">
       确定要取消关注该 <span class="keyword">房源 </span> 吗？
     </nest-modal>
-    <nest-nav page="follow"></nest-nav>
   </div>
 </template>
 
@@ -211,6 +213,9 @@
   }
 
   .follow {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     .search {
       position: relative;
       &:active {
@@ -294,7 +299,10 @@
         }
       }
     }
-
+    .app-body {
+      flex: 1;
+      overflow: hidden;
+    }
     .search-item {
       display: flex;
       width: 100%;

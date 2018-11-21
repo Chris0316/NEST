@@ -10,27 +10,29 @@
         <button class="control-btn" @click="locationShow = true">区域</button>
       </div>
     </div>
-    <div class="list">
-      <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
-        <div class="item"
-             slot="content"
-             :class="item.type">
-          <div class="item-img"></div>
-          <div class="item-content">
-            <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span></div>
-            <div class="desc">
-              预算：{{ item.budget }}<br>
-              地区：{{ item.area }}
+    <nest-scroll class="scroll-wrapper">
+      <div class="list">
+        <nest-swipe-cell v-for="(item, index) in options" :key="index" class="list-item">
+          <div class="item"
+               slot="content"
+               :class="item.type">
+            <div class="item-img"></div>
+            <div class="item-content">
+              <div class="title"><span class="txt">{{ item.title }}</span><span class="tag">{{ item.type === 'rent'? '租赁' : '购置' }}</span></div>
+              <div class="desc">
+                预算：{{ item.budget }}<br>
+                地区：{{ item.area }}
+              </div>
+              <div class="date">{{ item.date }}</div>
             </div>
-            <div class="date">{{ item.date }}</div>
           </div>
-        </div>
-        <template slot="controls">
-          <div class="follow"></div>
-          <div class="share"></div>
-        </template>
-      </nest-swipe-cell>
-    </div>
+          <template slot="controls">
+            <div class="follow"></div>
+            <div class="share"></div>
+          </template>
+        </nest-swipe-cell>
+      </div>
+    </nest-scroll>
     <nest-modal title="类型" modal-confirm-txt="确定" @modalClose="typeShow = false" :status="typeShow">
       <nest-check v-model="typeVal" :options="typeOpts"></nest-check>
     </nest-modal>
@@ -121,6 +123,10 @@
         transform: scale(.5);
         transform-origin: left top;
       }
+    }
+    .scroll-wrapper {
+      height: 300px;
+      overflow: hidden;
     }
     .list {
       margin-top: .6rem;

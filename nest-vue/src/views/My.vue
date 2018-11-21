@@ -1,62 +1,66 @@
 <template>
   <div class="my">
-    <div class="personal-info">
-      <div>
-        <div class="name">阿尔萨斯</div>
-        <div class="account">Arthas</div>
+    <nest-scroll class="app-body">
+      <div class="my-body">
+        <div class="personal-info">
+          <div>
+            <div class="name">阿尔萨斯</div>
+            <div class="account">Arthas</div>
+          </div>
+          <div class="portrait"></div>
+        </div>
+        <div class="personal-sign arrow-right">My son. The day you were born, the very forests of Lordaeron whispered the name, Arthas.</div>
+        <div class="menu-panel">
+          <div class="menu-item">
+            <div class="item-icon"></div>
+            <div class="item-label">我的发布</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-icon"></div>
+            <div class="item-label">我的帮住</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-icon"></div>
+            <div class="item-label">我的资讯</div>
+          </div>
+        </div>
+        <div class="live-ground border-bottom">
+          <div class="banner" @click="$router.push({ name: 'MyGround' })"></div>
+        </div>
+        <div class="form-group border-bottom arrow-right">
+          <div class="label">我的信息</div>
+        </div>
+        <div class="form-group border-bottom arrow-right">
+          <div class="label">我的消息</div>
+        </div>
+        <div class="form-group border-bottom"></div>
+        <div class="form-group border-bottom arrow-right">
+          <div class="label">语言显示</div>
+        </div>
+        <div class="form-group border-bottom">
+          <div class="label">新消息通知</div>
+          <nest-switch v-model="msgSwitch"></nest-switch>
+        </div>
+        <div class="form-group border-bottom">
+          <div class="label">加入我们</div>
+          <nest-switch></nest-switch>
+        </div>
+        <div class="footer-links">
+          <div class="links-item">
+            <div class="link-icon"></div>
+            <div class="link-label">给我反馈</div>
+          </div>
+          <div class="links-item">
+            <div class="link-icon"></div>
+            <div class="link-label">联系我们</div>
+          </div>
+          <div class="links-item">
+            <div class="link-icon"></div>
+            <div class="link-label">商业合作</div>
+          </div>
+        </div>
       </div>
-      <div class="portrait"></div>
-    </div>
-    <div class="personal-sign arrow-right">My son. The day you were born, the very forests of Lordaeron whispered the name, Arthas.</div>
-    <div class="menu-panel">
-      <div class="menu-item">
-        <div class="item-icon"></div>
-        <div class="item-label">我的发布</div>
-      </div>
-      <div class="menu-item">
-        <div class="item-icon"></div>
-        <div class="item-label">我的帮住</div>
-      </div>
-      <div class="menu-item">
-        <div class="item-icon"></div>
-        <div class="item-label">我的资讯</div>
-      </div>
-    </div>
-    <div class="live-ground border-bottom">
-      <div class="banner" @click="$router.push({ name: 'MyGround' })"></div>
-    </div>
-    <div class="form-group border-bottom arrow-right">
-      <div class="label">我的信息</div>
-    </div>
-    <div class="form-group border-bottom arrow-right">
-      <div class="label">我的消息</div>
-    </div>
-    <div class="form-group border-bottom"></div>
-    <div class="form-group border-bottom arrow-right">
-      <div class="label">语言显示</div>
-    </div>
-    <div class="form-group border-bottom">
-      <div class="label">新消息通知</div>
-      <nest-switch v-model="msgSwitch"></nest-switch>
-    </div>
-    <div class="form-group border-bottom">
-      <div class="label">加入我们</div>
-      <nest-switch></nest-switch>
-    </div>
-    <div class="footer-links">
-      <div class="links-item">
-        <div class="link-icon"></div>
-        <div class="link-label">给我反馈</div>
-      </div>
-      <div class="links-item">
-        <div class="link-icon"></div>
-        <div class="link-label">联系我们</div>
-      </div>
-      <div class="links-item">
-        <div class="link-icon"></div>
-        <div class="link-label">商业合作</div>
-      </div>
-    </div>
+    </nest-scroll>
     <nest-nav page="my"></nest-nav>
   </div>
 </template>
@@ -74,8 +78,17 @@
 
 <style lang="scss" scoped>
   .my {
-    padding: .4rem .28rem 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     box-sizing: border-box;
+    .app-body {
+      flex: 1;
+      overflow: hidden;
+    }
+    .my-body {
+      padding: .4rem .28rem 2rem;
+    }
     .personal-info {
       display: flex;
       justify-content: space-between;
