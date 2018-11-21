@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @touchstart>
+  <div id="app" class="nest" @touchstart>
     <transition :name="transitionName">
       <router-view class="view" />
     </transition>
@@ -16,15 +16,15 @@
     },
     watch: {
       $route(to, from) {
-        if (to.name === 'Search') {
-          this.transitionName = 'slide-top';
-        } else if (from.name === 'Search') {
-          this.transitionName = 'slide-down';
-        } else {
-          const toDepth = to.path.split('/').length
-          const fromDepth = from.path.split('/').length
-          this.transitionName = toDepth < fromDepth ? 'slide-right' : (toDepth === fromDepth ? '' : 'slide-left')
-        }
+        // if (to.name === 'Search') {
+        //   this.transitionName = 'slide-top';
+        // } else if (from.name === 'Search') {
+        //   this.transitionName = 'slide-down';
+        // } else {
+        //   const toDepth = to.path.split('/').length
+        //   const fromDepth = from.path.split('/').length
+        //   this.transitionName = toDepth < fromDepth ? 'slide-right' : (toDepth === fromDepth ? '' : 'slide-left')
+        // }
       }
     }
   }
@@ -32,6 +32,11 @@
 
 <style lang="scss">
   @import "./assets/scss/commons.scss";
+
+  .nest {
+    width: 100%;
+    height: 100%;
+  }
 
   .view {
     width: 100%;

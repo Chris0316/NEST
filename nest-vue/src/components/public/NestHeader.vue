@@ -1,7 +1,7 @@
 <template>
   <div class="nest-header">
     <div class="search-wrap">
-      <div class="back" v-if="headerType !== 'home'" @click="$router.go(-1);"></div>
+      <div class="back" v-if="headerType !== 'explore'" @click="$router.go(-1);"></div>
       <div class="search-box" @click="$router.push({ name: 'Search' })">
         <nest-select @keyValue="changekey"/>
       </div>
@@ -9,9 +9,9 @@
     </div>
     <div class="control-wrap">
       <nest-button class="mr28" @click="locationShow = !locationShow">地点</nest-button>
-      <nest-button class="mr28" @click="roomTypeShow = !roomTypeShow">地点</nest-button>
-      <nest-button class="mr28" @click="conditionShow = !conditionShow" v-if="headerType !== 'home'">筛选</nest-button>
-      <div class="sort-btn" @click="sortShow = !sortShow" v-if="headerType !== 'home'"></div>
+      <nest-button class="mr28" @click="roomTypeShow = !roomTypeShow" v-if="headerType !== 'parking'">户型</nest-button>
+      <nest-button class="mr28" @click="conditionShow = !conditionShow" v-if="headerType !== 'explore'">筛选</nest-button>
+      <div class="sort-btn" @click="sortShow = !sortShow" v-if="headerType !== 'explore'"></div>
     </div>
     <!--@modalConfirm="locationConfirm" @modalClear="locationClear"-->
     <nest-modal title="地点" modal-confirm-txt="确定" @modalClose="locationShow = false" :status="locationShow">
@@ -22,7 +22,7 @@
       <nest-check v-model="roomTypeVal" :options="roomTypeOpts"></nest-check>
     </nest-modal>
     <nest-modal :is-full="true" :has-cancel="true" modal-cancel-txt="清空条件" @modalClose="conditionShow = false"
-                :status="conditionShow" v-if="headerType !== 'home'">
+                :status="conditionShow" v-if="headerType !== 'explore'">
       <div class="conditions">
         <div class="condition">
           <div class="condition-title">租金</div>
@@ -56,7 +56,7 @@
       </div>
     </nest-modal>
     <nest-modal title="排序" :has-clear="false" :has-footer="false" @modalClose="sortShow = false" :status="sortShow"
-                v-if="headerType !== 'home'">
+                v-if="headerType !== 'explore'">
       <nest-radio v-model="sortVal" :count-in-row="1" :options="sortOpts"></nest-radio>
     </nest-modal>
   </div>
@@ -108,7 +108,7 @@
 
 <style lang="scss" scoped>
   .nest-header {
-    padding: 0 .28rem;
+    padding: 0 .28rem .2rem;
     .search-wrap {
       display: flex;
       align-items: center;

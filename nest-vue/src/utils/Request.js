@@ -32,16 +32,6 @@ instance.interceptors.response.use(
     return response.data;
   },
   error => {
-    //可滚动容器的高度
-    let innerHeight = document.querySelector('#app').clientHeight;
-    //屏幕尺寸高度
-    let outerHeight = document.documentElement.clientHeight;
-    //可滚动容器超出当前窗口显示范围的高度
-    let scrollTop = document.documentElement.scrollTop;
-    if (innerHeight < (outerHeight + scrollTop)) {    //加载更多操作
-      console.log("loadmore");
-    }
-
     Vue.prototype.$toast.hide();
     if (error.response) {
       if (error.response.status === 401) {

@@ -14,6 +14,7 @@ import NestTabBar from './commons/NestTabBar.vue'
 import NestTabItem from './commons/NestTabItem.vue'
 import NestTabContainer from './commons/NestTabContainer.vue'
 import NestTabContainerItem from './commons/NestTabContainerItem.vue'
+import NestScroll from './commons/NestScroll'
 
 import NestHeader from './public/NestHeader'
 import NestNav from './public/NestNav'
@@ -38,7 +39,8 @@ let components = {
   NestTabBar,
   NestTabItem,
   NestTabContainer,
-  NestTabContainerItem
+  NestTabContainerItem,
+  NestScroll
 };
 
 let install = function (Vue) {

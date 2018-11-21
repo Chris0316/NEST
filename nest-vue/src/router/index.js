@@ -7,6 +7,7 @@ import live from './live'
 import my from './my'
 import auth from './auth'
 
+import Search from '@/views/Search'
 import Country from '@/views/auth/Country'
 import Language from '@/views/auth/Language'
 
@@ -14,6 +15,7 @@ Vue.use(Router)
 
 let routes = [
   { path: '/', redirect: { name: 'Explore' } },
+  { path: '/search', name: 'Search', component: Search },
   { path: '/country', name: 'Country', component: Country },
   { path: '/language', name: 'Language', component: Language }
 ].concat(explore, follow, live, my, auth);

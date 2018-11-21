@@ -1,70 +1,74 @@
 <template>
-  <div class="home">
-    <nest-header header-type="home"></nest-header>
-    <div class="menus">
-      <router-link to="/explore/publish" class="menu-item">
-        <div class="menu-icon"></div>
-        <div class="name">发布房源</div>
-      </router-link>
-      <router-link to="/list/rent" class="menu-item">
-        <div class="menu-icon"></div>
-        <div class="name">租房</div>
-      </router-link>
-      <router-link to="/list/second" class="menu-item">
-        <div class="menu-icon"></div>
-        <div class="name">二手房</div>
-      </router-link>
-      <router-link to="/list/new" class="menu-item">
-        <div class="menu-icon"></div>
-        <div class="name">新房</div>
-      </router-link>
-      <router-link to="/list/parking" class="menu-item">
-        <div class="menu-icon"></div>
-        <div class="name">车位</div>
-      </router-link>
-    </div>
-    <div class="topics" ref="swiper1">
-      <div class="topics-wrap">
-        <div class="topic">
-          <div class="title">温馨一居室</div>
-          <div class="msg">属于你的独享空间</div>
+  <div class="explore">
+    <nest-header header-type="explore"></nest-header>
+    <nest-scroll class="app-body">
+      <div class="explore-body">
+        <div class="menus">
+          <div class="menu-item" @click="$router.push({ name: 'ExplorePublish' })">
+            <div class="menu-icon"></div>
+            <div class="name">发布房源</div>
+          </div>
+          <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'rent' } })">
+            <div class="menu-icon"></div>
+            <div class="name">租房</div>
+          </div>
+          <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'second' } })">
+            <div class="menu-icon"></div>
+            <div class="name">二手房</div>
+          </div>
+          <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'new' } })">
+            <div class="menu-icon"></div>
+            <div class="name">新房</div>
+          </div>
+          <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'parking' } })">
+            <div class="menu-icon"></div>
+            <div class="name">车位</div>
+          </div>
         </div>
-        <div class="topic">
-          <div class="title">温馨一居室</div>
-          <div class="msg">属于你的独享空间</div>
+        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="topics">
+          <div class="topics-wrap">
+            <div class="topic">
+              <div class="title">温馨一居室</div>
+              <div class="msg">属于你的独享空间</div>
+            </div>
+            <div class="topic">
+              <div class="title">温馨一居室</div>
+              <div class="msg">属于你的独享空间</div>
+            </div>
+            <div class="topic">
+              <div class="title">温馨一居室</div>
+              <div class="msg">属于你的独享空间</div>
+            </div>
+          </div>
+        </nest-scroll>
+        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="topics budget">
+          <div class="topics-wrap">
+            <div class="topic">
+              <div class="title">500万预算</div>
+              <div class="msg">小资一族上车</div>
+            </div>
+            <div class="topic">
+              <div class="title">500万预算</div>
+              <div class="msg">小资一族上车</div>
+            </div>
+            <div class="topic">
+              <div class="title">500万预算</div>
+              <div class="msg">小资一族上车</div>
+            </div>
+          </div>
+        </nest-scroll>
+        <div class="recommend">
+          <div class="left">为你推荐</div>
+          <div class="right">
+            <nest-tab-bar class="tabs" v-model="tabSelected" align="right">
+              <nest-tab-item id="rent">出租</nest-tab-item>
+              <nest-tab-item id="sell">出售</nest-tab-item>
+            </nest-tab-bar>
+          </div>
         </div>
-        <div class="topic">
-          <div class="title">温馨一居室</div>
-          <div class="msg">属于你的独享空间</div>
-        </div>
+        <nest-list-view double/>
       </div>
-    </div>
-    <div class="topics budget" ref="swiper2">
-      <div class="topics-wrap">
-        <div class="topic">
-          <div class="title">500万预算</div>
-          <div class="msg">小资一族上车</div>
-        </div>
-        <div class="topic">
-          <div class="title">500万预算</div>
-          <div class="msg">小资一族上车</div>
-        </div>
-        <div class="topic">
-          <div class="title">500万预算</div>
-          <div class="msg">小资一族上车</div>
-        </div>
-      </div>
-    </div>
-    <div class="recommend">
-      <div class="left">为你推荐</div>
-      <div class="right">
-        <nest-tab-bar class="tabs" v-model="tabSelected" align="right">
-          <nest-tab-item id="rent">出租</nest-tab-item>
-          <nest-tab-item id="sell">出售</nest-tab-item>
-        </nest-tab-bar>
-      </div>
-    </div>
-    <nest-list-view double/>
+    </nest-scroll>
     <nest-nav page="explore"></nest-nav>
   </div>
 </template>
@@ -78,21 +82,11 @@
         tabSelected: 'rent'
       }
     },
-    mounted() {
-      this.$nextTick(() => {
-        this.initSwiper();
-      });
-    },
     methods: {
       leaseChange(i) {
         this.curindex = i;
       },
       initSwiper() {
-        new BScroll(this.$refs.swiper1, {
-          eventPassthrough: 'vertical',
-          scrollX: true,
-          click: true
-        });
         new BScroll(this.$refs.swiper2, {
           eventPassthrough: 'vertical',
           scrollX: true,
@@ -104,12 +98,6 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  input {
-    background: none;
-    outline: none;
-    border: 0px;
-    caret-color: #0f9183;
-  }
 
   @mixin rowcenter {
     display: flex;
@@ -117,16 +105,23 @@
     align-items: center;
   }
 
-  .home {
+  .explore {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     box-sizing: border-box;
-    width: 100%;
     background-color: #fff;
-    /*overflow: hidden;*/
-    padding: 0.2rem 0 .8rem;
+    padding: 0.2rem 0 0;
+    .app-body {
+      flex: 1;
+      overflow: hidden;
+    }
+    .explore-body {
+      padding-top: .5rem;
+    }
     .menus {
       margin-left: 0.28rem;
       padding-right: 0.28rem;
-      margin-top: 0.7rem;
       display: flex;
       justify-content: space-between;
       .menu-item {
