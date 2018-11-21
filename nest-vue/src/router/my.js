@@ -6,6 +6,8 @@ import MyProfile from '@/views/my/Profile'
 import MyEdit from '@/views/my/Edit'
 import MyCellphone from '@/views/my/Cellphone'
 import MyAddCellphone from '@/views/my/AddCellphone'
+import Message from '@/views/my/Message'
+import MsgDetail from '@/views/my/MsgDetail'
 
 export default [
   { path: '/my', name: 'My', component: My },
@@ -16,4 +18,6 @@ export default [
   { path: '/my/edit', name: 'MyEdit', component: MyEdit },
   { path: '/my/cellphone', name: 'MyCellphone', component: MyCellphone },
   { path: '/my/cellphone/add', name: 'MyAddCellphone', component: MyAddCellphone },
+  { path: '/my/message', name: 'Message', component: Message },
+  { path: '/my/msgdetail', name: 'MsgDetail', component: MsgDetail },
 ]

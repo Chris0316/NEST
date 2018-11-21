@@ -5,16 +5,16 @@
       发布出租信息
     </div>
     <nest-upload></nest-upload>
-    <div class="tag">
+    <div class="tag border-bottom">
       <nest-radio :options="typeOpts" :count-in-row="3" cell-type="default"></nest-radio>
     </div>
-    <div class="realm ">
+    <div class="realm border-bottom">
       <div class="realm-name">用途</div>
       <div class="realm-content">
         <nest-radio :countInRow="3" size="small" :options="['住房','商业办公','商住两用']"></nest-radio>
       </div>
     </div>
-    <div class="realm ">
+    <div class="realm border-bottom">
       <div class="realm-name">方式</div>
       <div class="realm-content">
         <nest-radio :countInRow="3" size="small" :options="['整租','合租']"></nest-radio>
@@ -22,89 +22,98 @@
     </div><!--只有出租-->
 
     <!--关于出租、出售公寓别墅-->
-    <div class="realm arrow-right">
+    <div class="realm arrow-right border-bottom">
       <div class="realm-name">小区名称<span class="star-point">*</span></div>
       <div class="realm-content">fgfgfgdfg</div>
     </div>
 
     <!--关于售卖商业楼-->
-    <!--<div class="realm arrow-right">-->
+    <!--<div class="realm arrow-right border-bottom">-->
     <!--<div class="realm-name">商铺/写字楼<span class="star-point">*</span></div>-->
     <!--<div class="realm-content">fgfgfgdfg</div>-->
     <!--</div>-->
 
     <!--关于车位-->
-    <!--<div class="realm arrow-right">-->
+    <!--<div class="realm arrow-right border-bottom">-->
     <!--<div class="realm-name">小区/商铺<br/>/写字楼<span class="star-point">*</span></div>-->
     <!--<div class="realm-content">fgfgfgdfg</div>-->
     <!--</div>-->
 
-    <div class="realm ">
+    <div class="realm border-bottom">
       <div class="realm-name">地址</div>
       <nest-field></nest-field>
     </div>
-    <div class="realm arrow-right">
+    <div class="realm arrow-right border-bottom">
       <div class="realm-name">区域</div>
       <div class="realm-content">fgfgfgdfg</div>
     </div>
-    <div class="realm ">
+    <div class="realm border-bottom">
       <div class="realm-name">楼栋号</div>
       <nest-field></nest-field>
     </div>
-    <div class="realm ">
+    <div class="realm border-bottom">
       <div class="realm-name">楼层</div>
       <div class="realm-content floor-deltail">
         <div class="deltails">
-          第<nest-field class="deltail1" textAlign="center"></nest-field>层
+          第
+          <nest-field class="deltail1" textAlign="center"></nest-field>
+          层
         </div>
         <div class="deltails">
-          共<nest-field class="deltail1"  textAlign="center"></nest-field>层
+          共
+          <nest-field class="deltail1" textAlign="center"></nest-field>
+          层
         </div>
       </div>
     </div>
 
     <!--车位出租-->
     <div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">户型</div>
         <div class="realm-content house-type">
           <div class="deltails">
-            <nest-field class="deltail1"></nest-field>室
+            <nest-field class="deltail1"></nest-field>
+            室
           </div>
           <div class="deltails">
-            <nest-field class="deltail1"></nest-field>厅
+            <nest-field class="deltail1"></nest-field>
+            厅
           </div>
           <div class="deltails">
-            <nest-field class="deltail1"></nest-field>卫
+            <nest-field class="deltail1"></nest-field>
+            卫
           </div>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">面积</div>
         <div class="realm-content oneinput">
           <nest-field></nest-field>
           <span class="set">平米</span>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">租金<span class="star-point">*</span></div>
         <div class="realm-content oneinput">
           <nest-field></nest-field>
           <span class="set">P/月</span>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">付款方式</div>
         <div class="realm-content pay-mode">
           <div class="inpval-wrap">
-            押<nest-field class="inpval" textAlign="center"></nest-field>
+            押
+            <nest-field class="inpval" textAlign="center"></nest-field>
           </div>
           <div class="inpval-wrap">
-            付<nest-field class="inpval" textAlign="center"></nest-field>
+            付
+            <nest-field class="inpval" textAlign="center"></nest-field>
           </div>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">联系人<span class="star-point">*</span></div>
         <div class="realm-content sex">
           <nest-field></nest-field>
@@ -113,43 +122,242 @@
           </div>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">手机号<span class="star-point">*</span></div>
         <div class="realm-content phone">
           <input type="number" class="num" placeholder="无需区号，11位数">
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">车位</div>
         <div class="realm-content">
           <nest-radio :countInRow="3" size="small" :options="['有(免费)','有(另议)','无']"></nest-radio>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">电梯</div>
         <div class="realm-content">
           <nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">装修</div>
         <div class="realm-content">
           <nest-radio :countInRow="3" size="small" :options="['精装修','豪华装修','毛坯']"></nest-radio>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">主卧朝向</div>
         <div class="realm-content">
           <nest-radio :countInRow="4" size="small" :options="['南','北','东','西']"></nest-radio>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
         <div class="realm-name">阳台</div>
         <div class="realm-content">
           <nest-radio :countInRow="3" size="small" :options="['有阳台','无阳台']"></nest-radio>
         </div>
       </div>
-      <div class="realm ">
+      <div class="realm border-bottom">
+        <div class="realm-name">宠物</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['可养宠物','禁止宠物']"></nest-radio>
+        </div>
+      </div>
+      <div class="facilitie">
+        <div class="fac-title">配套设施</div>
+        <div class="fac-row" >
+          <div class="fac-item">
+            <img class="fac-img fac-img0" src="../../assets/images/fac0.png" alt="">
+            <div class="fac-name">洗衣机</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img1" src="../../assets/images/fac1.png" alt="">
+            <div class="fac-name">静音空调</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img2" src="../../assets/images/fac2.png" alt="">
+            <div class="fac-name">普通空调</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img3" src="../../assets/images/fac3.png" alt="">
+            <div class="fac-name">热水器</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img4" src="../../assets/images/fac4.png" alt="">
+            <div class="fac-name">床</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img5" src="../../assets/images/fac-on5.png" alt="">
+            <div class="fac-name">电视</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img6" src="../../assets/images/fac6.png" alt="">
+            <div class="fac-name">冰箱</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img7" src="../../assets/images/fac7.png" alt="">
+            <div class="fac-name">宽带</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img8" src="../../assets/images/fac8.png" alt="">
+            <div class="fac-name">沙发</div>
+          </div>
+          <div class="fac-item">
+            <img class="fac-img fac-img9" src="../../assets/images/fac9.png" alt="">
+            <div class="fac-name">衣柜</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--租房-->
+    <div v-if="false">
+      <div class="realm border-bottom">
+        <div class="realm-name">面积</div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">平米</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">租金<span class="star-point">*</span></div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">P/月</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">付款方式</div>
+        <div class="realm-content pay-mode">
+          <div class="inpval-wrap">
+            押
+            <nest-field class="inpval" textAlign="center"></nest-field>
+          </div>
+          <div class="inpval-wrap">
+            付
+            <nest-field class="inpval" textAlign="center"></nest-field>
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">联系人<span class="star-point">*</span></div>
+        <div class="realm-content sex">
+          <nest-field></nest-field>
+          <div class="sex-btn">
+            <nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">手机号<span class="star-point">*</span></div>
+        <div class="realm-content phone">
+          <input type="number" class="num" placeholder="无需区号，11位数">
+        </div>
+      </div>
+      <div class="realm arrow-right border-bottom">
+        <div class="realm-name">可入住时间</div>
+        <div class="realm-content">fgfgfgdfg</div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">租期</div>
+        <div class="realm-content oneinput">
+          <div class="lease">
+            <nest-field class="leaseVal" textAlign="center"></nest-field>
+            <span class="leaseLine">-</span>
+            <nest-field class="leaseVal" textAlign="center"></nest-field>
+          </div>
+          <span class="set">个月</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">电梯</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>
+        </div>
+      </div>
+    </div>
+
+
+    <!--售卖公寓别墅-->
+    <div v-if="false">
+      <div class="realm border-bottom">
+        <div class="realm-name">户型</div>
+        <div class="realm-content house-type">
+          <div class="deltails">
+            <nest-field class="deltail1"></nest-field>
+            室
+          </div>
+          <div class="deltails">
+            <nest-field class="deltail1"></nest-field>
+            厅
+          </div>
+          <div class="deltails">
+            <nest-field class="deltail1"></nest-field>
+            卫
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">面积</div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">平米</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">售价<span class="star-point">*</span></div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">万</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">联系人<span class="star-point">*</span></div>
+        <div class="realm-content sex">
+          <nest-field></nest-field>
+          <div class="sex-btn">
+            <nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">手机号<span class="star-point">*</span></div>
+        <div class="realm-content phone">
+          <input type="number" class="num" placeholder="无需区号，11位数">
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">车位</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有(免费)','有(需另议)','无']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">电梯</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">装修</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['精装修','豪华装修','毛坯']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">主卧朝向</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="4" size="small" :options="['南','北','东','西']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">阳台</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有阳台','无阳台']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
         <div class="realm-name">宠物</div>
         <div class="realm-content">
           <nest-radio :countInRow="3" size="small" :options="['可养宠物','禁止宠物']"></nest-radio>
@@ -202,301 +410,103 @@
       </div>
     </div>
 
-    <!--租房-->
-    <div>
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">面积</div>-->
-      <!--<div class="realm-content oneinput">-->
-        <!--<nest-field></nest-field>-->
-      <!--<span class="set">平米</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">租金<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content oneinput">-->
-        <!--<nest-field></nest-field>-->
-      <!--<span class="set">P/月</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">付款方式</div>-->
-      <!--<div class="realm-content pay-mode">-->
-      <!--<div class="inpval-wrap">-->
-      <!--押<nest-field class="inpval" textAlign="center"></nest-field>-->
-      <!--</div>-->
-      <!--<div class="inpval-wrap">-->
-      <!--付<nest-field class="inpval" textAlign="center"></nest-field>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">联系人<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content sex">-->
-      <!--<nest-field></nest-field>-->
-      <!--<div class="sex-btn">-->
-      <!--<nest-radio :countInRow="2" size="small" :options="['男士','女士']" ></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">手机号<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content phone">-->
-      <!--<input type="number" class="num" placeholder="无需区号，11位数">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm arrow-right">-->
-      <!--<div class="realm-name">可入住时间</div>-->
-      <!--<div class="realm-content">fgfgfgdfg</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">租期</div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<div class="lease">-->
-        <!--<nest-field class="leaseVal" textAlign="center"></nest-field>-->
-      <!--<span class="leaseLine">-</span>-->
-        <!--<nest-field class="leaseVal" textAlign="center"></nest-field>-->
-      <!--</div>-->
-      <!--<span class="set">个月</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">电梯</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']" ></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-    </div>
-
-
-    <!--售卖公寓别墅-->
-    <div>
-      <!--<div class="realm ">-->
-        <!--<div class="realm-name">户型</div>-->
-        <!--<div class="realm-content house-type">-->
-          <!--<div class="deltails">-->
-            <!--<nest-field class="deltail1"></nest-field>室-->
-          <!--</div>-->
-          <!--<div class="deltails">-->
-            <!--<nest-field class="deltail1"></nest-field>厅-->
-          <!--</div>-->
-          <!--<div class="deltails">-->
-            <!--<nest-field class="deltail1"></nest-field>卫-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">面积</div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">平米</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">售价<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">万</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">联系人<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content sex">-->
-      <!--<nest-field></nest-field>-->
-      <!--<div class="sex-btn">-->
-      <!--<nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">手机号<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content phone">-->
-      <!--<input type="number" class="num" placeholder="无需区号，11位数">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">车位</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有(免费)','有(需另议)','无']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">电梯</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">装修</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['精装修','豪华装修','毛坯']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">主卧朝向</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="4" size="small" :options="['南','北','东','西']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">阳台</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有阳台','无阳台']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">宠物</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['可养宠物','禁止宠物']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="facilitie">-->
-      <!--<div class="fac-title">配套设施</div>-->
-      <!--<div class="fac-row">-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img0" src="../assets/images/fac0.png" alt="">-->
-      <!--<div class="fac-name">洗衣机</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img1" src="../assets/images/fac1.png" alt="">-->
-      <!--<div class="fac-name">静音空调</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img2" src="../assets/images/fac2.png" alt="">-->
-      <!--<div class="fac-name">普通空调</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img3" src="../assets/images/fac3.png" alt="">-->
-      <!--<div class="fac-name">热水器</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img4" src="../assets/images/fac4.png" alt="">-->
-      <!--<div class="fac-name">床</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img5" src="../assets/images/fac-on5.png" alt="">-->
-      <!--<div class="fac-name">电视</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img6" src="../assets/images/fac6.png" alt="">-->
-      <!--<div class="fac-name">冰箱</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img7" src="../assets/images/fac7.png" alt="">-->
-      <!--<div class="fac-name">宽带</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img8" src="../assets/images/fac8.png" alt="">-->
-      <!--<div class="fac-name">沙发</div>-->
-      <!--</div>-->
-      <!--<div class="fac-item">-->
-      <!--<img class="fac-img fac-img9" src="../assets/images/fac9.png" alt="">-->
-      <!--<div class="fac-name">衣柜</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-    </div>
-
 
     <!--售卖商业楼-->
-    <div>
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">面积</div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">平米</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">售价<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">万</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">联系人<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content sex">-->
-      <!--<nest-field></nest-field>-->
-      <!--<div class="sex-btn">-->
-      <!--<nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">手机号<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content phone">-->
-      <!--<input type="number" class="num" placeholder="无需区号，11位数">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">车位</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有(免费)','有(需另议)','无']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">电梯</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">装修</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['精装修','豪华装修','毛坯']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">宠物</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['可养宠物','禁止宠物']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
+    <div v-if="false">
+      <div class="realm border-bottom">
+        <div class="realm-name">面积</div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">平米</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">售价<span class="star-point">*</span></div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">万</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">联系人<span class="star-point">*</span></div>
+        <div class="realm-content sex">
+          <nest-field></nest-field>
+          <div class="sex-btn">
+            <nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">手机号<span class="star-point">*</span></div>
+        <div class="realm-content phone">
+          <input type="number" class="num" placeholder="无需区号，11位数">
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">车位</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有(免费)','有(需另议)','无']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">电梯</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">装修</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['精装修','豪华装修','毛坯']"></nest-radio>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">宠物</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['可养宠物','禁止宠物']"></nest-radio>
+        </div>
+      </div>
     </div>
 
 
     <!--出售车位-->
-    <div>
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">面积</div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">平米</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">售价<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content oneinput">-->
-      <!--<nest-field></nest-field>-->
-      <!--<span class="set">万</span>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">联系人<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content sex">-->
-      <!--<nest-field></nest-field>-->
-      <!--<div class="sex-btn">-->
-      <!--<nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">手机号<span class="star-point">*</span></div>-->
-      <!--<div class="realm-content phone">-->
-      <!--<input type="number" class="num" placeholder="无需区号，11位数">-->
-      <!--</div>-->
-      <!--</div>-->
-      <!--<div class="realm ">-->
-      <!--<div class="realm-name">电梯</div>-->
-      <!--<div class="realm-content">-->
-      <!--<nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>-->
-      <!--</div>-->
-      <!--</div>-->
+    <div v-if="false">
+      <div class="realm border-bottom">
+        <div class="realm-name">面积</div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">平米</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">售价<span class="star-point">*</span></div>
+        <div class="realm-content oneinput">
+          <nest-field></nest-field>
+          <span class="set">万</span>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">联系人<span class="star-point">*</span></div>
+        <div class="realm-content sex">
+          <nest-field></nest-field>
+          <div class="sex-btn">
+            <nest-radio :countInRow="2" size="small" :options="['男士','女士']"></nest-radio>
+          </div>
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">手机号<span class="star-point">*</span></div>
+        <div class="realm-content phone">
+          <input type="number" class="num" placeholder="无需区号，11位数">
+        </div>
+      </div>
+      <div class="realm border-bottom">
+        <div class="realm-name">电梯</div>
+        <div class="realm-content">
+          <nest-radio :countInRow="3" size="small" :options="['有电梯','无电梯']"></nest-radio>
+        </div>
+      </div>
     </div>
-
-
-
-
 
 
     <!--<div class="inp-textarea">-->
@@ -507,8 +517,9 @@
     <!--<nest-button type="primary m68">发布</nest-button>-->
     <!--</div>-->
 
+
     <!-- notop:去掉上边框 -->
-    <div class="intr">
+    <div class="intr border-top border-bottom">
       <div class="intr-title">介绍</div>
       <nest-field type="textarea"></nest-field>
     </div>
@@ -525,9 +536,24 @@
     name: "Pulish",
     data() {
       return {
-        typeOpts: ['公寓','别墅','民居','商铺/写字楼','车位']
+        typeOpts: ['公寓', '别墅', '民居', '商铺/写字楼', '车位']
       }
-    }
+    },
+    methods:{
+      checkEquip(){
+        console.log(1111)
+
+      }
+    },
+  }
+  var btns = document.querySelectorAll('.fac-row .fac-item');
+  console.log(btns.length);
+  for(var i = 0;i < btns.length;i ++){
+    (function(index){
+      btns[index].onclick = function(ev){
+        console.log(11111);
+      }
+    })(i);
   }
 </script>
 
@@ -575,7 +601,6 @@
     .tag {
       margin: 0rem 0.28rem;
       padding: 0.2rem 0;
-      border-bottom: 1px solid #E5E5E5;
     }
     .realm {
       position: relative;
@@ -584,7 +609,6 @@
       justify-content: space-between;
       align-items: center;
       height: 1rem;
-      border-bottom: 1px solid #E5E5E5;
       .realm-name {
         width: 1.92rem;
       }
@@ -765,8 +789,6 @@
       overflow: hidden;
       height: 3.8rem;
       background: #fff;
-      border-top: 1px solid #E5E5E5;
-      border-bottom: 1px solid #E5E5E5;
       margin-bottom: 0.1rem;
       overflow: hidden;
       &.notop {
