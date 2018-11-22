@@ -10,20 +10,20 @@
         <nest-tab-item id="econman">经纪人</nest-tab-item>
       </nest-tab-bar>
     </div>
-    <!--房源-->
-    <div>
-      <div class="control-wrap">
-        <div class="control-btn">类型</div>
-        <div class="control-btn active">分类</div>
-        <div class="control-btn">关注时间</div>
-      </div>
-    </div>
-    <!--经纪人-->
-    <div style="display: none;">
-      <div class="control-wrap">
-        <div class="control-btn" @click="followtimeModalFun">关注时间</div>
-      </div>
-    </div>
+    <nest-tab-container v-model="tabSelected">
+      <nest-tab-container-item id="houseres">
+        <div class="control-wrap">
+          <div class="control-btn">类型</div>
+          <div class="control-btn active">分类</div>
+          <div class="control-btn">关注时间</div>
+        </div>
+      </nest-tab-container-item>
+      <nest-tab-container-item id="econman">
+        <div class="control-wrap">
+          <div class="control-btn" @click="followtimeModalFun">关注时间</div>
+        </div>
+      </nest-tab-container-item>
+    </nest-tab-container>
     <nest-scroll class="app-body">
       <nest-tab-container v-model="tabSelected">
         <nest-tab-container-item id="houseres">
@@ -56,7 +56,9 @@
                 <div class="heart"></div>
                 <div class="share"></div>
               </div>
-              <div class="collect-del"></div>
+              <div class="collect-del">
+                <div class="call-icon"></div>
+              </div>
             </div>
           </nest-swipe-cell>
         </nest-tab-container-item>
@@ -402,7 +404,7 @@
         flex-shrink: 0;
         width: 1.2rem;
         height: 1.74rem;
-        background-color: #e7f4f2;
+        background:rgba(15,145,131,0.1);
       }
       .heart {
         width: 0.36rem;
@@ -417,10 +419,18 @@
         background-size: 100% 100%;
       }
       .collect-del {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 0.8rem;
         height: 1.74rem;
-        background: url("../assets/images/collect-del.png") no-repeat;
-        background-size: 100% 100%;
+        background:rgba(249,245,237,1);
+        .call-icon{
+          width: 0.38rem;
+          height: 0.38rem;
+          background: url("../assets/images/s-call.png") no-repeat;
+          background-size: 100% 100%;
+        }
       }
     }
     .item {
@@ -534,7 +544,7 @@
         align-items: center;
         width: 1.2rem;
         height: 2.15rem;
-        background: #e2ebe2;
+        background:rgba(15,145,131,0.1);
         .icon {
           width: 0.3rem;
           height: 0.3rem;

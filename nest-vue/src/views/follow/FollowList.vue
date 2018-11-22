@@ -40,7 +40,9 @@
             <div class="heart"></div>
             <div class="share"></div>
           </div>
-          <div class="collect-del"></div>
+          <div class="collect-del">
+            <div class="call-icon"></div>
+          </div>
         </div>
       </nest-swipe-cell>
     </div>
@@ -333,10 +335,18 @@
         background-size: 100% 100%;
       }
       .collect-del {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 0.8rem;
         height: 1.74rem;
-        background: url("../../assets/images/collect-del.png") no-repeat;
-        background-size: 100% 100%;
+        background:rgba(249,245,237,1);
+        .call-icon{
+          width: 0.38rem;
+          height: 0.38rem;
+          background: url("../../assets/images/s-call.png") no-repeat;
+          background-size: 100% 100%;
+        }
       }
     }
     .peo-list{

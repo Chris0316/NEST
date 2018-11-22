@@ -58,12 +58,12 @@
           <div class="realm-content floor-deltail">
             <div class="deltails">
               第
-              <nest-field class="deltail1" textAlign="center"></nest-field>
+              <nest-field type="tel" class="deltail1" textAlign="center"></nest-field>
               层
             </div>
             <div class="deltails">
               共
-              <nest-field class="deltail1" textAlign="center"></nest-field>
+              <nest-field type="tel" class="deltail1" textAlign="center"></nest-field>
               层
             </div>
           </div>
@@ -75,15 +75,15 @@
             <div class="realm-name">户型</div>
             <div class="realm-content house-type">
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 室
               </div>
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 厅
               </div>
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 卫
               </div>
             </div>
@@ -91,14 +91,14 @@
           <div class="realm border-bottom">
             <div class="realm-name">面积</div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">平米</span>
             </div>
           </div>
           <div class="realm border-bottom">
             <div class="realm-name">租金<span class="star-point">*</span></div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">P/月</span>
             </div>
           </div>
@@ -107,11 +107,11 @@
             <div class="realm-content pay-mode">
               <div class="inpval-wrap">
                 押
-                <nest-field class="inpval" textAlign="center"></nest-field>
+                <nest-field type="tel" class="inpval" textAlign="center"></nest-field>
               </div>
               <div class="inpval-wrap">
                 付
-                <nest-field class="inpval" textAlign="center"></nest-field>
+                <nest-field type="tel" class="inpval" textAlign="center"></nest-field>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
           <div class="realm border-bottom">
             <div class="realm-name">手机号<span class="star-point">*</span></div>
             <div class="realm-content phone">
-              <input type="number" class="num" placeholder="无需区号，11位数">
+              <input type="tel" class="num" max="11" placeholder="无需区号，11位数">
             </div>
           </div>
           <div class="realm border-bottom">
@@ -218,14 +218,14 @@
           <div class="realm border-bottom">
             <div class="realm-name">面积</div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">平米</span>
             </div>
           </div>
           <div class="realm border-bottom">
             <div class="realm-name">租金<span class="star-point">*</span></div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">P/月</span>
             </div>
           </div>
@@ -234,11 +234,11 @@
             <div class="realm-content pay-mode">
               <div class="inpval-wrap">
                 押
-                <nest-field class="inpval" textAlign="center"></nest-field>
+                <nest-field type="tel" class="inpval" textAlign="center"></nest-field>
               </div>
               <div class="inpval-wrap">
                 付
-                <nest-field class="inpval" textAlign="center"></nest-field>
+                <nest-field type="tel" class="inpval" textAlign="center"></nest-field>
               </div>
             </div>
           </div>
@@ -254,7 +254,7 @@
           <div class="realm border-bottom">
             <div class="realm-name">手机号<span class="star-point">*</span></div>
             <div class="realm-content phone">
-              <input type="number" class="num" placeholder="无需区号，11位数">
+              <input type="tel" class="num" max="11" placeholder="无需区号，11位数">
             </div>
           </div>
           <div class="realm arrow-right border-bottom">
@@ -265,9 +265,9 @@
             <div class="realm-name">租期</div>
             <div class="realm-content oneinput">
               <div class="lease">
-                <nest-field class="leaseVal" textAlign="center"></nest-field>
+                <nest-field type="tel" class="leaseVal" textAlign="center"></nest-field>
                 <span class="leaseLine">-</span>
-                <nest-field class="leaseVal" textAlign="center"></nest-field>
+                <nest-field type="tel" class="leaseVal" textAlign="center"></nest-field>
               </div>
               <span class="set">个月</span>
             </div>
@@ -287,15 +287,15 @@
             <div class="realm-name">户型</div>
             <div class="realm-content house-type">
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 室
               </div>
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 厅
               </div>
               <div class="deltails">
-                <nest-field class="deltail1"></nest-field>
+                <nest-field type="tel" class="deltail1"></nest-field>
                 卫
               </div>
             </div>
@@ -303,14 +303,14 @@
           <div class="realm border-bottom">
             <div class="realm-name">面积</div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">平米</span>
             </div>
           </div>
           <div class="realm border-bottom">
             <div class="realm-name">售价<span class="star-point">*</span></div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">万</span>
             </div>
           </div>
@@ -326,7 +326,7 @@
           <div class="realm border-bottom">
             <div class="realm-name">手机号<span class="star-point">*</span></div>
             <div class="realm-content phone">
-              <input type="number" class="num" placeholder="无需区号，11位数">
+              <input type="tel" class="num" max="11" placeholder="无需区号，11位数">
             </div>
           </div>
           <div class="realm border-bottom">
@@ -418,14 +418,14 @@
           <div class="realm border-bottom">
             <div class="realm-name">面积</div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">平米</span>
             </div>
           </div>
           <div class="realm border-bottom">
             <div class="realm-name">售价<span class="star-point">*</span></div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">万</span>
             </div>
           </div>
@@ -441,7 +441,7 @@
           <div class="realm border-bottom">
             <div class="realm-name">手机号<span class="star-point">*</span></div>
             <div class="realm-content phone">
-              <input type="number" class="num" placeholder="无需区号，11位数">
+              <input type="tel" class="num" max="11" placeholder="无需区号，11位数">
             </div>
           </div>
           <div class="realm border-bottom">
@@ -476,14 +476,14 @@
           <div class="realm border-bottom">
             <div class="realm-name">面积</div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">平米</span>
             </div>
           </div>
           <div class="realm border-bottom">
             <div class="realm-name">售价<span class="star-point">*</span></div>
             <div class="realm-content oneinput">
-              <nest-field></nest-field>
+              <nest-field type="tel"></nest-field>
               <span class="set">万</span>
             </div>
           </div>
@@ -499,7 +499,7 @@
           <div class="realm border-bottom">
             <div class="realm-name">手机号<span class="star-point">*</span></div>
             <div class="realm-content phone">
-              <input type="number" class="num" placeholder="无需区号，11位数">
+              <input type="tel" class="num" max="11" placeholder="无需区号，11位数">
             </div>
           </div>
           <div class="realm border-bottom">
