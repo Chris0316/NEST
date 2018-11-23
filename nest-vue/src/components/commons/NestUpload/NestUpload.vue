@@ -123,7 +123,7 @@
         left: .51rem;
         width: .38rem;
         height: .38rem;
-        background: url('../../assets/images/upload-plus.png') no-repeat;
+        background: url('../../../assets/images/upload-plus.png') no-repeat;
         background-size: 100% 100%;
       }
     }
@@ -133,7 +133,7 @@
       top: -.1rem;
       width: .38rem;
       height: .38rem;
-      background: url('../../assets/images/upload-del.png') no-repeat;
+      background: url('../../../assets/images/upload-del.png') no-repeat;
       background-size: 100% 100%;
     }
   }

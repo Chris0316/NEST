@@ -119,7 +119,7 @@
       margin-right: 0.25rem;
       width: 0.14rem;
       height: 0.09rem;
-      background: url("../../assets/images/triangle.png") no-repeat;
+      background: url("../../../assets/images/triangle.png") no-repeat;
       background-size: 100% 100%;
       transition: transform 0.3s;
       &.trans {

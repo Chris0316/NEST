@@ -37,7 +37,7 @@
           border: 1px solid #ADD9D5;
           background-color: #ADD9D5;
           &::after {
-            background: #0f9183 url('../../assets/images/icon-right.png') center center no-repeat;
+            background: #0f9183 url('../../../assets/images/icon-right.png') center center no-repeat;
             background-size: .24rem .16rem;
             transform: translate3d(.4rem, -50%, 0);
           }
@@ -62,7 +62,7 @@
         width: .6rem;
         height: .6rem;
         border-radius: .6rem;
-        background: #d9d9d9 url('../../assets/images/icon-wrong.png') center center no-repeat;
+        background: #d9d9d9 url('../../../assets/images/icon-wrong.png') center center no-repeat;
         background-size: .18rem .18rem;
         transition: .3s;
         transform: translate3d(0, -50%, 0);

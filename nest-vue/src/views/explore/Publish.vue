@@ -534,10 +534,7 @@
 </template>
 
 <script>
-  import NestScroll from "../../components/commons/NestScroll";
-
   export default {
-    components: {NestScroll},
     name: "Pulish",
     data() {
       return {

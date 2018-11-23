@@ -96,7 +96,14 @@
           probeType: this.probeType,
           click: this.click,
           scrollX: this.scrollX,
-          eventPassthrough: this.eventPassthrough
+          eventPassthrough: this.eventPassthrough,
+          pullDownRefresh: {
+            threshold: 50,
+            stop: 20
+          },
+          pullUpLoad: {
+            threshold: 50
+          }
         })
 
         // 是否派发滚动事件
