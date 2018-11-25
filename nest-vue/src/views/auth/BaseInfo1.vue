@@ -1,29 +1,31 @@
 <template>
-  <div class="base-info">
-    <div class="header">
-      <div class="back" @click="$router.go(-1);"></div>
+  <keep-alive>
+    <div class="base-info">
+      <div class="header">
+        <div class="back" @click="$router.go(-1);"></div>
+      </div>
+      <div class="content">
+        <div class="title">基本信息设置</div>
+        <div class="title-tip">设置基本信息，更智能的使用鸟巢</div>
+        <div class="radio-tit">我是</div>
+        <nest-radio class="radio-spacing border-bottom" v-model="userType" :options="userTypeOpts"></nest-radio>
+        <div class="form-group border-bottom arrow-right">
+          <div class="label">国籍</div>
+          <div class="group-right">{{ country }}</div>
+        </div>
+        <div class="form-group border-bottom">
+          <div class="label">姓名</div>
+          <nest-field class="group-right" v-model="name"></nest-field>
+        </div>
+        <div class="form-group border-bottom">
+          <div class="label">英文简称</div>
+          <nest-field class="group-right" v-model="account"></nest-field>
+        </div>
+        <div class="form-tip">姓名和昵称是平台上的唯一标识，一旦设定不可修改</div>
+        <nest-button class="mt90" type="primary" size="full" :disabled="btnDisabled">下一步</nest-button>
+      </div>
     </div>
-    <div class="content">
-      <div class="title">基本信息设置</div>
-      <div class="title-tip">设置基本信息，更智能的使用鸟巢</div>
-      <div class="radio-tit">我是</div>
-      <nest-radio class="radio-spacing border-bottom" v-model="userType" :options="userTypeOpts"></nest-radio>
-      <div class="form-group border-bottom arrow-right">
-        <div class="label">国籍</div>
-        <div class="group-right"></div>
-      </div>
-      <div class="form-group border-bottom">
-        <div class="label">姓名</div>
-        <nest-field class="group-right"></nest-field>
-      </div>
-      <div class="form-group border-bottom">
-        <div class="label">英文简称</div>
-        <nest-field class="group-right"></nest-field>
-      </div>
-      <div class="form-tip">姓名和昵称是平台上的唯一标识，一旦设定不可修改</div>
-      <nest-button class="mt90" type="primary" size="full" :disabled="true">下一步</nest-button>
-    </div>
-  </div>
+  </keep-alive>
 </template>
 
 <script>
@@ -32,7 +34,25 @@
     data() {
       return {
         userType: '',
-        userTypeOpts: ['用户', '房产经纪人']
+        userTypeOpts: [{
+          label: '用户',
+          value: '0'
+        }, {
+          label: '房产经纪人',
+          value: '1'
+        }],
+        country: '',
+        name: '',
+        account: '',
+        btnDisabled: true
+      }
+    },
+    watch: {
+      userType(val) {
+
+      },
+      country(val) {
+
       }
     }
   }

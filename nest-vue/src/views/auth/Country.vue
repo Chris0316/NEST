@@ -18,7 +18,7 @@
         country: '',
         countryOpts: [{
           label: '中国',
-          value: '+86',
+          value: '0086',
           icon: 'xx'
         }, {
           label: '日本',

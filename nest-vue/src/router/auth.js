@@ -4,8 +4,8 @@ import BaseInfo1 from '@/views/auth/BaseInfo1'
 import BaseInfo2 from '@/views/auth/BaseInfo2'
 
 export default [
-  { path: '/login', name: 'Login', component: Login },
-  { path: '/sms', name: 'SmsCode', component: SmsCode },
-  { path: '/info_1', name: 'BaseInfo1', component: BaseInfo1 },
-  { path: '/info_2', name: 'BaseInfo2', component: BaseInfo2 }
+  { path: '/auth/login', name: 'AuthLogin', component: Login },
+  { path: '/auth/sms', name: 'AuthSmsCode', component: SmsCode },
+  { path: '/auth/info_1', name: 'AuthBaseInfo1', component: BaseInfo1 },
+  { path: '/auth/info_2', name: 'AuthBaseInfo2', component: BaseInfo2 }
 ];

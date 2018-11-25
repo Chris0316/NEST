@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import Storage from '../../utils/Storage'
   import AuthService from '../../services/AuthService'
 
   export default {
@@ -40,7 +41,9 @@
       getSms() {
         AuthService.getSms(this.phone, (res) => {
           let key = res.data.key;
-          this.$router.push({ name: 'SmsCode', query: { phone: this.phone, key: key } })
+          Storage.setLocalStorage('nest_auth_phone', this.phone);
+          Storage.setLocalStorage('nest_auth_key', key);
+          this.$router.push({ name: 'AuthSmsCode' })
         });
       }
     }

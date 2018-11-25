@@ -190,6 +190,7 @@
       }
     }
     .scroll-wrapper {
+      position: relative;
       height: 300px;
       overflow: hidden;
     }

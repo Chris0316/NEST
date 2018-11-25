@@ -2,14 +2,14 @@
   <div class="my">
     <nest-scroll class="app-body">
       <div class="my-body">
-        <div class="personal-info">
+        <div class="personal-info" @click="login">
           <div>
-            <div class="name">阿尔萨斯</div>
-            <div class="account">Arthas</div>
+            <div class="name">{{ name }}</div>
+            <div class="account" v-if="isLogin">{{ account }}</div>
           </div>
-          <div class="portrait"></div>
+          <div class="portrait" :style="{ backgroundImage: 'url(' + portrait + ')'}"></div>
         </div>
-        <div class="personal-sign arrow-right">My son. The day you were born, the very forests of Lordaeron whispered the name, Arthas.</div>
+        <div class="personal-sign arrow-right" v-if="isLogin">{{ signature }}</div>
         <div class="menu-panel">
           <div class="menu-item">
             <div class="item-icon"></div>
@@ -43,7 +43,7 @@
         </div>
         <div class="form-group border-bottom">
           <div class="label">加入我们</div>
-          <nest-switch></nest-switch>
+          <nest-switch v-model="joinSwitch"></nest-switch>
         </div>
         <div class="footer-links">
           <div class="links-item">
@@ -66,11 +66,42 @@
 </template>
 
 <script>
+  import Storage from '../utils/Storage';
+  import UserService from '../services/UserService';
+
   export default {
     name: "My",
     data() {
       return {
-        msgSwitch: true
+        name: '点击登录',
+        account: 'Arthas',
+        signature: '',
+        portrait: '',
+        msgSwitch: false,
+        joinSwitch: false
+      }
+    },
+    computed: {
+      isLogin() {
+        let token = Storage.getLocalStorage('nest_access_token');
+        return token ? true : false;
+      }
+    },
+    mounted() {
+      if (this.isLogin) {
+        UserService.getUserInfo((res) => {
+          console.log(res);
+          this.name = res.data.local_name;
+          this.account = res.data.name;
+          this.signature = res.data.introduction || '什么也没有，说点什么吧';
+        });
+      }
+    },
+    methods: {
+      login() {
+        if (!this.isLogin) {
+          this.$router.push({ name: 'AuthLogin' });
+        }
       }
     }
   }

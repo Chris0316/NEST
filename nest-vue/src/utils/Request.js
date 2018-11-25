@@ -12,7 +12,7 @@ instance.interceptors.request.use(
     Vue.prototype.$toast.loading();
     let accessToken = Storage.getLocalStorage('nest_access_token');
     if (accessToken && accessToken.length !== 0) {
-      config.headers['Authorization'] = accessToken;
+      config.headers['Authorization'] = 'Bearer ' + accessToken;
     }
     return config;
   },
@@ -36,10 +36,11 @@ instance.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 401) {
         /**
-         *  todo 未授权跳转到登录
+         *  未授权跳转到登录
          *  1. 清空localstorage accessToken
          *  2. 跳转登录页
          */
+        Storage.setLocalStorage('nest_access_token', '');
         Vue.$router.push({name: 'login'});
       } else if (error.response.status >= 300 || error.response.status < 200) {
         //请求失败
