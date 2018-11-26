@@ -168,46 +168,10 @@
           </div>
           <div class="facilitie">
             <div class="fac-title">配套设施</div>
-            <div class="fac-row" >
-              <div class="fac-item">
-                <img class="fac-img fac-img0" src="../../assets/images/fac0.png" alt="">
-                <div class="fac-name">洗衣机</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img1" src="../../assets/images/fac1.png" alt="">
-                <div class="fac-name">静音空调</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img2" src="../../assets/images/fac2.png" alt="">
-                <div class="fac-name">普通空调</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img3" src="../../assets/images/fac3.png" alt="">
-                <div class="fac-name">热水器</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img4" src="../../assets/images/fac4.png" alt="">
-                <div class="fac-name">床</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img5" src="../../assets/images/fac-on5.png" alt="">
-                <div class="fac-name">电视</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img6" src="../../assets/images/fac6.png" alt="">
-                <div class="fac-name">冰箱</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img7" src="../../assets/images/fac7.png" alt="">
-                <div class="fac-name">宽带</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img8" src="../../assets/images/fac8.png" alt="">
-                <div class="fac-name">沙发</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img9" src="../../assets/images/fac9.png" alt="">
-                <div class="fac-name">衣柜</div>
+            <div class="fac-row">
+              <div class="fac-item" v-for="(item, i) in facList" :key="i" @click="sleFun(item,i,$event)" :class="{on:item.facFlag}">
+                <img class="fac-img fac-img0" :src="item.url1">
+                <div class="fac-name">{{item.facName}}</div>
               </div>
             </div>
           </div>
@@ -368,45 +332,9 @@
           <div class="facilitie">
             <div class="fac-title">配套设施</div>
             <div class="fac-row">
-              <div class="fac-item">
-                <img class="fac-img fac-img0" src="../../assets/images/fac0.png" alt="">
-                <div class="fac-name">洗衣机</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img1" src="../../assets/images/fac1.png" alt="">
-                <div class="fac-name">静音空调</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img2" src="../../assets/images/fac2.png" alt="">
-                <div class="fac-name">普通空调</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img3" src="../../assets/images/fac3.png" alt="">
-                <div class="fac-name">热水器</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img4" src="../../assets/images/fac4.png" alt="">
-                <div class="fac-name">床</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img5" src="../../assets/images/fac-on5.png" alt="">
-                <div class="fac-name">电视</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img6" src="../../assets/images/fac6.png" alt="">
-                <div class="fac-name">冰箱</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img7" src="../../assets/images/fac7.png" alt="">
-                <div class="fac-name">宽带</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img8" src="../../assets/images/fac8.png" alt="">
-                <div class="fac-name">沙发</div>
-              </div>
-              <div class="fac-item">
-                <img class="fac-img fac-img9" src="../../assets/images/fac9.png" alt="">
-                <div class="fac-name">衣柜</div>
+              <div class="fac-item" v-for="(item, i) in facList" :key="i" @click="sleFun(item,i,$event)" :class="{on:item.facFlag}">
+                <img class="fac-img fac-img0" :src="item.url1">
+                <div class="fac-name">{{item.facName}}</div>
               </div>
             </div>
           </div>
@@ -538,24 +466,92 @@
     name: "Pulish",
     data() {
       return {
-        typeOpts: ['公寓', '别墅', '民居', '商铺/写字楼', '车位']
+        typeOpts: ['公寓', '别墅', '民居', '商铺/写字楼', '车位'],
+        facList:[
+          {
+            url1:require('../../assets/images/fac0.png'),
+            url2:require('../../assets/images/fac-on0.png'),
+            facName:'洗衣机',
+            facFlag:false,
+          },
+          {
+            url1:require('../../assets/images/fac1.png'),
+            url2:require('../../assets/images/fac-on1.png'),
+            facName:'静音空调',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac2.png'),
+            url2:require('../../assets/images/fac-on2.png'),
+            facName:'普通空调',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac3.png'),
+            url2:require('../../assets/images/fac-on3.png'),
+            facName:'热水器',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac4.png'),
+            url2:require('../../assets/images/fac-on4.png'),
+            facName:'床',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac5.png'),
+            url2:require('../../assets/images/fac-on5.png'),
+            facName:'电视',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac6.png'),
+            url2:require('../../assets/images/fac-on6.png'),
+            facName:'冰箱',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac7.png'),
+            url2:require('../../assets/images/fac-on7.png'),
+            facName:'宽带',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac8.png'),
+            url2:require('../../assets/images/fac-on8.png'),
+            facName:'沙发',
+            facFlag:false
+          },
+          {
+            url1:require('../../assets/images/fac9.png'),
+            url2:require('../../assets/images/fac-on9.png'),
+            facName:'衣柜',
+            facFlag:false
+          }
+        ],
+        facSleArr:[]
       }
     },
     methods:{
       checkEquip(){
-        console.log(1111)
 
-      }
-    },
-  }
-  var btns = document.querySelectorAll('.fac-row .fac-item');
-  console.log(btns.length);
-  for(var i = 0;i < btns.length;i ++){
-    (function(index){
-      btns[index].onclick = function(ev){
-        console.log(11111);
-      }
-    })(i);
+      },
+      sleFun(item,i,$event){
+        if (!this.facList[i].facFlag){
+          this.facList[i].url1 = require(`../../assets/images/fac-on${i}.png`)
+          this.facList[i].facFlag = true
+          this.facSleArr.push(item.facName)
+        }else {
+          this.facList[i].url1 = require(`../../assets/images/fac${i}.png`)
+          this.facList[i].facFlag = false
+          // 数组查找摸一个元素
+          var index = this.facSleArr.indexOf(item.facName);
+          if (index > -1) {
+            this.facSleArr.splice(index, 1);
+          }
+        }
+      },
+    }
   }
 </script>
 
@@ -730,6 +726,11 @@
         height: 1.2rem;
         &:nth-child(5n) {
           margin-right: 0rem;
+        }
+        &.on{
+          .fac-name{
+            color: #0f9183;
+          }
         }
       }
       .fac-name {
