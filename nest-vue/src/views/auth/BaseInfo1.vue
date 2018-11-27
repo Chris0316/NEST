@@ -21,7 +21,7 @@
         <nest-field class="group-right" v-model="account"></nest-field>
       </div>
       <div class="form-tip">姓名和昵称是平台上的唯一标识，一旦设定不可修改</div>
-      <nest-button class="mt90" type="primary" size="full" :disabled="btnDisabled">下一步</nest-button>
+      <nest-button class="mt90" type="primary" size="full" :disabled="btnDisabled" @click="next">下一步</nest-button>
     </div>
     <country :show="countryShow" @countryClose="countryClose" @countrySelected="countrySelected"></country>
   </div>
@@ -41,6 +41,7 @@
           label: '房产经纪人',
           value: '1'
         }],
+        area: '',
         country: '',
         name: '',
         account: '',
@@ -48,11 +49,20 @@
       }
     },
     watch: {
-      userType(val) {
-
+      userType() {
+        this.lightenBtn();
       },
-      country(val) {
-
+      country() {
+        this.lightenBtn();
+      },
+      area() {
+        this.lightenBtn();
+      },
+      name() {
+        this.lightenBtn();
+      },
+      account() {
+        this.lightenBtn();
       }
     },
     methods: {
@@ -60,8 +70,19 @@
         this.countryShow = false;
       },
       countrySelected(val) {
+        this.area = val.area;
         this.country = val.label;
         this.countryShow = false;
+      },
+      lightenBtn() {
+        if (this.userType && this.area && this.name && this.account) {
+          this.btnDisabled = false;
+        } else {
+          this.btnDisabled = true;
+        }
+      },
+      next() {
+
       }
     }
   }
