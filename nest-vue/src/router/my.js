@@ -10,14 +10,14 @@ import Message from '@/views/my/Message'
 import MsgDetail from '@/views/my/MsgDetail'
 
 export default [
-  { path: '/my', name: 'My', component: My },
-  { path: '/my/details', name: 'MyDetails', component: MyDetails },
-  { path: '/my/ground', name: 'MyGround', component: MyGround },
-  { path: '/my/live', name: 'MyLive', component: MyLive },
-  { path: '/my/profile', name: 'MyProfile', component: MyProfile },
-  { path: '/my/edit', name: 'MyEdit', component: MyEdit },
-  { path: '/my/cellphone', name: 'MyCellphone', component: MyCellphone },
-  { path: '/my/cellphone/add', name: 'MyAddCellphone', component: MyAddCellphone },
-  { path: '/my/message', name: 'Message', component: Message },
-  { path: '/my/msgdetail', name: 'MsgDetail', component: MsgDetail },
+  { path: '/my', name: 'My', component: My, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/details', name: 'MyDetails', component: MyDetails, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/ground', name: 'MyGround', component: MyGround, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/live', name: 'MyLive', component: MyLive, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/profile', name: 'MyProfile', component: MyProfile, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/edit', name: 'MyEdit', component: MyEdit, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/cellphone', name: 'MyCellphone', component: MyCellphone, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/cellphone/add', name: 'MyAddCellphone', component: MyAddCellphone, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/message', name: 'Message', component: Message, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/msgdetail', name: 'MsgDetail', component: MsgDetail, meta: { keepAlive: false, slideLevel: 1 } },
 ]

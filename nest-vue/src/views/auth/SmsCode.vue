@@ -18,7 +18,7 @@
           <li>{{ smsCode6 }}</li>
         </ul>
       </div>
-      <div class="sms-link">重新获取验证码</div>
+      <div class="sms-link" :class="{ disabled: isDisabled }" @click="getSms">{{ smsBtnTxt }}</div>
     </div>
   </div>
 </template>
@@ -31,7 +31,11 @@
     name: "sms-code",
     data() {
       return {
-        smsCode: ''
+        phone: Storage.getLocalStorage('nest_auth_phone'),
+        key: Storage.getLocalStorage('nest_auth_key'),
+        smsCode: '',
+        counter: 60,
+        smsBtnTxt: '重新获取验证码'
       }
     },
     computed: {
@@ -54,15 +58,32 @@
         return this.smsCode.substring(5, 6);
       }
     },
+    created() {
+      this.isDisabled = false;
+      let smsListStr = Storage.getLocalStorage('nest_sms_list'),
+        smsList = smsListStr ? JSON.parse(smsListStr) : {},
+        sendTime = smsList[this.phone];
+      if (sendTime) {
+        let now = new Date().getTime(),
+          diff = parseInt((now - sendTime) / 1000);
+        if (diff < 60) {
+          // 小于1分钟继续倒计时
+          this.counter = this.counter - diff;
+          this.counterDown();
+        } else {
+          this.smsBtnTxt = '重新获取验证码';
+        }
+      } else {
+        this.counterDown();
+      }
+    },
     mounted() {
       this.$refs.smsInp.focus();
     },
     methods: {
       checkSms() {
-        let phone = Storage.getLocalStorage('nest_auth_phone'),
-          key = Storage.getLocalStorage('nest_auth_key');
         if (this.smsCode.length === 6) {
-          AuthService.smsLogin(phone, this.smsCode, key, (res) => {
+          AuthService.smsLogin(this.phone, this.smsCode, this.key, (res) => {
             let token = res.meta.access_token;
             Storage.setLocalStorage('nest_access_token', token);
             this.$router.push({ name: 'AuthBaseInfo1' });
@@ -71,6 +92,34 @@
       },
       smsFocus() {
         this.$refs.smsInp.focus();
+      },
+      getSms() {
+        if (this.isDisabled) {
+          return false;
+        }
+        AuthService.getSms(this.phone, res => {
+          let key = res.data.key,
+            smsListStr = Storage.getLocalStorage('nest_sms_list'),
+            smsList = smsListStr ? JSON.parse(smsListStr) : {};
+          smsList[this.phone] = new Date().getTime();
+          Storage.setLocalStorage('nest_auth_key', key);
+          Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
+          this.counterDown();
+        });
+      },
+      counterDown() {
+        this.isDisabled = true;
+        this.smsBtnTxt = this.counter + 's后重试';
+        let interval = setInterval(() => {
+          this.counter--;
+          this.smsBtnTxt = this.counter + 's后重试';
+          if (this.counter < 1) {
+            this.isDisabled = false;
+            this.smsBtnTxt = '重新获取验证码';
+            this.counter = 60;
+            clearInterval(interval);
+          }
+        }, 1000);
       }
     }
   }
@@ -140,6 +189,9 @@
       margin-top: .7rem;
       font-size: .28rem;
       color: #0f9183;
+      &.disabled {
+        color: #b3b3b3;
+      }
     }
   }
 </style>

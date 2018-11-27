@@ -6,7 +6,7 @@
     <div class="content">
       <div class="title border-bottom">欢迎登录鸟巢</div>
       <div class="form-group border-bottom">
-        <div class="left">+63 <span class="flag"></span><div class="arrow-down"></div></div>
+        <div class="left" @click="countryShow = !countryShow">{{ area }} <span class="flag" :style="{ backgroundImage: 'url(' + flag + ')' }"></span><div class="arrow-down"></div></div>
         <div class="right">
           <nest-field type="tel" class="form-input" placeholder="请输入手机号" v-model="phone"></nest-field>
         </div>
@@ -23,6 +23,7 @@
       </div>
       <div class="contract-tip">登录代表你已同意鸟巢用户协议及隐私政策</div>
     </div>
+    <country type="number" :show="countryShow" :area="area" @countryClose="countryClose" @countrySelected="countrySelected"></country>
   </div>
 </template>
 
@@ -34,17 +35,50 @@
     name: "Login",
     data() {
       return {
-        phone: '13802934458'
+        area: '0086',
+        flag: '',
+        phone: '13802934458',
+        countryShow: false
       }
     },
     methods: {
       getSms() {
-        AuthService.getSms(this.phone, (res) => {
-          let key = res.data.key;
-          Storage.setLocalStorage('nest_auth_phone', this.phone);
-          Storage.setLocalStorage('nest_auth_key', key);
-          this.$router.push({ name: 'AuthSmsCode' })
-        });
+        let smsListStr = Storage.getLocalStorage('nest_sms_list'),
+          smsList = smsListStr ? JSON.parse(smsListStr) : {},
+          sendTime = smsList[this.phone];
+        if (sendTime) {
+          let now = new Date().getTime(),
+            diff = parseInt((now - sendTime) / 1000);
+          if (diff < 60) {
+            // 同个手机号发送短信小于60秒间隔
+            this.$router.push({ name: 'AuthSmsCode' });
+          } else {
+            // 同个手机号发送短信大于60秒间隔
+            smsList[this.phone] = new Date().getTime();
+            Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
+            AuthService.getSms(this.phone, res => {
+              let key = res.data.key;
+              Storage.setLocalStorage('nest_auth_key', key);
+              this.$router.push({ name: 'AuthSmsCode' })
+            });
+          }
+        } else {
+          smsList[this.phone] = new Date().getTime();
+          Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
+          AuthService.getSms(this.phone, res => {
+            let key = res.data.key;
+            Storage.setLocalStorage('nest_auth_key', key);
+            this.$router.push({ name: 'AuthSmsCode' })
+          });
+        }
+      },
+      countryClose() {
+        this.countryShow = false;
+      },
+      countrySelected(val) {
+        this.area = val.area;
+        this.flag = val.icon;
+        this.countryShow = false;
       }
     }
   }
@@ -89,7 +123,8 @@
           right: .48rem;
           width: .4rem;
           height: .26rem;
-          background-color: red;
+          background-color: #fff;
+          background-size: 100% 100%;
           transform: translateY(-50%);
         }
         .arrow-down {

@@ -19,6 +19,14 @@ export default {
   },
 
   /**
+   * 移除localStorage项
+   * @param key
+   */
+  removeLocalStorage(key) {
+    window.localStorage.removeItem(key);
+  },
+
+  /**
    * 从sessionStorage中获取值
    * @param key
    */
