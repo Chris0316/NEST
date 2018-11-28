@@ -72,7 +72,7 @@
       handleSave() {
         let userInfo = {
           gender: this.gender,
-          languages: this.languages,
+          languages: this.languages.join(', '),
           email: this.email
         };
         UserService.updateUserInfo(userInfo, (res) => {
