@@ -2,7 +2,7 @@
   <transition name="slide">
     <div class="country" v-show="show">
       <div class="header">
-        <div class="close" @click="$emit('countryClose')">x</div>
+        <div class="back" @click="$emit('countryClose')"></div>
       </div>
       <div class="content">
         <div class="title">{{ title }}</div>
@@ -114,7 +114,7 @@
   }
 
   .slide-enter, .slide-leave-to {
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(100%, 0, 0);
   }
 
   .country {
@@ -129,12 +129,12 @@
     .header {
       height: 1.2rem;
     }
-    .close {
+    .back {
       width: .9rem;
       height: 100%;
       color: #333;
-      /*background: url('../assets/images/return-icon.png') no-repeat left center;*/
-      /*background-size: .42rem .32rem;*/
+      background: url('../../assets/images/return-icon.png') no-repeat left center;
+      background-size: .42rem .32rem;
     }
     .content {
       padding: 0 .4rem;

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import Storage from './Storage';
+import Router from '../router';
 
 let instance = axios.create({
   baseURL: 'http://api.ohmynest.com/api',
@@ -34,21 +35,22 @@ instance.interceptors.response.use(
   error => {
     Vue.prototype.$toast.hide();
     if (error.response) {
+      let resData = error.response.data;
+        // errors = error.response.data.errors;
       if (error.response.status === 401) {
         /**
          *  未授权跳转到登录
          *  1. 清空localstorage accessToken
          *  2. 跳转登录页
          */
-        Storage.setLocalStorage('nest_access_token', '');
-        Vue.$router.push({name: 'login'});
-      } else if (error.response.status >= 300 || error.response.status < 200) {
-        //请求失败
-        let message = error.response.data.message,
-          errors = error.response.data.errors;
-        console.log(errors);
+        Storage.removeLocalStorage('nest_access_token');
+        Router.replace({ name: 'AuthLogin' });
         Vue.prototype.$toast.info({
-          message: message
+          message: resData.message
+        });
+      } else if (error.response.status >= 300 || error.response.status < 200) {
+        Vue.prototype.$toast.info({
+          message: resData.message
         });
         return Promise.reject('error');
       } else {

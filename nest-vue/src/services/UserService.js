@@ -9,6 +9,11 @@ let UserService = {
     axios.get(api.userInfo).then(res => {
       callback(res);
     })
+  },
+  updateUserInfo(userInfo, callback) {
+    axios.patch(api.userInfo, userInfo).then(res => {
+      callback(res);
+    })
   }
 };
 

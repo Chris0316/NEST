@@ -28,6 +28,8 @@
 </template>
 
 <script>
+  import UserService from '../../services/UserService';
+
   export default {
     name: "BaseInfo1",
     data() {
@@ -82,7 +84,15 @@
         }
       },
       next() {
-
+        let userInfo = {
+          name: this.account,
+          local_name: this.name,
+          nation: this.area,
+          is_agent: this.userType
+        };
+        UserService.updateUserInfo(userInfo, (res) => {
+          this.$router.push({ name: 'AuthBaseInfo2' })
+        });
       }
     }
   }

@@ -142,7 +142,7 @@
         margin-right: .2rem;
         width: .7rem;
         height: .46rem;
-        background-color: red;
+        background-color: #fff;
         background-size: 100% 100%;
       }
       .radio-text {
