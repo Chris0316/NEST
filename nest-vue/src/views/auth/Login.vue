@@ -58,6 +58,7 @@
             Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
             AuthService.getSms(this.phone, res => {
               let key = res.data.key;
+              Storage.setLocalStorage('nest_auth_phone', this.phone);
               Storage.setLocalStorage('nest_auth_key', key);
               this.$router.push({ name: 'AuthSmsCode' })
             });
@@ -67,6 +68,7 @@
           Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
           AuthService.getSms(this.phone, res => {
             let key = res.data.key;
+            Storage.setLocalStorage('nest_auth_phone', this.phone);
             Storage.setLocalStorage('nest_auth_key', key);
             this.$router.push({ name: 'AuthSmsCode' })
           });
