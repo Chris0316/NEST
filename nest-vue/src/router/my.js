@@ -18,6 +18,6 @@ export default [
   { path: '/my/edit', name: 'MyEdit', component: MyEdit, meta: { keepAlive: false, slideLevel: 1 } },
   { path: '/my/cellphone', name: 'MyCellphone', component: MyCellphone, meta: { keepAlive: false, slideLevel: 1 } },
   { path: '/my/cellphone/add', name: 'MyAddCellphone', component: MyAddCellphone, meta: { keepAlive: false, slideLevel: 1 } },
-  { path: '/my/message', name: 'Message', component: Message, meta: { keepAlive: false, slideLevel: 1 } },
-  { path: '/my/msgdetail', name: 'MsgDetail', component: MsgDetail, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/message', name: 'MyMessage', component: Message, meta: { keepAlive: false, slideLevel: 1 } },
+  { path: '/my/message/detail', name: 'MyMessageDetail', component: MsgDetail, meta: { keepAlive: false, slideLevel: 1 } },
 ]
