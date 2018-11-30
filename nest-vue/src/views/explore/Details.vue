@@ -147,7 +147,7 @@
           <div class="module-title title-spe">户型介绍</div>
 
 
-          <nest-scroll event-passthrough="vertical" :scroll-x="true" class="info-list">
+          <nest-scroll direction="horizontal" class="info-list">
             <div class="info-list-wrap">
               <div class="info-item">
                 <div class="info-img"></div>
@@ -210,7 +210,7 @@
           </div>
 
           <!--new second-->
-          <nest-scroll event-passthrough="vertical" :scroll-x="true" v-if="propnew" class="similar">
+          <nest-scroll direction="horizontal" v-if="propnew" class="similar">
             <div class="similar-wrap">
               <div class="item">
                 <div class="item-img"></div>
@@ -234,7 +234,7 @@
               </div>
             </div>
           </nest-scroll>
-          <nest-scroll event-passthrough="vertical" :scroll-x="true" v-if="propsecond" class="similar">
+          <nest-scroll direction="horizontal" v-if="propsecond" class="similar">
             <div class="similar-wrap">
               <div class="item">
                 <div class="item-img"></div>

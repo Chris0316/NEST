@@ -5,53 +5,53 @@
       <div class="explore-body">
         <div class="menus">
           <div class="menu-item" @click="$router.push({ name: 'ExplorePublish' })">
-            <div class="menu-icon"></div>
+            <div class="menu-icon icon1"></div>
             <div class="name">发布房源</div>
           </div>
           <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'rent' } })">
-            <div class="menu-icon"></div>
+            <div class="menu-icon icon2"></div>
             <div class="name">租房</div>
           </div>
           <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'second' } })">
-            <div class="menu-icon"></div>
+            <div class="menu-icon icon3"></div>
             <div class="name">二手房</div>
           </div>
           <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'new' } })">
-            <div class="menu-icon"></div>
+            <div class="menu-icon icon4"></div>
             <div class="name">新房</div>
           </div>
           <div class="menu-item" @click="$router.push({ name: 'ExploreList', params: { type: 'parking' } })">
-            <div class="menu-icon"></div>
+            <div class="menu-icon icon5"></div>
             <div class="name">车位</div>
           </div>
         </div>
-        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="topics">
+        <nest-scroll direction="horizontal" class="topics">
           <div class="topics-wrap">
-            <div class="topic">
+            <div class="topic icon1">
               <div class="title">温馨一居室</div>
               <div class="msg">属于你的独享空间</div>
             </div>
-            <div class="topic">
+            <div class="topic icon2">
               <div class="title">温馨一居室</div>
               <div class="msg">属于你的独享空间</div>
             </div>
-            <div class="topic">
+            <div class="topic icon3">
               <div class="title">温馨一居室</div>
               <div class="msg">属于你的独享空间</div>
             </div>
           </div>
         </nest-scroll>
-        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="topics budget">
+        <nest-scroll direction="horizontal" class="topics budget">
           <div class="topics-wrap">
-            <div class="topic">
+            <div class="topic icon4">
               <div class="title">500万预算</div>
               <div class="msg">小资一族上车</div>
             </div>
-            <div class="topic">
+            <div class="topic icon5">
               <div class="title">500万预算</div>
               <div class="msg">小资一族上车</div>
             </div>
-            <div class="topic">
+            <div class="topic icon6">
               <div class="title">500万预算</div>
               <div class="msg">小资一族上车</div>
             </div>
@@ -135,6 +135,21 @@
           background-color: #e8e8ea;
           background-repeat: no-repeat;
           background-size: 100% 100%;
+          &.icon1 {
+            background-image: url('../assets/images/explore/publish.png');
+          }
+          &.icon2 {
+            background-image: url('../assets/images/explore/rent.png');
+          }
+          &.icon3 {
+            background-image: url('../assets/images/explore/second.png');
+          }
+          &.icon4 {
+            background-image: url('../assets/images/explore/new.png');
+          }
+          &.icon5 {
+            background-image: url('../assets/images/explore/parking.png');
+          }
         }
         .name {
           font-size: 0.28rem;
@@ -155,10 +170,36 @@
         margin-right: 0.1rem;
         width: 2.8rem;
         height: 2rem;
-        background: #f5f5f7;
+        background-color: #f5f5f7;
         border-radius: 0.1rem;
+        background-repeat: no-repeat;
+        background-position: bottom right;
         &:first-child {
           margin-left: 0;
+        }
+        &.icon1 {
+          background-image: url('../assets/images/explore/icon1.png');
+          background-size: 1.09rem 1.01rem;
+        }
+        &.icon2 {
+          background-image: url('../assets/images/explore/icon2.png');
+          background-size: 1.05rem .98rem;
+        }
+        &.icon3 {
+          background-image: url('../assets/images/explore/icon3.png');
+          background-size: .99rem .9rem;
+        }
+        &.icon4 {
+          background-image: url('../assets/images/explore/icon4.png');
+          background-size: .83rem 1.6rem;
+        }
+        &.icon5 {
+          background-image: url('../assets/images/explore/icon5.png');
+          background-size: 1.16rem 1.65rem;
+        }
+        &.icon6 {
+          background-image: url('../assets/images/explore/icon6.png');
+          background-size: 2.21rem 1.1rem;
         }
         .title {
           margin-top: 0.2rem;
