@@ -3,8 +3,13 @@ import axios from 'axios';
 import Storage from './Storage';
 import Router from '../router';
 
+let base_url = {
+  dev: 'http://api.dev.ohmynest.com/api',
+  prod: 'https://api.ohmynest.com/api'
+};
+
 let instance = axios.create({
-  baseURL: 'http://api.dev.ohmynest.com/api',
+  baseURL: base_url.dev,
   timeout: 1000 * 3
 });
 
