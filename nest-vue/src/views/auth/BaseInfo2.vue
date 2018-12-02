@@ -47,6 +47,13 @@
         email: ''
       }
     },
+    mounted() {
+      UserService.getUserInfo(res => {
+        this.gender = res.data.gender;
+        this.languages = res.data.languages;
+        this.email = res.data.email;
+      });
+    },
     watch: {
       gender() {
         this.lightenBtn();
@@ -72,10 +79,10 @@
       handleSave() {
         let userInfo = {
           gender: this.gender,
-          languages: this.languages.join(', '),
+          languages: this.languages,
           email: this.email
         };
-        UserService.updateUserInfo(userInfo, (res) => {
+        UserService.updateUserInfo(userInfo, res => {
           this.$router.push({ name: 'Explore' })
         })
       }

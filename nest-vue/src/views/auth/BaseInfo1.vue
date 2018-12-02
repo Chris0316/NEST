@@ -10,7 +10,7 @@
       <nest-radio class="radio-spacing border-bottom" v-model="userType" :options="userTypeOpts"></nest-radio>
       <div class="form-group border-bottom arrow-right" @click="countryShow = !countryShow">
         <div class="label">国籍</div>
-        <div class="group-right">{{ country }}</div>
+        <div class="group-right">{{ countryName }}</div>
       </div>
       <div class="form-group border-bottom">
         <div class="label">姓名</div>
@@ -23,7 +23,7 @@
       <div class="form-tip">姓名和昵称是平台上的唯一标识，一旦设定不可修改</div>
       <nest-button class="mt90" type="primary" size="full" :disabled="btnDisabled" @click="next">下一步</nest-button>
     </div>
-    <country :show="countryShow" @countryClose="countryClose" @countrySelected="countrySelected"></country>
+    <country :show="countryShow" v-model="country" @countryClose="countryClose"></country>
   </div>
 </template>
 
@@ -43,21 +43,26 @@
           label: '房产经纪人',
           value: '1'
         }],
-        area: '',
         country: '',
+        countryName: '',
         name: '',
         account: '',
         btnDisabled: true
       }
+    },
+    mounted() {
+      UserService.getUserInfo(res => {
+        this.userType = res.data.is_agent + '';
+        this.country = res.data.nation;
+        this.name = res.data.local_name;
+        this.account = res.data.name;
+      });
     },
     watch: {
       userType() {
         this.lightenBtn();
       },
       country() {
-        this.lightenBtn();
-      },
-      area() {
         this.lightenBtn();
       },
       name() {
@@ -68,16 +73,12 @@
       }
     },
     methods: {
-      countryClose() {
-        this.countryShow = false;
-      },
-      countrySelected(val) {
-        this.area = val.area;
-        this.country = val.label;
+      countryClose(obj) {
+        this.countryName = obj.label;
         this.countryShow = false;
       },
       lightenBtn() {
-        if (this.userType && this.area && this.name && this.account) {
+        if (this.userType && this.country && this.name && this.account) {
           this.btnDisabled = false;
         } else {
           this.btnDisabled = true;
@@ -87,10 +88,10 @@
         let userInfo = {
           name: this.account,
           local_name: this.name,
-          nation: this.area,
+          nation: this.country,
           is_agent: this.userType
         };
-        UserService.updateUserInfo(userInfo, (res) => {
+        UserService.updateUserInfo(userInfo, res => {
           this.$router.push({ name: 'AuthBaseInfo2' })
         });
       }

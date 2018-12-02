@@ -6,7 +6,7 @@
     <div class="content">
       <div class="title border-bottom">欢迎登录鸟巢</div>
       <div class="form-group border-bottom">
-        <div class="left" @click="countryShow = !countryShow">{{ area }} <span class="flag" :style="{ backgroundImage: 'url(' + flag + ')' }"></span><div class="arrow-down"></div></div>
+        <div class="left" @click="countryShow = !countryShow">{{ country }} <span class="flag" :style="{ backgroundImage: 'url(' + flag + ')' }"></span><div class="arrow-down"></div></div>
         <div class="right">
           <nest-field type="tel" class="form-input" placeholder="请输入手机号" v-model="phone"></nest-field>
         </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="contract-tip">登录代表你已同意鸟巢用户协议及隐私政策</div>
     </div>
-    <country type="number" :show="countryShow" :area="area" @countryClose="countryClose" @countrySelected="countrySelected"></country>
+    <country type="number" :show="countryShow" v-model="country" @countryClose="countryClose"></country>
   </div>
 </template>
 
@@ -35,9 +35,9 @@
     name: "Login",
     data() {
       return {
-        area: '0086',
+        country: '0063',
         flag: '',
-        phone: '13802934458',
+        phone: '09888888888',
         countryShow: false
       }
     },
@@ -56,8 +56,9 @@
             // 同个手机号发送短信大于60秒间隔
             smsList[this.phone] = new Date().getTime();
             Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
-            AuthService.getSms(this.phone, res => {
+            AuthService.getSms(this.country, this.phone, res => {
               let key = res.data.key;
+              Storage.setLocalStorage('nest_auth_phone_prefix', this.country);
               Storage.setLocalStorage('nest_auth_phone', this.phone);
               Storage.setLocalStorage('nest_auth_key', key);
               this.$router.push({ name: 'AuthSmsCode' })
@@ -66,20 +67,17 @@
         } else {
           smsList[this.phone] = new Date().getTime();
           Storage.setLocalStorage('nest_sms_list', JSON.stringify(smsList));
-          AuthService.getSms(this.phone, res => {
+          AuthService.getSms(this.country, this.phone, res => {
             let key = res.data.key;
+            Storage.setLocalStorage('nest_auth_phone_prefix', this.country);
             Storage.setLocalStorage('nest_auth_phone', this.phone);
             Storage.setLocalStorage('nest_auth_key', key);
             this.$router.push({ name: 'AuthSmsCode' })
           });
         }
       },
-      countryClose() {
-        this.countryShow = false;
-      },
-      countrySelected(val) {
-        this.area = val.area;
-        this.flag = val.icon;
+      countryClose(obj) {
+        this.flag = obj.icon;
         this.countryShow = false;
       }
     }

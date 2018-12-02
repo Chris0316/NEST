@@ -4,7 +4,7 @@ import Storage from './Storage';
 import Router from '../router';
 
 let instance = axios.create({
-  baseURL: 'http://api.ohmynest.com/api',
+  baseURL: 'http://api.dev.ohmynest.com/api',
   timeout: 1000 * 3
 });
 

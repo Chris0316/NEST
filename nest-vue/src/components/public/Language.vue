@@ -31,6 +31,9 @@
       }
     },
     watch: {
+      value (val) {
+        this.currentVal = val;
+      },
       currentVal(val) {
         if (val.length !== 0) {
           this.btnDisabled = false;

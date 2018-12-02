@@ -2,7 +2,7 @@
   <transition name="slide">
     <div class="country" v-show="show">
       <div class="header">
-        <div class="back" @click="$emit('countryClose')"></div>
+        <div class="back" @click="$emit('countryClose', selectedObj)"></div>
       </div>
       <div class="content">
         <div class="title">{{ title }}</div>
@@ -24,7 +24,7 @@
   export default {
     name: "Country",
     props: {
-      area: String,
+      value: String,
       type: {
         type: String,
         default: 'citizenship'
@@ -36,59 +36,53 @@
     },
     data() {
       return {
-        selectedVal: '',
-        countryAll: [{
+        selectedVal: this.value,
+        selectedObj: null,
+        options: [{
           label: '中国',
-          value: '1',
-          area: '0086',
+          value: '0086',
           icon: ChinaFlag
         }, {
           label: '菲律宾',
-          value: '2',
-          area: '0063',
+          value: '0063',
           icon: PhilippineFlag
         }, {
           label: '日本',
-          value: '3',
-          area: '0081',
+          value: '0081',
           icon: JapanFlag
         }, {
           label: '韩国',
-          value: '4',
-          area: '0082',
+          value: '0082',
           icon: KoreaFlag
         }, {
           label: '美国',
-          value: '5',
-          area: '0001',
+          value: '0001',
           icon: USAFlag
         }, {
           label: '欧洲',
-          value: '6',
-          area: 'Euro',
+          value: 'euro',
           icon: EuropeFlag
         }, {
           label: '其他',
-          value: '7',
-          area: 'others',
+          value: 'others',
           icon: EarthFlag
         }]
       }
     },
-    created() {
-      if (this.area) {
-        let arr = this.countryOpts.filter((item) => {
-          return this.area === item.area;
-        });
-        this.selectedVal = arr[0].value;
-      }
-    },
     watch: {
-      selectedVal(val) {
-        let arr = this.countryOpts.filter((item) => {
-          return val === item.value;
-        });
-        this.$emit('countrySelected', arr[0]);
+      value(val) {
+        this.selectedVal = val;
+      },
+      selectedVal: {
+        handler(val) {
+          let arr = this.options.filter(item => {
+            return val === item.value;
+          });
+          this.selectedObj = arr[0];
+          this.$emit('input', arr[0].value);
+          this.$emit('countryClose', this.selectedObj);
+        },
+        immediate: true
       }
     },
     computed: {
@@ -97,9 +91,10 @@
       },
       countryOpts() {
         if (this.type === 'citizenship') {
-          return this.countryAll;
+          return this.options;
         } else if (this.type === 'number') {
-          return this.countryAll.splice(0, 2);
+          this.options = this.options.slice(0, 2);
+          return this.options;
         }
       }
     }

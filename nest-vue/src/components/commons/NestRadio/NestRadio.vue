@@ -21,7 +21,7 @@
   export default {
     name: "nest-radio",
     props: {
-      value: String,
+      value: [String, Number],
       countInRow: {
         type: Number,
         default: 2

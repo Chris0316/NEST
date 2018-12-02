@@ -33,6 +33,7 @@
       return {
         phone: Storage.getLocalStorage('nest_auth_phone'),
         key: Storage.getLocalStorage('nest_auth_key'),
+        phone_prefix: Storage.getLocalStorage('nest_auth_phone_prefix'),
         smsCode: '',
         counter: 60,
         smsBtnTxt: '重新获取验证码'
@@ -83,7 +84,7 @@
     methods: {
       checkSms() {
         if (this.smsCode.length === 6) {
-          AuthService.smsLogin(this.phone, this.smsCode, this.key, (res) => {
+          AuthService.smsLogin(this.phone_prefix, this.phone, this.smsCode, this.key, (res) => {
             let token = res.meta.access_token;
             Storage.setLocalStorage('nest_access_token', token);
             this.$router.push({ name: 'AuthBaseInfo1' });
@@ -97,7 +98,7 @@
         if (this.isDisabled) {
           return false;
         }
-        AuthService.getSms(this.phone, res => {
+        AuthService.getSms(this.phone_prefix, this.phone, res => {
           let key = res.data.key,
             smsListStr = Storage.getLocalStorage('nest_sms_list'),
             smsList = smsListStr ? JSON.parse(smsListStr) : {};
