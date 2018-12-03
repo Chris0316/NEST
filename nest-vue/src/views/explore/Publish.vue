@@ -738,47 +738,8 @@
         color: #B2B2B2;
       }
       .fac-img0 {
-        width: 0.54rem;
-        height: 0.66rem;
-      }
-      .fac-img1 {
-        margin-top: 0.14rem;
-        width: 0.72rem;
-        height: 0.43rem;
-      }
-      .fac-img2 {
-        margin-top: 0.1rem;
-        width: 0.66rem;
-        height: 0.48rem;
-      }
-      .fac-img3 {
-        width: 0.5rem;
-        height: 0.68rem;
-      }
-      .fac-img4 {
-        margin-top: 0.05rem;
-        width: 0.72rem;
-        height: 0.58rem;
-      }
-      .fac-img5 {
-        width: 0.72rem;
-        height: 0.58rem;
-      }
-      .fac-img6 {
-        width: 0.5rem;
-        height: 0.66rem;
-      }
-      .fac-img7 {
-        width: 0.72rem;
-        height: 0.53rem;
-      }
-      .fac-img8 {
-        width: 0.66rem;
-        height: 0.61rem;
-      }
-      .fac-img9 {
-        width: 0.61rem;
-        height: 0.64rem;
+        width: 0.8rem;
+        height: 0.8rem;
       }
     }
     .intr {
