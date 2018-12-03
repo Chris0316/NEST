@@ -3,32 +3,32 @@
     <nest-scroll class="app-body">
       <div class="live-body">
         <div class="live-title">帮住</div>
-        <nest-scroll event-passthrough="vertical" :scroll-x="true" class="live-modules">
+        <nest-scroll direction="horizontal" class="live-modules">
           <div class="modules-wrap">
-            <div class="module" @click="$router.push({ name: 'LivePublish' })">
+            <div class="module icon1" @click="$router.push({ name: 'LivePublish' })">
               <div class="title">帮住</div>
               <div class="desc">给我您的需求<br>帮您淘满意的房源</div>
             </div>
-            <div class="module">
+            <div class="module icon2">
               <div class="title">入门攻略</div>
               <div class="desc">帮您了解海外购置房产全流程</div>
             </div>
-            <div class="module">
+            <div class="module icon3">
               <div class="title">买房攻略</div>
               <div class="desc">您的疑惑和顾虑我来消除</div>
             </div>
-            <div class="module">
+            <div class="module icon4">
               <div class="title">开盘快报</div>
               <div class="desc">最新的楼盘资讯早班车，勿错过</div>
             </div>
-            <div class="module">
+            <div class="module icon5">
               <div class="title">时政经济</div>
               <div class="desc">政策先知道，紧握投资形势</div>
             </div>
           </div>
         </nest-scroll>
         <div class="category-container">
-          <div class="category">
+          <div class="category banner1">
             <span class="favorite"></span>
             <div class="category-text">
               “外国人”在菲律宾购置房产的政策法规深度解析
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="category-container">
-          <div class="category">
+          <div class="category banner2">
             <span class="favorite"></span>
             <div class="category-tag hot">
               <span>购房常识</span>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="category-container">
-          <div class="category">
+          <div class="category banner3">
             <span class="favorite"></span>
             <div class="category-tag">
               <span>购房常识</span>
@@ -56,7 +56,7 @@
               菲律宾租房流程
             </div>
           </div>
-          <div class="category">
+          <div class="category banner4">
             <span class="favorite"></span>
             <div class="category-tag">
               <span>投资参考</span>
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+
   export default {
     name: "Live"
   }
@@ -106,6 +107,7 @@
         padding: 0 .28rem;
       }
       .module {
+        position: relative;
         flex-shrink: 0;
         padding: .2rem;
         width: 2.8rem;
@@ -113,6 +115,66 @@
         margin-right: .1rem;
         background-color: #fafafa;
         box-sizing: border-box;
+        &.icon1 {
+          &::after {
+            position: absolute;
+            content: '';
+            right: .25rem;
+            bottom: .04rem;
+            width: .62rem;
+            height: .63rem;
+            background: url('../assets/images/live/icon1.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &.icon2 {
+          &::after {
+            position: absolute;
+            content: '';
+            right: .23rem;
+            bottom: .04rem;
+            width: .42rem;
+            height: .68rem;
+            background: url('../assets/images/live/icon2.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &.icon3 {
+          &::after {
+            position: absolute;
+            content: '';
+            right: .15rem;
+            bottom: .04rem;
+            width: .59rem;
+            height: .6rem;
+            background: url('../assets/images/live/icon3.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &.icon4 {
+          &::after {
+            position: absolute;
+            content: '';
+            right: .15rem;
+            bottom: .04rem;
+            width: .75rem;
+            height: .75rem;
+            background: url('../assets/images/live/icon4.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        &.icon5 {
+          &::after {
+            position: absolute;
+            content: '';
+            right: .15rem;
+            bottom: .04rem;
+            width: .75rem;
+            height: .63rem;
+            background: url('../assets/images/live/icon5.png') no-repeat;
+            background-size: 100% 100%;
+          }
+        }
         &:last-child {
           margin-right: 0;
         }
@@ -147,6 +209,18 @@
       background-color: #e6e6e6;
       background-size: 100% 100%;
       box-sizing: border-box;
+      &.banner1 {
+        background-image: url('../assets/images/live/banner1.png');
+      }
+      &.banner2 {
+        background-image: url('../assets/images/live/banner2.png');
+      }
+      &.banner3 {
+        background-image: url('../assets/images/live/banner3.png');
+      }
+      &.banner4 {
+        background-image: url('../assets/images/live/banner4.png');
+      }
       .favorite {
         position: absolute;
         top: .2rem;

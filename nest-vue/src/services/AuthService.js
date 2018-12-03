@@ -7,15 +7,17 @@ const api = {
 };
 
 let AuthService = {
-  getSms(phone, callback) {
+  getSms(phonePrefix, phone, callback) {
     axios.post(api.getSms, {
+      phone_prefix: phonePrefix,
       phone: phone
     }).then(res => {
       callback(res);
     })
   },
-  smsLogin(phone, sms, key, callback) {
+  smsLogin(phonePrefix, phone, sms, key, callback) {
     axios.post(api.smsLogin, {
+      phone_prefix: phonePrefix,
       phone: phone,
       code: sms,
       key: key

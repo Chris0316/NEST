@@ -18,6 +18,8 @@ import NestListView from './commons/NestListView.vue'
 
 import NestHeader from './public/NestHeader'
 import NestNav from './public/NestNav'
+import Country from './public/Country'
+import Language from './public/Language'
 
 import NestToast from './commons/NestToast'
 
@@ -28,8 +30,6 @@ let components = {
   NestListView,
   NestRange,
   NestSelect,
-  NestHeader,
-  NestNav,
   NestUpload,
   NestSwitch,
   NestField,
@@ -40,7 +40,11 @@ let components = {
   NestTabItem,
   NestTabContainer,
   NestTabContainerItem,
-  NestScroll
+  NestScroll,
+  NestHeader,
+  NestNav,
+  Country,
+  Language
 };
 
 let install = function (Vue) {

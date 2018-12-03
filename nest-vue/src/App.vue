@@ -1,7 +1,12 @@
 <template>
   <div id="app" class="nest" @touchstart>
     <transition :name="transitionName">
-      <router-view class="view" />
+      <keep-alive>
+        <router-view class="view" v-if="$route.meta.keepAlive"/>
+      </keep-alive>
+    </transition>
+    <transition :name="transitionName">
+      <router-view class="view" v-if="!$route.meta.keepAlive"/>
     </transition>
   </div>
 </template>
@@ -16,6 +21,7 @@
     },
     watch: {
       $route(to, from) {
+
         // if (to.name === 'Search') {
         //   this.transitionName = 'slide-top';
         // } else if (from.name === 'Search') {

@@ -33,7 +33,7 @@
     .back {
       width: .9rem;
       height: 100%;
-      background: url('../../assets/images/return-icon.png') no-repeat left center;
+      background: url('../assets/images/return-icon.png') no-repeat left center;
       background-size: .42rem .32rem;
     }
     .content {

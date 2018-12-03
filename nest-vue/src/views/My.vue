@@ -12,20 +12,20 @@
         <div class="personal-sign arrow-right" v-if="isLogin">{{ signature }}</div>
         <div class="menu-panel">
           <div class="menu-item">
-            <div class="item-icon"></div>
+            <div class="item-icon icon1"></div>
             <div class="item-label">我的发布</div>
           </div>
           <div class="menu-item">
-            <div class="item-icon"></div>
+            <div class="item-icon icon2"></div>
             <div class="item-label">我的帮住</div>
           </div>
           <div class="menu-item">
-            <div class="item-icon"></div>
+            <div class="item-icon icon3"></div>
             <div class="item-label">我的资讯</div>
           </div>
         </div>
         <div class="live-ground border-bottom">
-          <div class="banner" @click="$router.push({ name: 'MyGround' })"></div>
+          <div class="banner" @click="$router.push({ name: 'MyGround' })">帮住广场</div>
         </div>
         <div class="form-group border-bottom arrow-right">
           <div class="label">我的信息</div>
@@ -47,15 +47,15 @@
         </div>
         <div class="footer-links">
           <div class="links-item">
-            <div class="link-icon"></div>
+            <div class="link-icon icon4"></div>
             <div class="link-label">给我反馈</div>
           </div>
           <div class="links-item">
-            <div class="link-icon"></div>
+            <div class="link-icon icon5"></div>
             <div class="link-label">联系我们</div>
           </div>
           <div class="links-item">
-            <div class="link-icon"></div>
+            <div class="link-icon icon6"></div>
             <div class="link-label">商业合作</div>
           </div>
         </div>
@@ -87,10 +87,9 @@
         return token ? true : false;
       }
     },
-    mounted() {
+    created() {
       if (this.isLogin) {
         UserService.getUserInfo((res) => {
-          console.log(res);
           this.name = res.data.local_name;
           this.account = res.data.name;
           this.signature = res.data.introduction || '什么也没有，说点什么吧';
@@ -165,8 +164,18 @@
       margin: 0 auto;
       width: .6rem;
       height: .6rem;
-      background-color: #e6e6e6;
-      background-size: 100% 100%;
+      &.icon1 {
+        background: url('../assets/images/my/icon1.png') no-repeat center center;
+        background-size: .56rem .6rem;
+      }
+      &.icon2 {
+        background: url('../assets/images/my/icon2.png') no-repeat center center;
+        background-size: .49rem .6rem;
+      }
+      &.icon3 {
+        background: url('../assets/images/my/icon3.png') no-repeat center center;
+        background-size: .46rem .6rem;
+      }
     }
     .item-label {
       margin-top: .2rem;
@@ -178,9 +187,15 @@
       padding: .6rem 0 .8rem;
     }
     .banner {
+      font-size: .34rem;
+      color: #fff;
+      letter-spacing: .1rem;
       height: 1rem;
+      line-height: 1rem;
       border-radius: 1rem;
-      background-color: #e6e6e6;
+      text-align: center;
+      background: url('../assets/images/my/banner.png') no-repeat;
+      background-size: 100% 100%;
     }
     .form-group {
       display: flex;
@@ -202,8 +217,21 @@
         width: 1.1rem;
         height: 1.1rem;
         border-radius: 1.1rem;
-        background-color: #e6e6e6;
-        background-size: 100% 100%;
+        border: 1px solid #add9d5;
+        background-position: center center;
+        background-repeat: no-repeat;
+        &.icon4 {
+          background-image: url('../assets/images/my/icon4.png');
+          background-size: .46rem .41rem;
+        }
+        &.icon5 {
+          background-image: url('../assets/images/my/icon5.png');
+          background-size: .48rem .43rem;
+        }
+        &.icon6 {
+          background-image: url('../assets/images/my/icon6.png');
+          background-size: .38rem .5rem;
+        }
       }
       .link-label {
         margin-top: .2rem;
